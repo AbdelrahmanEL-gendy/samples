@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saudi Family Holdings · Sample</title>
+<meta name="description" content="Sample landing page for Saudi Family Holdings: a private family platform built around stewardship, continuity and long-term decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#e3e4d8; --cream:#f5f5ef; --ink:#1d1f1a; --muted:#6c6d63; --gold:#c9a14a; --line:rgba(29,31,26,.14);
+  --ease-out:cubic-bezier(.19,1,.22,1); --ease-io:cubic-bezier(.645,.045,.355,1); --ease-quart:cubic-bezier(.77,0,.175,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:Jost,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.caps{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+
+/* ===== loader ===== */
+#loader{position:fixed;inset:0;z-index:999;background:var(--cream);display:grid;place-items:center;transition:transform 1s var(--ease-quart)}
+#loader .mark{display:flex;flex-direction:column;align-items:center;gap:22px}
+#loader img{height:110px;width:auto;opacity:0;transform:scale(.96);animation:ldIn 1s var(--ease-out) .15s forwards}
+#loader .ln{width:180px;height:1px;background:var(--line);overflow:hidden}
+#loader .ln i{display:block;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;animation:ldLine 1.4s var(--ease-io) .3s forwards}
+#loader .t{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:.38em;text-transform:uppercase;color:var(--muted);opacity:0;animation:ldIn .9s var(--ease-out) .5s forwards}
+#loader.done{transform:translateY(-100%)}
+@keyframes ldIn{to{opacity:1;transform:none}}
+@keyframes ldLine{to{transform:scaleX(1)}}
+body.loading{overflow:hidden}
+body.loading .hero .reveal{animation-play-state:paused}
+
+/* ===== header (Discovery-style: menu left, mark centre, contact right) ===== */
+header{position:fixed;inset:0 0 auto 0;z-index:40;color:#fff;transition:background-color .45s ease,color .45s ease}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 28px;border-bottom:1px solid transparent;transition:border-color .45s ease,padding .45s var(--ease-out)}
+.bar .l,.bar .r{display:flex;align-items:center;gap:22px}
+.bar .r{justify-content:flex-end}
+.bar a{color:inherit;text-decoration:none}
+.sep{width:1px;height:16px;background:currentColor;opacity:.35}
+.burger{display:inline-flex;align-items:center;gap:12px}
+.burger i{display:block;width:18px;height:1px;background:currentColor;box-shadow:0 5px 0 currentColor;transform:translateY(-2.5px)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:36px;width:auto}
+.brand span{font-family:"Cormorant Garamond",serif;font-size:24px;letter-spacing:.01em}
+.subnav{display:flex;justify-content:center;gap:28px;padding:0 28px;height:0;overflow:hidden;opacity:0;border-bottom:1px solid transparent;transition:height .45s var(--ease-out),opacity .35s ease,border-color .45s ease}
+.subnav a{font-size:14px;color:inherit;text-decoration:none;position:relative;padding:14px 0}
+.subnav a::after{content:"";position:absolute;left:0;right:0;bottom:9px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+@media (hover:hover){.subnav a:hover::after{transform:scaleX(1)}}
+header.solid{background:rgba(227,228,216,.96);color:var(--ink);backdrop-filter:blur(8px)}
+header.solid .bar{border-color:var(--line);padding:12px 28px}
+header.solid .subnav{height:52px;opacity:1;border-color:var(--line)}
+
+/* ===== hero: slow cross-fading film of stills ===== */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;color:#fff;background:#1d1f1a}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 2.4s var(--ease-out)}
+body:not(.loading) .hero-video{transform:none}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.06) 38%,rgba(0,0,0,.6) 100%)}
+.hero-copy{position:absolute;z-index:2;left:0;right:0;bottom:120px;text-align:center;padding:0 24px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(36px,5.4vw,78px);letter-spacing:.04em;text-transform:uppercase;line-height:1;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero p{margin-top:16px;font-size:clamp(14px,1.25vw,17px);opacity:.92}
+.reveal{opacity:0;transform:translateY(16px);animation:rise 1.2s var(--ease-out) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.tabs{position:absolute;z-index:3;left:50%;bottom:44px;transform:translateX(-50%);background:#fff;color:var(--ink);display:flex;align-items:center;gap:6px;padding:8px 8px 8px 22px;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+.tabs a{font-size:15px;text-decoration:none;color:inherit;padding:10px 12px;transition:color .2s ease}
+.tabs a.box{margin-left:10px;border:1px solid var(--ink);font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:10px 22px;transition:background-color .2s ease,color .2s ease}
+@media (hover:hover){.tabs a:not(.box):hover{color:var(--muted)}.tabs a.box:hover{background:var(--ink);color:#fff}}
+.ctrl{position:absolute;z-index:3;bottom:28px;width:30px;height:30px;display:grid;place-items:center;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);color:#fff;font-size:12px}
+.ctrl.pause{left:24px}.ctrl.down{right:24px;background:none}
+.dots{position:absolute;z-index:3;left:64px;bottom:38px;display:flex;gap:6px}
+.dots i{width:22px;height:2px;background:rgba(255,255,255,.35);overflow:hidden}
+.dots i b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+.dots i.on b{animation:fill 6s linear forwards}
+.paused .dots i.on b{animation-play-state:paused}
+@keyframes fill{to{transform:scaleX(1)}}
+
+/* ===== statement ===== */
+.statement{background:var(--sand);padding:clamp(90px,12vw,160px) 24px;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.statement h2{max-width:920px;margin:22px auto 0;font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(28px,3.6vw,50px);line-height:1.18}
+.statement h2 em{color:#7b6527}
+
+/* ===== carousel of practices (Discovery "Our Worlds") ===== */
+.worlds{background:var(--sand);padding:0 0 70px}
+.worlds-head{display:flex;justify-content:space-between;align-items:end;padding:0 20px 26px;max-width:1480px;margin:0 auto}
+.worlds-head h3{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(30px,3vw,44px)}
+.track-wrap{overflow:hidden}
+.track{display:flex;gap:10px;padding:0 20px;transition:transform .8s var(--ease-io);will-change:transform}
+.wcard{flex:0 0 calc((100% - 30px)/4);min-width:250px}
+.wcard .ph{aspect-ratio:9/10;overflow:hidden;background:#cfd0c4}
+.wcard .ph img{width:100%;height:100%;object-fit:cover;opacity:.45;filter:saturate(.4) brightness(1.15);transform:scale(1.04);transition:opacity 1.4s var(--ease-out),filter 1.4s var(--ease-out),transform 1.4s var(--ease-out)}
+.wcard.in .ph img{opacity:1;filter:none;transform:none}
+@media (hover:hover){.wcard:hover .ph img{transform:scale(1.03)}}
+.wcard h4{margin-top:16px;font-weight:400;font-size:16px}
+.wcard em{display:block;margin-top:2px;font-family:"Cormorant Garamond",serif;font-size:16px;color:var(--muted)}
+.arrows{display:flex;justify-content:center;gap:6px;margin-top:40px}
+.arrows button{width:32px;height:28px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:14px;transition:background-color .2s ease,transform .12s ease}
+.arrows button:active{transform:scale(.96)}
+@media (hover:hover){.arrows button:hover{background:var(--cream)}}
+
+/* ===== feature image with thumbnails ===== */
+.feature{background:var(--cream);padding:110px 20px 40px;max-width:1480px;margin:0 auto}
+.feature .row{display:grid;grid-template-columns:1fr 240px;gap:40px;align-items:start}
+.big{position:relative;aspect-ratio:16/9;overflow:hidden;background:#d9d9cf}
+.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.big img.on{opacity:1}
+.chip{position:absolute;left:20px;bottom:20px;z-index:2;display:flex;align-items:center;gap:8px;background:rgba(30,30,26,.55);backdrop-filter:blur(6px);color:#fff;font-size:13px;padding:8px 12px}
+.chip svg{width:14px;height:14px}
+.side h3{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:34px;line-height:1.05}
+.side p{margin-top:14px;font-size:15px;line-height:1.7;color:var(--muted)}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:28px}
+.thumbs button{display:block;text-align:left}
+.thumbs img{aspect-ratio:1;object-fit:cover;opacity:.45;transition:opacity .3s ease}
+.thumbs button.on img{opacity:1}
+.thumbs span{display:block;margin-top:6px;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.thumbs button.on span{color:var(--ink)}
+
+/* ===== values grid (Discovery "Latest listings") ===== */
+.values{max-width:1480px;margin:0 auto;padding:90px 20px 120px}
+.values-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.values-head h3{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(30px,3vw,44px)}
+.btn-line{border:1px solid var(--ink);padding:11px 22px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--ink);transition:background-color .2s ease,color .2s ease}
+@media (hover:hover){.btn-line:hover{background:var(--ink);color:#fff}}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.vcard .ph{aspect-ratio:4/3;overflow:hidden;background:#d9d9cf}
+.vcard .ph img{width:100%;height:100%;object-fit:cover;opacity:.45;filter:saturate(.4) brightness(1.15);transition:opacity 1.4s var(--ease-out),filter 1.4s var(--ease-out)}
+.vcard.in .ph img{opacity:1;filter:none}
+.vcard h4{margin-top:16px;font-weight:400;font-size:18px}
+.vcard p{margin-top:4px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--muted)}
+
+/* ===== full-bleed parallax band ===== */
+.band{position:relative;height:80vh;min-height:420px;overflow:hidden;background:#222}
+.band img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;will-change:transform}
+.band .cap{position:absolute;left:0;right:0;bottom:12%;text-align:center;color:#fff;font-family:"Cormorant Garamond",serif;font-size:clamp(26px,3.2vw,44px);text-shadow:0 2px 24px rgba(0,0,0,.4);padding:0 24px}
+
+/* ===== closing ===== */
+.close{background:var(--sand);padding:120px 24px;text-align:center}
+.close img{height:120px;width:auto;margin:0 auto}
+.close p{margin-top:26px;font-family:"Cormorant Garamond",serif;font-size:clamp(22px,2.4vw,32px)}
+.close a{display:inline-block;margin-top:28px}
+footer{background:var(--cream);border-top:1px solid var(--line);padding:26px 28px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1.1s var(--ease-out),transform 1.1s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.sample-tag{position:fixed;right:16px;bottom:16px;z-index:30;background:rgba(29,31,26,.85);color:#f5f5ef;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px}
+
+@media (max-width:900px){
+  .bar{padding:14px 16px}.bar .l .hide-m,.bar .r .hide-m,.sep{display:none}.brand span{font-size:18px}.brand img{height:28px}
+  header.solid .bar{padding:10px 16px}.subnav{gap:18px;overflow-x:auto;justify-content:flex-start}
+  .tabs{left:16px;right:16px;transform:none;justify-content:space-between;padding:6px 6px 6px 12px;bottom:84px}.tabs a{font-size:13px;padding:8px 6px}.tabs a.box{margin-left:4px;padding:9px 12px;font-size:11px}
+  .hero-copy{bottom:170px}
+  .wcard{flex:0 0 78%}
+  .feature .row{grid-template-columns:1fr}
+  .vgrid{grid-template-columns:1fr}
+  .values-head .btn-line{display:none}
+  footer{flex-direction:column;gap:8px}
+  .sample-tag{right:auto;left:16px;bottom:auto;top:76px;font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  #loader{display:none}
+  .hero-video{transition:none;transform:none}
+  .reveal{animation:none;opacity:1;transform:none}
+  .rv{transition:none;opacity:1;transform:none}
+  .wcard .ph img,.vcard .ph img{transition:none;opacity:1;filter:none;transform:none}
+  .track{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body class="loading">
+<div id="loader" aria-hidden="true"><div class="mark"><img src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/c86b22b1-2912-4061-91a4-68fd5c4bd31b/Group-6.png?format=300w" alt=""><div class="ln"><i></i></div><div class="t">A private family platform</div></div></div>
+
+<header id="hdr">
+  <div class="bar">
+    <div class="l"><a class="burger caps" href="#about"><i></i>Menu</a><span class="sep"></span><a class="caps hide-m" href="#pillars">Approach</a></div>
+    <a class="brand" href="#top"><img src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/c86b22b1-2912-4061-91a4-68fd5c4bd31b/Group-6.png?format=300w" alt="Saudi Family Holdings logo" width="533" height="746"><span>Saudi Family Holdings</span></a>
+    <div class="r"><a class="caps" href="#contact">Contact</a></div>
+  </div>
+  <nav class="subnav"><a href="#about">Our Family</a><a href="#pillars">Our Pillars</a><a href="#heritage">Heritage</a><a href="#values">Values</a><a href="#contact">Contact</a></nav>
+</header>
+
+<section class="hero" id="top">
+  <video class="hero-video" id="heroVideo" muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1694018359679-49465b4c0d61?w=2000&q=70&auto=format"><source src="../video/sfh-hero.mp4" type="video/mp4"></video>
+  <div class="hero-copy">
+    <h1 class="reveal" style="animation-delay:.1s">Stewardship across generations</h1>
+    <p class="reveal" style="animation-delay:.35s">Protecting what has been built, and carrying it forward.</p>
+  </div>
+  <nav class="tabs reveal" style="animation-delay:.6s"><a href="#about">Our Family</a><a href="#pillars">Our Pillars</a><a href="#heritage">Heritage</a><a class="box" href="#contact">Contact</a></nav>
+  <button class="ctrl pause" id="pause" aria-label="Pause video">❚❚</button>
+  <a class="ctrl down" href="#about" aria-label="Scroll down">↓</a>
+</section>
+
+<section class="statement" id="about">
+  <div class="eyebrow rv">Saudi Family Holdings</div>
+  <h2 class="rv">A private family office built on patience, responsibility and disciplined decisions, so that what has been built is <em>protected, preserved and carried forward.</em></h2>
+</section>
+
+<section class="worlds" id="pillars">
+  <div class="worlds-head"><h3 class="rv">Our Pillars</h3><span class="caps rv" style="color:var(--muted)">04</span></div>
+  <div class="track-wrap"><div class="track" id="track">
+    <article class="wcard"><div class="ph"><img src="https://images.unsplash.com/photo-1647844929530-791e6489598c?w=900&q=70&auto=format" alt="Colonnade in warm light" loading="lazy"></div><h4>Family Governance &amp; Succession</h4><em>Clear decisions, from one generation to the next</em></article>
+    <article class="wcard"><div class="ph"><img src="https://images.unsplash.com/photo-1694018359679-49465b4c0d61?w=900&q=70&auto=format" alt="Kingdom Centre, Riyadh, at sunset" loading="lazy"></div><h4>International Expansion</h4><em>Riyadh to new markets, with care</em></article>
+    <article class="wcard"><div class="ph"><img src="https://images.unsplash.com/photo-1584439152550-e7a4510454c0?w=900&q=70&auto=format" alt="Mud-brick building against rock" loading="lazy"></div><h4>Capital Formation &amp; Growth</h4><em>Capital aligned with family values</em></article>
+    <article class="wcard"><div class="ph"><img src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/353bacfc-aa1c-4662-9a04-c0e0454b34e2/barnabas-piper-Cp8A9ankh18-unsplash.jpg?format=1000w" alt="Hands of three generations" loading="lazy"></div><h4>Legacy &amp; Continuity</h4><em>Stability for the generations ahead</em></article>
+    <article class="wcard"><div class="ph"><img src="https://images.unsplash.com/photo-1765303314168-323faf51292b?w=900&q=70&auto=format" alt="Wooden gate in a stone wall" loading="lazy"></div><h4>Advisory to Families</h4><em>Sharing what we have learned</em></article>
+  </div></div>
+  <div class="arrows"><button id="prev" aria-label="Previous">←</button><button id="next" aria-label="Next">→</button></div>
+</section>
+
+<section class="feature" id="heritage">
+  <div class="row">
+    <div class="big rv">
+      <img class="on" src="https://images.unsplash.com/photo-1782220940402-9168f59b582a?w=1800&q=70&auto=format" alt="Traditional building with a wooden balcony" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1765303314168-323faf51292b?w=1800&q=70&auto=format" alt="Wooden gate in a stone wall" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1755412734479-c0687daab775?w=1800&q=70&auto=format" alt="Desert fort at golden hour" loading="lazy">
+      <div class="chip" id="chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M8 7v4M8 5h.01"/></svg><span>Rooted in heritage</span></div>
+    </div>
+    <div class="side">
+      <h3 class="rv">Where we come from shapes how we decide.</h3>
+      <p class="rv">Every decision is considered through both a financial and a human lens, so growth stays aligned with family values, responsibility and legacy.</p>
+      <div class="thumbs rv" id="thumbs">
+        <button class="on" data-i="0" data-cap="Rooted in heritage"><img src="https://images.unsplash.com/photo-1782220940402-9168f59b582a?w=300&q=60&auto=format" alt=""><span>01.</span></button>
+        <button data-i="1" data-cap="Built to endure"><img src="https://images.unsplash.com/photo-1765303314168-323faf51292b?w=300&q=60&auto=format" alt=""><span>02.</span></button>
+        <button data-i="2" data-cap="Patience as strategy"><img src="https://images.unsplash.com/photo-1755412734479-c0687daab775?w=300&q=60&auto=format" alt=""><span>03.</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values" id="values">
+  <div class="values-head"><h3 class="rv">What guides us</h3><a class="btn-line rv" href="#contact">Speak with us</a></div>
+  <div class="vgrid">
+    <article class="vcard"><div class="ph"><img src="https://images.unsplash.com/photo-1551031749-9257c3aee0df?w=1000&q=70&auto=format" alt="Dunes and mountains" loading="lazy"></div><h4>Patience</h4><p>A multigenerational view of every market</p></article>
+    <article class="vcard"><div class="ph"><img src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/0c87814a-5fa1-4f96-b801-4d4166c0849c/9669f859-3755-419a-95d1-4e733519ef87.jpg?format=1000w" alt="Al Faisaliah Tower, Riyadh" loading="lazy" style="object-position:center 30%"></div><h4>Responsibility</h4><p>Care, discretion and disciplined decisions</p></article>
+    <article class="vcard"><div class="ph"><img src="https://images.unsplash.com/photo-1538563974660-399001415eaa?w=1000&q=70&auto=format" alt="Desert at sunset" loading="lazy"></div><h4>Continuity</h4><p>Protecting what has been built</p></article>
+  </div>
+</section>
+
+<section class="band" id="band">
+  <img src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/353bacfc-aa1c-4662-9a04-c0e0454b34e2/barnabas-piper-Cp8A9ankh18-unsplash.jpg?format=2500w" alt="Hands of three generations" loading="lazy">
+  <div class="cap">For the generations ahead.</div>
+</section>
+
+<section class="close" id="contact">
+  <img class="rv" src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/c86b22b1-2912-4061-91a4-68fd5c4bd31b/Group-6.png?format=300w" alt="" width="533" height="746" loading="lazy">
+  <p class="rv">Thoughtful stewardship for the generations ahead.</p>
+  <a class="btn-line rv" href="mailto:esme@saudifamilyholdings.com">esme@saudifamilyholdings.com</a>
+</section>
+
+<footer><span>© 2026 Saudi Family Holdings</span><span>Riyadh, Saudi Arabia</span></footer>
+<div class="sample-tag">Sample landing page · webgendy</div>
+
+<script>
+(()=>{
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hdr = document.getElementById('hdr');
+
+  // loader: lift the curtain once the first hero image is ready (min 1.9s, max 2.6s)
+  const loader=document.getElementById('loader');
+  // hero video (Discovery-style, with a pause button). Reduced motion: no autoplay, poster only.
+  const vid=document.getElementById('heroVideo'), pauseBtn=document.getElementById('pause');
+  const play=()=>{ if(!reduce){ const p=vid.play(); if(p&&p.catch) p.catch(()=>{}); } };
+  const finish=()=>{ if(!loader||loader.classList.contains('done')) return; loader.classList.add('done'); document.body.classList.remove('loading'); setTimeout(()=>loader.remove(),1100); play(); };
+  if(reduce){ pauseBtn.textContent='▶'; pauseBtn.setAttribute('aria-label','Play video'); }
+  pauseBtn.addEventListener('click',()=>{ if(vid.paused){ vid.play(); pauseBtn.textContent='❚❚'; pauseBtn.setAttribute('aria-label','Pause video'); } else { vid.pause(); pauseBtn.textContent='▶'; pauseBtn.setAttribute('aria-label','Play video'); } });
+  if(reduce){ finish(); } else {
+    const t0=performance.now(); let done=false;
+    const go=()=>{ if(done) return; done=true; setTimeout(finish, Math.max(0,1900-(performance.now()-t0))); };
+    vid.addEventListener('canplay',go,{once:true});
+    const img=new Image(); img.onload=()=>setTimeout(go,600); img.onerror=go; img.src=vid.poster;
+    setTimeout(finish,3200);
+  }
+
+  // reveals + washed-out-to-colour images
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.2});
+  document.querySelectorAll('.rv,.wcard,.vcard').forEach(el=>io.observe(el));
+
+  // carousel arrows
+  const track=document.getElementById('track'), cards=[...track.children]; let pos=0;
+  const perView=()=>innerWidth<900?1:4;
+  const move=d=>{ pos=Math.max(0,Math.min(cards.length-perView(),pos+d)); const w=cards[0].getBoundingClientRect().width+10; track.style.transform=`translate3d(${-pos*w}px,0,0)`; };
+  document.getElementById('prev').addEventListener('click',()=>move(-1));
+  document.getElementById('next').addEventListener('click',()=>move(1));
+
+  // feature thumbnails
+  const bigs=[...document.querySelectorAll('.big img')], thumbs=[...document.querySelectorAll('#thumbs button')], chip=document.querySelector('#chip span');
+  thumbs.forEach(t=>t.addEventListener('click',()=>{ const i=+t.dataset.i; bigs.forEach((b,j)=>b.classList.toggle('on',j===i)); thumbs.forEach(x=>x.classList.toggle('on',x===t)); chip.textContent=t.dataset.cap; }));
+
+  // header goes solid after the hero, band parallax
+  const band=document.getElementById('band'), bandImg=band.querySelector('img');
+  let ticking=false;
+  const onScroll=()=>{
+    hdr.classList.toggle('solid', scrollY > innerHeight*0.8);
+    if(!reduce){ const r=band.getBoundingClientRect(); const p=(r.top+r.height/2-innerHeight/2)/innerHeight; bandImg.style.transform=`translate3d(0,${(p*-8).toFixed(2)}%,0)`; }
+    ticking=false;
+  };
+  addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking=true; } },{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
