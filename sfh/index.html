@@ -43,8 +43,41 @@ header{position:fixed;inset:0 0 auto 0;z-index:40;color:#fff;transition:backgrou
 .bar .r{justify-content:flex-end}
 .bar a{color:inherit;text-decoration:none}
 .sep{width:1px;height:16px;background:currentColor;opacity:.35}
-.burger{display:inline-flex;align-items:center;gap:12px}
-.burger i{display:block;width:18px;height:1px;background:currentColor;box-shadow:0 5px 0 currentColor;transform:translateY(-2.5px)}
+.burger{display:inline-flex;align-items:center;gap:14px;color:inherit;letter-spacing:.2em;padding:6px 0}
+.burger svg{width:19px;height:12px;flex:none}
+.burger svg path{stroke:currentColor;stroke-width:1.1;transition:transform .35s var(--ease-out)}
+@media (hover:hover){.burger:hover svg path:last-child{transform:translateX(-4px)}}
+
+/* ===== menu drawer (Discovery-style left panel) ===== */
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(15,16,13,.42);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s linear .4s}
+.drawer{position:fixed;z-index:80;top:10px;left:10px;bottom:10px;width:348px;max-width:calc(100vw - 20px);background:#fbfbf8;color:var(--ink);display:flex;flex-direction:column;padding:0 24px 24px;transform:translateX(calc(-100% - 20px));visibility:hidden;transition:transform .5s var(--ease-quart),visibility 0s linear .5s;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+body.menu-open .scrim{opacity:1;visibility:visible;transition:opacity .4s ease}
+body.menu-open .drawer{transform:none;visibility:visible;transition:transform .55s var(--ease-quart)}
+body.menu-open{overflow:hidden}
+.d-head{display:flex;align-items:center;height:60px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.d-close{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:8px 0}
+.d-close svg{width:11px;height:11px}
+.d-nav{list-style:none}
+.d-nav > li{opacity:0;transform:translateX(-12px);transition:opacity .45s var(--ease-out),transform .45s var(--ease-out)}
+body.menu-open .d-nav > li{opacity:1;transform:none}
+body.menu-open .d-nav > li:nth-child(1){transition-delay:.18s}body.menu-open .d-nav > li:nth-child(2){transition-delay:.23s}body.menu-open .d-nav > li:nth-child(3){transition-delay:.28s}body.menu-open .d-nav > li:nth-child(4){transition-delay:.33s}body.menu-open .d-nav > li:nth-child(5){transition-delay:.38s}
+.d-row{display:flex;justify-content:space-between;align-items:center;width:100%;padding:9px 4px;font-family:"Cormorant Garamond",serif;font-size:26px;line-height:1.15;color:inherit;text-decoration:none;text-align:left}
+.d-row .pm{position:relative;width:11px;height:11px;flex:none}
+.d-row .pm::before,.d-row .pm::after{content:"";position:absolute;left:0;top:5px;width:11px;height:1px;background:currentColor;transition:transform .3s var(--ease-out)}
+.d-row .pm::after{transform:rotate(90deg)}
+.d-item.open .pm::after{transform:rotate(0)}
+@media (hover:hover){a.d-row:hover,button.d-row:hover{color:var(--muted)}}
+.d-sub{list-style:none;overflow:hidden;max-height:0;transition:max-height .45s var(--ease-io)}
+.d-item.open .d-sub{max-height:320px}
+.d-sub a{display:block;padding:6px 4px 6px 16px;font-size:15px;color:var(--muted);text-decoration:none}
+@media (hover:hover){.d-sub a:hover{color:var(--ink)}}
+.d-foot{margin-top:auto}
+.d-foot a.small{display:block;font-size:15px;padding:3px 4px;color:inherit;text-decoration:none}
+@media (hover:hover){.d-foot a.small:hover{color:var(--muted)}}
+.d-cta{margin-top:30px;display:flex;align-items:center;justify-content:center;gap:10px;background:#1f2a22;color:#f5f5ef;height:40px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background-color .2s ease,transform .12s ease}
+.d-cta svg{width:13px;height:13px}
+.d-cta:active{transform:scale(.98)}
+@media (hover:hover){.d-cta:hover{background:#2c3a30}}
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{height:36px;width:auto}
 .brand span{font-family:"Cormorant Garamond",serif;font-size:24px;letter-spacing:.01em}
@@ -150,7 +183,7 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:26px 28p
 .sample-tag{position:absolute;right:28px;top:104px;z-index:5;background:rgba(29,31,26,.85);color:#f5f5ef;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px}
 
 @media (max-width:900px){
-  .bar{padding:14px 16px;grid-template-columns:44px 1fr 44px}.bar .l .hide-m,.bar .r .hide-m,.sep{display:none}.burger{font-size:0;gap:0}.brand{justify-content:center;gap:8px}.brand span{font-size:17px;white-space:nowrap}.brand img{height:26px}.bar .r a{font-size:0}.bar .r a::before{content:"";display:block;width:20px;height:14px;border:1.2px solid currentColor;border-radius:2px;background:linear-gradient(135deg,transparent 46%,currentColor 47%,currentColor 53%,transparent 54%) top left/50% 60% no-repeat,linear-gradient(225deg,transparent 46%,currentColor 47%,currentColor 53%,transparent 54%) top right/50% 60% no-repeat}
+  .bar{padding:14px 16px;grid-template-columns:44px 1fr 44px}.bar .l .hide-m,.bar .r .hide-m,.sep{display:none}.burger .lbl{display:none}.brand{justify-content:center;gap:8px}.brand span{font-size:17px;white-space:nowrap}.brand img{height:26px}.bar .r a{font-size:0}.bar .r a::before{content:"";display:block;width:20px;height:14px;border:1.2px solid currentColor;border-radius:2px;background:linear-gradient(135deg,transparent 46%,currentColor 47%,currentColor 53%,transparent 54%) top left/50% 60% no-repeat,linear-gradient(225deg,transparent 46%,currentColor 47%,currentColor 53%,transparent 54%) top right/50% 60% no-repeat}
   header.solid .bar{padding:10px 16px}.subnav{gap:20px;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.subnav a{white-space:nowrap;font-size:13px}
   .tabs{left:16px;right:16px;width:auto;justify-content:space-between;padding:6px 6px 6px 12px;bottom:84px}.tabs a{font-size:13px;padding:8px 6px}.tabs a.box{margin-left:4px;padding:9px 12px;font-size:11px}
   .hero-copy{bottom:170px}
@@ -164,6 +197,7 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:26px 28p
 @media (prefers-reduced-motion:reduce){
   #loader{display:none}
   .hero-video{transition:none;transform:none}
+  .drawer,.scrim,.d-nav > li,.d-sub{transition:none}
   .reveal{animation:none;opacity:1;transform:none}
   .rv{transition:none;opacity:1;transform:none}
   .wcard .ph img,.vcard .ph img{transition:none;opacity:1;filter:none;transform:none}
@@ -177,12 +211,29 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:26px 28p
 
 <header id="hdr">
   <div class="bar">
-    <div class="l"><a class="burger caps" href="#about"><i></i>Menu</a><span class="sep"></span><a class="caps hide-m" href="#pillars">Approach</a></div>
+    <div class="l"><button class="burger caps" id="menuBtn" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 2.5H18.4615"/><path d="M0 9.5H18.4615"/></svg><span class="lbl">Menu</span></button><span class="sep"></span><a class="caps hide-m" href="#pillars">Approach</a></div>
     <a class="brand" href="#top"><img src="https://images.squarespace-cdn.com/content/v1/67928883a589934d22fec997/c86b22b1-2912-4061-91a4-68fd5c4bd31b/Group-6.png?format=300w" alt="Saudi Family Holdings logo" width="533" height="746"><span>Saudi Family Holdings</span></a>
     <div class="r"><a class="caps" href="#contact">Contact</a></div>
   </div>
   <nav class="subnav"><a href="#about">Our Family</a><a href="#pillars">Our Pillars</a><a href="#heritage">Heritage</a><a href="#values">Values</a><a href="#contact">Contact</a></nav>
 </header>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="d-head"><button class="d-close" id="menuClose"><svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l9 9M10 1l-9 9"/></svg>Close</button></div>
+  <ul class="d-nav">
+    <li><a class="d-row" href="#about">Our Family</a></li>
+    <li class="d-item"><button class="d-row" aria-expanded="false">Our Pillars <span class="pm"></span></button>
+      <ul class="d-sub"><li><a href="#pillars">Family Governance &amp; Succession</a></li><li><a href="#pillars">International Expansion</a></li><li><a href="#pillars">Capital Formation &amp; Growth</a></li><li><a href="#pillars">Legacy &amp; Continuity</a></li><li><a href="#pillars">Advisory to Families</a></li></ul></li>
+    <li class="d-item"><button class="d-row" aria-expanded="false">Heritage <span class="pm"></span></button>
+      <ul class="d-sub"><li><a href="#heritage">Rooted in heritage</a></li><li><a href="#heritage">Built to endure</a></li><li><a href="#heritage">Patience as strategy</a></li></ul></li>
+    <li><a class="d-row" href="#values">Values</a></li>
+  </ul>
+  <div class="d-foot">
+    <a class="small" href="#about">About us</a>
+    <a class="small" href="#contact">Get in touch</a>
+    <a class="d-cta" href="mailto:esme@saudifamilyholdings.com"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.1"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1.5 3.8L7 8l5.5-4.2"/></svg>Get in touch</a>
+  </div>
+</aside>
 
 <section class="hero" id="top">
   <video class="hero-video" id="heroVideo" muted loop playsinline preload="auto" poster="../video/sfh-poster.jpg"><source src="../video/sfh-hero.mp4" type="video/mp4"></video>
@@ -262,6 +313,16 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:26px 28p
 
   // loader: lift the curtain once the first hero image is ready (min 1.9s, max 2.6s)
   const loader=document.getElementById('loader');
+  // menu drawer
+  const menuBtn=document.getElementById('menuBtn'), drawerEl=document.getElementById('drawer'), scrim=document.getElementById('scrim'), closeBtn=document.getElementById('menuClose');
+  const openMenu=()=>{ document.body.classList.add('menu-open'); menuBtn.setAttribute('aria-expanded','true'); setTimeout(()=>closeBtn.focus(),60); };
+  const closeMenu=(focusBack=true)=>{ document.body.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); if(focusBack) menuBtn.focus(); };
+  menuBtn.addEventListener('click',openMenu); closeBtn.addEventListener('click',()=>closeMenu()); scrim.addEventListener('click',()=>closeMenu());
+  addEventListener('keydown',e=>{ if(e.key==='Escape'&&document.body.classList.contains('menu-open')) closeMenu(); });
+  drawerEl.querySelectorAll('.d-item > button').forEach(b=>b.addEventListener('click',()=>{ const li=b.parentElement, on=!li.classList.contains('open'); li.classList.toggle('open',on); b.setAttribute('aria-expanded',on); }));
+  drawerEl.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>closeMenu(false)));
+  drawerEl.addEventListener('keydown',e=>{ if(e.key!=='Tab') return; const f=[...drawerEl.querySelectorAll('a,button')].filter(x=>x.offsetParent!==null); const first=f[0], last=f[f.length-1]; if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();} else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();} });
+
   // hero video (Discovery-style, with a pause button). Reduced motion: no autoplay, poster only.
   const vid=document.getElementById('heroVideo'), pauseBtn=document.getElementById('pause');
   const play=()=>{ if(!reduce){ const p=vid.play(); if(p&&p.catch) p.catch(()=>{}); } };
