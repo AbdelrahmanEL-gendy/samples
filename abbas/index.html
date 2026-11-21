@@ -167,9 +167,10 @@ body.loading .hero .film,body.loading .hero-name .ln span,body.loading .hero-sub
 body.loading{overflow:hidden}
 @media (max-width:900px){#loader .count{right:20px;bottom:60px}#loader .name{left:20px;bottom:66px}#loader .bar{left:20px;right:20px}}
 
-.concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:rgba(243,241,236,.9);color:#111;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+.concept-tag{position:absolute;right:40px;top:112px;z-index:5;background:rgba(243,241,236,.9);color:#111;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
 
 @media (max-width:900px){
+  .concept-tag{right:auto;left:16px;top:76px;font-size:10px}
   .top{padding:16px}.pill{display:none}.logo{font-size:17px;padding:10px 16px}.book{padding:11px 16px;font-size:11px}
   .hero-copy{left:20px;right:20px;bottom:10vh}.explore,.film-label{display:none}
   .statement{padding:110px 22px}.sec-head{padding:0 22px 30px}
@@ -177,7 +178,7 @@ body.loading{overflow:hidden}
   .numbers{grid-template-columns:1fr 1fr}.stat{padding:40px 22px}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .note{padding:12px 22px}
   .about{grid-template-columns:1fr;gap:40px;padding:100px 22px}
-  .speaking{padding:20px 22px 100px}.row{grid-template-columns:70px 1fr;gap:16px}.row .caps{display:none}
+  .speaking{padding:20px 22px 100px}.row{grid-template-columns:56px 1fr;gap:14px}.row > span:last-child{display:none}
   .voices{padding:90px 22px}.vgrid{grid-template-columns:1fr}
   .media{padding:100px 22px}.mgrid{grid-template-columns:1fr}
   .cta{padding:130px 22px 110px}footer{flex-direction:column;gap:8px;padding:24px 22px}
@@ -210,6 +211,7 @@ body.loading{overflow:hidden}
     <p class="hero-sub">Advising families and family businesses on governance, succession, international expansion and capital strategy.</p>
   </div>
   <a class="explore caps" href="#statement" data-link>Explore<i></i></a>
+  <div class="concept-tag">Sample landing page · webgendy</div>
 </section>
 
 <section class="press" aria-label="Press">
@@ -285,7 +287,6 @@ body.loading{overflow:hidden}
 </section>
 
 <footer><span>© 2026 Abbas Hashmi</span><span>LinkedIn · Email</span></footer>
-<div class="concept-tag">Sample landing page · webgendy</div>
 
 <script>
 (()=>{
