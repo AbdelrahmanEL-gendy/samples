@@ -83,10 +83,9 @@
     <div class="map-grid">
       <div class="figure">
         <div class="areas" id="areas" role="group" aria-label="Body areas"></div>
-        <svg viewBox="0 0 200 440" role="img" aria-label="Body map">
-          <g class="fig"><circle cx="100" cy="34" r="19"/><path id="silh" d=""/></g>
-          <g id="spots"></g>
-        </svg>
+        <div class="anat" id="anat">
+          <img src="https://images.unsplash.com/photo-1725398753326-b6a09df9ea0a?w=900&q=80&auto=format&fit=crop" alt="Anatomical engraving of the human muscles seen from behind">
+        </div>
       </div>
       <div class="detail" aria-live="polite">
         <p class="area-name" id="aName"></p>
@@ -213,31 +212,24 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   requestAnimationFrame(step);
 })();
 
-/* body silhouette, left half mirrored */
-(function(){
-  const L=[[91,58],['C',[84,66],[66,68],[58,78]],['C',[50,90],[48,116],[46,138]],['C',[44,160],[40,188],[37,212]],['C',[35,224],[37,232],[43,232]],['C',[48,232],[49,224],[49,216]],['C',[51,194],[55,170],[58,150]],['C',[61,132],[64,114],[68,104]],['C',[70,130],[72,158],[74,178]],['C',[71,196],[69,210],[71,226]],['C',[71,262],[76,290],[78,312]],['C',[78,342],[80,380],[82,402]],['C',[82,412],[76,420],[70,425]],['L',[93,425]],['C',[95,416],[93,408],[93,400]],['C',[92,362],[94,326],[95,302]],['C',[96,272],[98,248],[100,238]]];
-  const m=([x,y])=>[200-x,y]; let d=`M${L[0]}`; const s=L.slice(1);
-  s.forEach(g=>d+=g[0]==='C'?` C${g[1]} ${g[2]} ${g[3]}`:` L${g[1]}`);
-  for(let i=s.length-1;i>=0;i--){const g=s[i],st=i===0?L[0]:(s[i-1][0]==='C'?s[i-1][3]:s[i-1][1]);d+=g[0]==='C'?` C${m(g[2])} ${m(g[1])} ${m(st)}`:` L${m(st)}`;}
-  $('#silh').setAttribute('d',(d+' Z').replace(/,/g,' '));
-})();
+
 
 const areas={
- back:{name:'Lower back',pt:[100,168],title:'Back pain that keeps coming back',desc:'We find what is overloading your spine and build strength around it, so the pain settles and stays gone.',c:['Low back pain','Sciatica','Disc herniation','Spinal stenosis','Postural strain','Pregnancy back pain'],v:'6 to 8 visits',n:9},
- neck:{name:'Neck',pt:[100,64],title:'Neck pain and headaches',desc:'Desk necks, whiplash and tension headaches respond well to hands-on care and a few minutes of daily exercise.',c:['Neck stiffness','Whiplash','Tension headaches','Pinched nerve','Jaw pain (TMJ)','Posture'],v:'5 to 7 visits',n:11},
- shoulder:{name:'Shoulder',pt:[62,84],title:'A shoulder that won’t lift',desc:'Rotator cuff injuries, frozen shoulder and stiffness after surgery all need careful loading to get your reach back.',c:['Rotator cuff injury','Frozen shoulder','Impingement','Dislocation','Post-surgical repair','Tendinitis'],v:'8 to 12 visits',n:12},
- hip:{name:'Hip',pt:[127,212],title:'Hip pain and stiffness',desc:'Before or after a hip replacement, or when stairs start to hurt, we rebuild strength so walking feels easy again.',c:['Hip replacement rehab','Arthritis','Bursitis','Labral tear','Groin strain','IT band pain'],v:'8 to 10 visits',n:10},
- knee:{name:'Knee',pt:[79,310],title:'Knees, from ACL to arthritis',desc:'Sports injuries, surgery recovery and worn knees. We measure, strengthen and get you back to stairs, sport or the garden.',c:['ACL reconstruction','Meniscus tear','Knee replacement rehab','Runner’s knee','Patellar tendinitis','Osteoarthritis'],v:'10 to 14 visits',n:14},
- ankle:{name:'Foot and ankle',pt:[119,400],title:'Sprains and heel pain',desc:'An ankle that keeps rolling or heel pain on your first step in the morning both have clear, proven treatments.',c:['Ankle sprain','Plantar fasciitis','Achilles tendinitis','Fracture rehab','Shin splints','Balance problems'],v:'5 to 8 visits',n:13}};
+ back:{name:'Lower back',pt:[44.5,35.5],title:'Back pain that keeps coming back',desc:'We find what is overloading your spine and build strength around it, so the pain settles and stays gone.',c:['Low back pain','Sciatica','Disc herniation','Spinal stenosis','Postural strain','Pregnancy back pain'],v:'6 to 8 visits',n:9},
+ neck:{name:'Neck',pt:[44.8,16.8],title:'Neck pain and headaches',desc:'Desk necks, whiplash and tension headaches respond well to hands-on care and a few minutes of daily exercise.',c:['Neck stiffness','Whiplash','Tension headaches','Pinched nerve','Jaw pain (TMJ)','Posture'],v:'5 to 7 visits',n:11},
+ shoulder:{name:'Shoulder',pt:[26.5,23.2],title:'A shoulder that won’t lift',desc:'Rotator cuff injuries, frozen shoulder and stiffness after surgery all need careful loading to get your reach back.',c:['Rotator cuff injury','Frozen shoulder','Impingement','Dislocation','Post-surgical repair','Tendinitis'],v:'8 to 12 visits',n:12},
+ hip:{name:'Hip',pt:[54,44.5],title:'Hip pain and stiffness',desc:'Before or after a hip replacement, or when stairs start to hurt, we rebuild strength so walking feels easy again.',c:['Hip replacement rehab','Arthritis','Bursitis','Labral tear','Groin strain','IT band pain'],v:'8 to 10 visits',n:10},
+ knee:{name:'Knee',pt:[56.5,67.5],title:'Knees, from ACL to arthritis',desc:'Sports injuries, surgery recovery and worn knees. We measure, strengthen and get you back to stairs, sport or the garden.',c:['ACL reconstruction','Meniscus tear','Knee replacement rehab','Runner’s knee','Patellar tendinitis','Osteoarthritis'],v:'10 to 14 visits',n:14},
+ ankle:{name:'Foot and ankle',pt:[51.5,90],title:'Sprains and heel pain',desc:'An ankle that keeps rolling or heel pain on your first step in the morning both have clear, proven treatments.',c:['Ankle sprain','Plantar fasciitis','Achilles tendinitis','Fracture rehab','Shin splints','Balance problems'],v:'5 to 8 visits',n:13}};
 $('#areas').innerHTML=Object.entries(areas).map(([k,a])=>`<button class="area-btn" data-k="${k}" aria-pressed="false">${a.name}</button>`).join('');
-$('#spots').innerHTML=Object.entries(areas).map(([k,a])=>`<g class="spot" data-k="${k}" tabindex="0" role="button" aria-label="${a.name}"><circle cx="${a.pt[0]}" cy="${a.pt[1]}" r="7"/></g>`).join('');
+$('#anat').insertAdjacentHTML('beforeend',Object.entries(areas).map(([k,a])=>`<button class="spot" data-k="${k}" style="left:${a.pt[0]}%;top:${a.pt[1]}%" aria-label="${a.name}"><span class="glow"></span><span class="pin"></span><span class="tag">${a.name}</span></button>`).join(''));
 function pick(k){const a=areas[k];
   $('#aName').textContent=a.name;$('#aTitle').textContent=a.title;$('#aDesc').textContent=a.desc;
   $('#aConds').innerHTML=a.c.map(c=>`<li>${c}</li>`).join('');
   $('#aFoot').innerHTML=`Typical plan: <strong>${a.v}</strong>. <strong>${a.n} of 14 clinics</strong> have a specialist available this week.`;
   document.querySelectorAll('.area-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));
   document.querySelectorAll('.spot').forEach(s=>s.classList.toggle('on',s.dataset.k===k));}
-document.querySelectorAll('.area-btn,.spot').forEach(el=>{el.addEventListener('click',()=>pick(el.dataset.k));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(el.dataset.k)}})});
+document.querySelectorAll('.area-btn,.spot').forEach(el=>el.addEventListener('click',()=>pick(el.dataset.k)));
 pick('back');
 
 /* care timeline fills as you reach it */
