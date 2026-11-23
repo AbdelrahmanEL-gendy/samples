@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alder Physical Therapy (sample homepage)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Sample homepage concept for a 14-clinic outpatient physical therapy group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalOrganization","name":"Alder Physical Therapy","medicalSpecialty":"PhysicalTherapy","url":"https://example.com"}
+</script>
+</head>
+<body>
+
+<div class="topbar">Same-week appointments at all 14 clinics. <a href="#insurance">Check your coverage</a></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Alder Physical Therapy home">
+      <svg viewBox="0 0 34 20" aria-hidden="true"><rect x="0" y="5" width="34" height="10" rx="2" fill="#19a7c1" transform="rotate(-12 17 10)"/></svg>
+      Alder
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#conditions">Conditions</a>
+      <a href="#care">How care works</a>
+      <a href="#insurance">Insurance</a>
+      <a href="#locations">Locations</a>
+      <a href="#team">Therapists</a>
+    </nav>
+    <a class="btn btn-primary" href="location.html#book">Book a visit</a>
+    <button class="menu-btn" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Physical therapy at 14 clinics, booked in two minutes.</h1>
+      <p class="lede">One therapist who knows your case, every visit. Most of our patients are seen within 48 hours of booking.</p>
+      <form class="finder" id="finder">
+        <label for="zip">ZIP code</label>
+        <input id="zip" inputmode="numeric" maxlength="5" placeholder="Your ZIP code" autocomplete="postal-code">
+        <button class="btn btn-primary" type="submit">Find my clinic</button>
+      </form>
+      <p class="facts"><strong>4.9 on Google</strong> from 3,200 patients. In network with Medicare and most major plans.</p>
+    </div>
+
+    <div class="hero-art">
+      <div class="photo"><img src="https://images.unsplash.com/photo-1706806594828-318b9185ad0e?w=1300&q=80&auto=format&fit=crop" alt="A physical therapist coaching a patient through a leg press in a rehab gym"></div>
+      <span class="tape t1" aria-hidden="true"></span>
+      <span class="tape t2" aria-hidden="true"></span>
+      <figure class="dial" aria-label="Example progress: knee bend improved from 40 to 128 degrees over nine visits">
+        <svg viewBox="0 0 260 140" aria-hidden="true">
+          <g id="ticks"></g>
+          <path d="M20 130 A110 110 0 0 1 240 130" fill="none" stroke="#d6dfe1" stroke-width="2"/>
+          <path id="arcFill" d="" fill="none" stroke="#19a7c1" stroke-width="6" stroke-linecap="round"/>
+          <line x1="130" y1="130" x2="20" y2="130" stroke="#0e2630" stroke-width="3" stroke-linecap="round"/>
+          <line id="arm" x1="130" y1="130" x2="20" y2="130" stroke="#17566a" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="130" cy="130" r="6" fill="#0e2630"/>
+        </svg>
+        <div class="row">
+          <div><small>Robert’s knee bend</small><span class="deg" id="deg">40°</span></div>
+          <span class="cap" id="visit">Visit 1</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="payers"><div class="wrap"><strong>In network with</strong><span>Medicare</span><span>Blue Cross Blue Shield</span><span>Aetna</span><span>Cigna</span><span>UnitedHealthcare</span><span>Humana</span><span>Tricare</span><span>Workers’ comp</span></div></div>
+
+<section id="conditions">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Where does it hurt?</h2>
+      <p>Pick an area to see what we treat there, how long recovery usually takes, and how soon you can be seen.</p>
+    </div>
+    <div class="map-grid">
+      <div class="figure">
+        <div class="areas" id="areas" role="group" aria-label="Body areas"></div>
+        <svg viewBox="0 0 200 440" role="img" aria-label="Body map">
+          <g class="fig"><circle cx="100" cy="34" r="19"/><path id="silh" d=""/></g>
+          <g id="spots"></g>
+        </svg>
+      </div>
+      <div class="detail" aria-live="polite">
+        <p class="area-name" id="aName"></p>
+        <h3 id="aTitle"></h3>
+        <p class="desc" id="aDesc"></p>
+        <ul class="conds" id="aConds"></ul>
+        <div class="foot">
+          <p id="aFoot"></p>
+          <a class="btn btn-primary" href="location.html#book">Book an assessment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="care" id="care">
+  <div class="wrap">
+    <div class="intro">
+      <h2>What happens after you book</h2>
+      <p>No referral needed in most states. Your plan, your visits and your progress all sit with one therapist.</p>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="stage"><p class="when">Your first hour</p><h3>We find the cause</h3><p>A full hour one on one. Your therapist tests how you move, measures your range and explains what’s actually going on.</p></div>
+      <div class="stage"><p class="when">Visits 2 to 8</p><h3>Hands-on care and a home plan</h3><p>Manual therapy and targeted exercise in the clinic, plus ten minutes a day at home, tracked in our app.</p></div>
+      <div class="stage"><p class="when">Discharge</p><h3>You leave stronger than before</h3><p>We re-measure everything from your first visit and give you a plan to keep it that way.</p></div>
+    </div>
+    <div class="care-photos">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?w=1400&q=80&auto=format&fit=crop" alt="A therapist assessing a patient’s knee">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1699523229199-fce5aa6b0ec3?w=1000&q=80&auto=format&fit=crop" alt="Hands-on manual therapy">
+    </div>
+  </div>
+</section>
+
+<section id="insurance">
+  <div class="wrap ins">
+    <div>
+      <h2>Check your insurance before you book</h2>
+      <p class="muted" style="margin-top:14px">We call your insurer before your first visit, so you know your copay upfront.</p>
+      <select id="plan" aria-label="Your insurance">
+        <option value="">Choose your insurance</option>
+        <option>Medicare</option><option>Blue Cross Blue Shield</option><option>Aetna</option><option>Cigna</option><option>UnitedHealthcare</option><option>Humana</option><option>Tricare</option><option>Workers’ comp</option><option value="other">My plan isn’t listed</option>
+      </select>
+      <p class="ins-out" id="planOut" role="status"></p>
+    </div>
+    <ul class="ins-list">
+      <li><b>Insured</b><span>In network with most major plans at every clinic.</span></li>
+      <li><b>No insurance</b><span>One flat self-pay rate, shared before your visit.</span></li>
+      <li><b>Injured at work</b><span>Workers’ comp and auto claims handled for you.</span></li>
+      <li><b>No referral</b><span>Direct access in most states, so you can book today.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="locations" style="padding-top:0">
+  <div class="wrap">
+    <div class="intro">
+      <h2>14 clinics, all bookable online</h2>
+      <p>Each clinic has its own page with hours, parking, the therapists who work there and live appointment times.</p>
+    </div>
+    <div class="loc-filter" id="filter" role="group" aria-label="Filter by region"></div>
+    <table class="loc-table">
+      <thead><tr><th>Clinic</th><th class="hide-sm">Address</th><th>Next opening</th><th></th></tr></thead>
+      <tbody id="locRows"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <div class="intro">
+      <h2>40 doctors of physical therapy</h2>
+      <p>Every therapist holds a DPT. Many are board-certified clinical specialists.</p>
+    </div>
+    <ul class="team">
+      <li><span class="initials">MR</span><div><b>Marcus Reed, PT, DPT</b><span>Clinic director, Riverside. Spine and post-surgical rehab.</span></div></li>
+      <li><span class="initials">DO</span><div><b>Daniel Ortiz, PT, DPT, SCS</b><span>Sports clinical specialist, Midtown. ACL and running injuries.</span></div></li>
+      <li><span class="initials">JK</span><div><b>James Kim, PT, DPT, OCS</b><span>Orthopedic specialist, Lakeview. Shoulders and dry needling.</span></div></li>
+      <li><span class="initials">SA</span><div><b>Samir Aziz, PT, DPT</b><span>Balance and vestibular care, Old Town.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <blockquote>“I came in barely able to tie my shoes. Nine visits later I walked the whole river loop with my grandkids.”</blockquote>
+    <cite>Robert, 71, treated for knee replacement rehab at Riverside</cite>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f">
+      <div><a class="brand" href="#" style="color:#fff">Alder</a><p style="margin-top:12px;max-width:28ch">Outpatient physical therapy at 14 clinics.</p></div>
+      <div><h4>Care</h4><ul><li><a href="#conditions">Back and neck</a></li><li><a href="#conditions">Sports injuries</a></li><li><a href="#conditions">Joint replacement rehab</a></li><li><a href="#conditions">Balance and falls</a></li></ul></div>
+      <div><h4>Patients</h4><ul><li><a href="location.html#book">Book a visit</a></li><li><a href="#insurance">Insurance</a></li><li><a href="#care">How care works</a></li><li><a href="#">Patient portal</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="f-note"><span>Alder is a sample brand. This page is a design concept.</span><span>Designed and built by Growna</span></div>
+  </div>
+</footer>
+
+<a class="btn btn-primary mobile-book" href="location.html#book">Book a visit</a>
+<p class="concept">Sample homepage concept by Growna</p>
+
+<script>
+const $=s=>document.querySelector(s);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* goniometer: the one orchestrated moment on the page */
+(function(){
+  const cx=130,cy=130,r=110,ticks=$('#ticks');
+  for(let a=0;a<=180;a+=10){const t=a*Math.PI/180,l=a%30?6:12;const x1=cx-Math.cos(t)*r,y1=cy-Math.sin(t)*r,x2=cx-Math.cos(t)*(r-l),y2=cy-Math.sin(t)*(r-l);
+    ticks.insertAdjacentHTML('beforeend',`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9fb3b9" stroke-width="1.2"/>`);}
+  function draw(deg){const t=deg*Math.PI/180,x=cx-Math.cos(t)*r,y=cy-Math.sin(t)*r;
+    $('#arm').setAttribute('x2',cx-Math.cos(t)*(r-8));$('#arm').setAttribute('y2',cy-Math.sin(t)*(r-8));
+    $('#arcFill').setAttribute('d',`M${cx-r} ${cy} A${r} ${r} 0 0 1 ${x} ${y}`);
+    $('#deg').textContent=Math.round(deg)+'°';}
+  const from=40,to=128; draw(reduce?to:from);
+  if(reduce){$('#visit').textContent='Visit 9';return}
+  const start=performance.now()+700,dur=2200,ease=t=>1-Math.pow(1-t,3);
+  function step(now){const k=Math.min(1,Math.max(0,(now-start)/dur));draw(from+(to-from)*ease(k));
+    $('#visit').textContent='Visit '+(1+Math.round(8*ease(k)));if(k<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+})();
+
+/* body silhouette, left half mirrored */
+(function(){
+  const L=[[91,58],['C',[84,66],[66,68],[58,78]],['C',[50,90],[48,116],[46,138]],['C',[44,160],[40,188],[37,212]],['C',[35,224],[37,232],[43,232]],['C',[48,232],[49,224],[49,216]],['C',[51,194],[55,170],[58,150]],['C',[61,132],[64,114],[68,104]],['C',[70,130],[72,158],[74,178]],['C',[71,196],[69,210],[71,226]],['C',[71,262],[76,290],[78,312]],['C',[78,342],[80,380],[82,402]],['C',[82,412],[76,420],[70,425]],['L',[93,425]],['C',[95,416],[93,408],[93,400]],['C',[92,362],[94,326],[95,302]],['C',[96,272],[98,248],[100,238]]];
+  const m=([x,y])=>[200-x,y]; let d=`M${L[0]}`; const s=L.slice(1);
+  s.forEach(g=>d+=g[0]==='C'?` C${g[1]} ${g[2]} ${g[3]}`:` L${g[1]}`);
+  for(let i=s.length-1;i>=0;i--){const g=s[i],st=i===0?L[0]:(s[i-1][0]==='C'?s[i-1][3]:s[i-1][1]);d+=g[0]==='C'?` C${m(g[2])} ${m(g[1])} ${m(st)}`:` L${m(st)}`;}
+  $('#silh').setAttribute('d',(d+' Z').replace(/,/g,' '));
+})();
+
+const areas={
+ back:{name:'Lower back',pt:[100,168],title:'Back pain that keeps coming back',desc:'We find what is overloading your spine and build strength around it, so the pain settles and stays gone.',c:['Low back pain','Sciatica','Disc herniation','Spinal stenosis','Postural strain','Pregnancy back pain'],v:'6 to 8 visits',n:9},
+ neck:{name:'Neck',pt:[100,64],title:'Neck pain and headaches',desc:'Desk necks, whiplash and tension headaches respond well to hands-on care and a few minutes of daily exercise.',c:['Neck stiffness','Whiplash','Tension headaches','Pinched nerve','Jaw pain (TMJ)','Posture'],v:'5 to 7 visits',n:11},
+ shoulder:{name:'Shoulder',pt:[62,84],title:'A shoulder that won’t lift',desc:'Rotator cuff injuries, frozen shoulder and stiffness after surgery all need careful loading to get your reach back.',c:['Rotator cuff injury','Frozen shoulder','Impingement','Dislocation','Post-surgical repair','Tendinitis'],v:'8 to 12 visits',n:12},
+ hip:{name:'Hip',pt:[127,212],title:'Hip pain and stiffness',desc:'Before or after a hip replacement, or when stairs start to hurt, we rebuild strength so walking feels easy again.',c:['Hip replacement rehab','Arthritis','Bursitis','Labral tear','Groin strain','IT band pain'],v:'8 to 10 visits',n:10},
+ knee:{name:'Knee',pt:[79,310],title:'Knees, from ACL to arthritis',desc:'Sports injuries, surgery recovery and worn knees. We measure, strengthen and get you back to stairs, sport or the garden.',c:['ACL reconstruction','Meniscus tear','Knee replacement rehab','Runner’s knee','Patellar tendinitis','Osteoarthritis'],v:'10 to 14 visits',n:14},
+ ankle:{name:'Foot and ankle',pt:[119,400],title:'Sprains and heel pain',desc:'An ankle that keeps rolling or heel pain on your first step in the morning both have clear, proven treatments.',c:['Ankle sprain','Plantar fasciitis','Achilles tendinitis','Fracture rehab','Shin splints','Balance problems'],v:'5 to 8 visits',n:13}};
+$('#areas').innerHTML=Object.entries(areas).map(([k,a])=>`<button class="area-btn" data-k="${k}" aria-pressed="false">${a.name}</button>`).join('');
+$('#spots').innerHTML=Object.entries(areas).map(([k,a])=>`<g class="spot" data-k="${k}" tabindex="0" role="button" aria-label="${a.name}"><circle cx="${a.pt[0]}" cy="${a.pt[1]}" r="7"/></g>`).join('');
+function pick(k){const a=areas[k];
+  $('#aName').textContent=a.name;$('#aTitle').textContent=a.title;$('#aDesc').textContent=a.desc;
+  $('#aConds').innerHTML=a.c.map(c=>`<li>${c}</li>`).join('');
+  $('#aFoot').innerHTML=`Typical plan: <strong>${a.v}</strong>. <strong>${a.n} of 14 clinics</strong> have a specialist available this week.`;
+  document.querySelectorAll('.area-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));
+  document.querySelectorAll('.spot').forEach(s=>s.classList.toggle('on',s.dataset.k===k));}
+document.querySelectorAll('.area-btn,.spot').forEach(el=>{el.addEventListener('click',()=>pick(el.dataset.k));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(el.dataset.k)}})});
+pick('back');
+
+/* care timeline fills as you reach it */
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.style.setProperty('--prog','100%');o.disconnect()}}),{threshold:.5}).observe($('#timeline'));
+
+/* insurance */
+$('#plan').addEventListener('change',e=>{const v=e.target.value,o=$('#planOut');
+  if(!v){o.classList.remove('show');return}
+  o.textContent=v==='other'?'Book anyway. We’ll check your plan before your visit, free of charge.':`We’re in network with ${v} at all 14 clinics. We’ll confirm your copay before your first visit.`;
+  o.classList.add('show');});
+
+/* locations */
+const locs=[['Riverside','North','1420 River Rd','Tomorrow, 10:15 am'],['North Hills','North','88 Summit Ave','Today, 4:30 pm'],['Lakeview','North','301 Shoreline Dr','Tomorrow, 8:00 am'],['Mill Creek','North','17 Mill St','Wednesday, 9:45 am'],['Old Town','Central','220 Main St','Today, 5:15 pm'],['Midtown','Central','640 Grand Blvd','Tomorrow, 7:30 am'],['Harbor Point','Central','9 Pier Way','Tomorrow, 12:00 pm'],['Cedar Park','Central','415 Cedar Ln','Wednesday, 8:15 am'],['Westfield','Central','1180 West Ave','Today, 6:00 pm'],['Eastgate','South','77 Eastgate Plaza','Tomorrow, 9:00 am'],['Brookside','South','503 Brook Rd','Thursday, 10:30 am'],['Southridge','South','2600 Ridge Pkwy','Tomorrow, 2:45 pm'],['Fairview','South','34 Fairview Ct','Wednesday, 11:20 am'],['Pine Grove','South','910 Pine St','Tomorrow, 3:30 pm']];
+$('#locRows').innerHTML=locs.map(([n,r,a,s])=>`<tr data-r="${r}"><td class="name"><a href="location.html">${n}</a></td><td class="hide-sm muted">${a}</td><td class="next">${s}</td><td class="act"><a href="location.html#book">Book</a></td></tr>`).join('');
+const regs=['All','North','Central','South'];
+$('#filter').innerHTML=regs.map(r=>`<button data-r="${r}" aria-pressed="${r==='All'}">${r==='All'?'All 14':r}</button>`).join('');
+function region(r){document.querySelectorAll('#filter button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.r===r));document.querySelectorAll('#locRows tr').forEach(t=>t.classList.toggle('hide',r!=='All'&&t.dataset.r!==r))}
+document.querySelectorAll('#filter button').forEach(b=>b.addEventListener('click',()=>region(b.dataset.r)));
+$('#finder').addEventListener('submit',e=>{e.preventDefault();const z=$('#zip').value.trim();region(z?regs[1+(parseInt(z.slice(-1),10)||0)%3]:'All');$('#locations').scrollIntoView({behavior:reduce?'auto':'smooth'})});
+</script>
+</body>
+</html>
