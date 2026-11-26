@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clay plaster colour library · working demo</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Working demo of a 146-colour clay plaster library with enlarged views and previous and next controls, built for Earth House.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#f3efe7;--lime-2:#e9e3d8;--card:#fbf9f5;--line:rgba(46,38,30,.12);
+  --ink:#2b241d;--ink-2:#5c5248;--ink-3:#6e6458;
+  --clay:#8a5a3b;--clay-2:#734a30;
+  --r-ctl:10px;--r-card:14px;--r-panel:20px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--lime);color:var(--ink);font:16px/1.6 "Karla",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+::selection{background:#e2cdb6}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:400;margin:0;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Plaster texture: one SVG noise, laid over every swatch so colours read as trowelled clay, not flat paint */
+.tex{position:relative;isolation:isolate}
+.tex::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;mix-blend-mode:multiply;opacity:.22;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.tex::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;opacity:.35;
+  background:radial-gradient(120% 80% at 20% 10%,rgba(255,255,255,.35),transparent 55%),radial-gradient(90% 70% at 85% 90%,rgba(0,0,0,.18),transparent 60%)}
+
+header{padding:28px 0 8px}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font:500 20px "Fraunces",serif;letter-spacing:.02em}
+.brand span{color:var(--ink-3);font:400 14px "Karla",sans-serif;margin-left:10px}
+.note{font-size:13px;color:var(--ink-3)}
+
+.intro{padding-top:40px;padding-bottom:28px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end}
+.intro h1{font-size:clamp(40px,5vw,68px);max-width:14ch}
+.intro p{color:var(--ink-2);max-width:46ch}
+
+.bar{position:sticky;top:0;z-index:5;background:rgba(243,239,231,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:64px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font:500 14px "Karla",sans-serif;color:var(--ink-2);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.chip:hover{border-color:rgba(46,38,30,.3);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--lime)}
+.chip i{width:10px;height:10px;border-radius:50%}
+.count{flex:none;font-size:14px;color:var(--ink-3)}
+
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;padding:28px 0 96px}
+.sw{all:unset;cursor:pointer;display:block;border-radius:var(--r-card);background:var(--card);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s ease}
+.sw:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(46,38,30,.25),0 14px 28px -18px rgba(46,38,30,.5)}
+.sw:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.sw .chipc{display:block;aspect-ratio:1;border-radius:var(--r-card) var(--r-card) 0 0}
+.sw b{display:block;font:500 14px "Karla",sans-serif;padding:10px 12px 0;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sw span{display:block;font-size:12px;color:var(--ink-3);padding:0 12px 12px}
+
+/* Enlarged view */
+dialog{border:0;padding:0;margin:auto;width:min(1040px,calc(100% - 32px));max-height:calc(100% - 32px);border-radius:var(--r-panel);background:var(--card);color:var(--ink);box-shadow:0 40px 80px -30px rgba(30,22,14,.6);overflow:hidden}
+dialog::backdrop{background:rgba(30,24,18,.55);backdrop-filter:blur(2px)}
+dialog[open]{animation:in .35s var(--ease)}
+@keyframes in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.view{display:grid;grid-template-columns:1.35fr 1fr}
+.big{position:relative;min-height:520px;border-radius:0}
+.big .swatch{position:absolute;inset:0;transition:background-color .45s var(--ease)}
+.side{padding:28px;display:flex;flex-direction:column;gap:16px}
+.side .top{display:flex;justify-content:space-between;align-items:center;color:var(--ink-3);font-size:14px}
+.x{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.x svg,.nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.side h2{font-size:clamp(34px,3.6vw,48px)}
+.meta{list-style:none;padding:0;margin:0}
+.meta li{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
+.meta li span:last-child{color:var(--ink-2)}
+.pair{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pair>div{min-width:0}
+.pair small{display:block;font-size:12px;color:var(--ink-3);margin-top:6px}
+.nav{display:flex;gap:8px;margin-top:auto}
+.btn{flex:1;min-height:48px;border-radius:999px;border:0;font:600 15px "Karla",sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:background-color .15s ease,transform .15s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--ink-3)}
+.btn-clay{background:var(--clay);color:#fff}
+.btn-clay:hover{background:var(--clay-2)}
+
+.how{background:var(--card);border-top:1px solid var(--line);padding:56px 0 72px}
+.how .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+.how h2{font-size:clamp(28px,3vw,40px)}
+.how ol{margin:0;padding-left:20px;color:var(--ink-2)}
+.how li{margin:0 0 10px}
+.how li b{color:var(--ink);font-weight:600}
+footer{padding:24px 0 40px;font-size:13px;color:var(--ink-3);background:var(--card)}
+
+@media (max-width:1100px){.grid{grid-template-columns:repeat(6,1fr)}}
+@media (max-width:860px){
+  .grid{grid-template-columns:repeat(4,1fr)}
+  .intro,.how .wrap{grid-template-columns:1fr;gap:16px}
+  .view{grid-template-columns:1fr}
+  .big{min-height:42vh}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .sw b{font-size:13px;padding:8px 10px 0}
+  .sw span{padding:0 10px 10px}
+  .count{display:none}
+  dialog{width:100%;max-width:none;max-height:none;height:100%;border-radius:0;margin:0}
+  dialog[open]{display:flex;flex-direction:column}
+  .view{flex:1;display:flex;flex-direction:column;min-height:0}
+  .big{flex:1;min-height:38vh}
+  .side{padding:20px 16px calc(16px + env(safe-area-inset-bottom));gap:12px}
+  .meta li{padding:10px 0}
+  .pair{display:none}
+}
+@media (prefers-reduced-motion:reduce){.sw,.big .swatch,.btn,.chip{transition:none}dialog[open]{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Earth House<span>Colour library demo</span></div>
+    <div class="note">Working demo, built for your brief</div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap intro">
+    <h1>146 clay plaster colours</h1>
+    <p>Tap any colour to see it large, then use Previous and Next, the arrow keys or a swipe to move through the range. The palette here is a stand-in, your 146 supplied colours replace it.</p>
+  </section>
+
+  <div class="bar">
+    <div class="wrap">
+      <div class="chips" id="chips" role="toolbar" aria-label="Filter by colour family"></div>
+      <span class="count num" id="count" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <h2>How this runs in Webflow</h2>
+      <ol>
+        <li><b>One CMS collection, 146 items.</b> Each colour has a name, code, family, hex value, a swatch photo and an enlarged photo, so adding a colour later is a new CMS item, not a design job.</li>
+        <li><b>One Collection List</b> renders the grid. The family filter and the enlarged view are a small script on top, so the page still works and stays crawlable without it.</li>
+        <li><b>Previous and Next</b> follow the current filter, so someone browsing ochres only steps through ochres.</li>
+        <li><b>Every colour has its own link,</b> so you can send a client straight to one shade.</li>
+        <li><b>Photos win over hex.</b> If a swatch photo exists it's shown, so the real trowelled texture comes through; the hex value is the fallback while photos are being shot.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Demo by Abdelrahman Elgendy for the Earth House Webflow project. Colour names and values are placeholders.</div></footer>
+
+<dialog id="dlg" aria-labelledby="dName">
+  <div class="view">
+    <div class="big tex"><div class="swatch" id="dSwatch"></div></div>
+    <div class="side">
+      <div class="top"><span class="num" id="dPos"></span><button class="x" type="button" id="close" aria-label="Close enlarged view"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <h2 id="dName"></h2>
+      <ul class="meta">
+        <li><span>Code</span><span class="num" id="dCode"></span></li>
+        <li><span>Family</span><span id="dFam"></span></li>
+        <li><span>Finish</span><span>Natural clay, trowelled</span></li>
+      </ul>
+      <div class="pair" id="dPair" aria-label="Nearby colours"></div>
+      <div class="nav">
+        <button class="btn btn-line" type="button" id="prev"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Previous</button>
+        <button class="btn btn-line" type="button" id="next">Next<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <a class="btn btn-clay" href="#" id="sample">Request a sample of this colour</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  // Stand-in palette: 146 earthy tones in 8 families, generated from hue/sat/light ranges typical of natural clay plasters
+  const fams=[
+    ['Ochres',38,[45,62],[52,66],18,['Ochre','Saffron','Mustard','Amber','Honey','Turmeric','Marigold','Brass','Gorse','Corn','Pollen','Tawny','Fennel','Quince','Sorrel','Cider','Toffee','Gold']],
+    ['Terracottas and pinks',18,[32,48],[48,70],20,['Terracotta','Rosehip','Brick','Clay','Blush','Plaster pink','Coral','Paprika','Sienna','Rust','Copper','Adobe','Kiln','Hearth','Ember','Petal','Peony','Fig','Mallow','Rhubarb']],
+    ['Sands',36,[22,34],[72,84],20,['Dune','Strand','Barley','Wheat','Straw','Biscuit','Hay','Rye','Grain','Husk','Shore','Tide','Sisal','Jute','Raffia','Cane','Reed','Cork','Pumice','Driftwood']],
+    ['Umbers',28,[18,30],[30,48],16,['Umber','Walnut','Cocoa','Peat','Bark','Chestnut','Hazel','Tobacco','Leather','Saddle','Acorn','Pecan','Molasses','Treacle','Coffee','Loam']],
+    ['Olives and greens',62,[12,24],[42,62],18,['Olive','Sage','Moss','Lichen','Thyme','Fern','Juniper','Laurel','Rush','Bracken','Willow','Hop','Nettle','Caper','Pistachio','Celadon','Reed green','Meadow']],
+    ['Stones and greys',35,[4,10],[50,76],18,['Slate','Flint','Granite','Pebble','Ash','Smoke','Pewter','Gravel','Limestone','Basalt','Cinder','Tin','Mortar','Quarry','Shale','Graphite','Iron','Lead']],
+    ['Muted blues',210,[8,16],[48,70],14,['Slate blue','Woad','Dusk','Estuary','Harbour','Atlantic','Storm','Indigo wash','Heron','Gull','Mist blue','Bay','Kingfisher','Tern']],
+    ['Limes and whites',40,[8,18],[86,94],22,['Chalk','Linen','Bone','Shell','Oat','Milk','Flax','Fleece','Pearl','Ivory','Muslin','Calico','Frost','Cotton','Tallow','Parchment','Vellum','Rice','Salt','Lily','Mist','Wool']]
+  ];
+  const famDot=['#c4973f','#c07a5c','#d6bf98','#7a5a44','#8a8f62','#9a958d','#7d8c99','#e9e2d4'];
+  const colours=[];let code=1;
+  fams.forEach(([fam,h,[s0,s1],[l0,l1],n,names],fi)=>{
+    for(let i=0;i<n;i++){
+      const t=n>1?i/(n-1):0;
+      const hue=h+((i%3)-1)*4,sat=s0+(s1-s0)*((i*7)%n)/n,lig=l1-(l1-l0)*t;
+      colours.push({name:names[i%names.length]+(i>=names.length?' '+(Math.floor(i/names.length)+1):''),code:'EH-'+String(code++).padStart(3,'0'),fam,fi,hex:`hsl(${hue} ${sat.toFixed(0)}% ${lig.toFixed(0)}%)`});
+    }
+  });
+
+  const grid=document.getElementById('grid'),chips=document.getElementById('chips'),count=document.getElementById('count');
+  let filter=-1,view=colours.map((c,i)=>i),cur=0;
+  chips.innerHTML='<button class="chip" type="button" aria-pressed="true" data-f="-1">All colours</button>'+fams.map((f,i)=>`<button class="chip" type="button" aria-pressed="false" data-f="${i}"><i style="background:${famDot[i]}"></i>${f[0]}</button>`).join('');
+  function render(){
+    view=colours.map((c,i)=>i).filter(i=>filter<0||colours[i].fi===filter);
+    grid.innerHTML=view.map((i,k)=>{const c=colours[i];return `<button class="sw" type="button" data-k="${k}" aria-label="${c.name}, ${c.code}"><span class="chipc tex" style="background:${c.hex}"></span><b>${c.name}</b><span class="num">${c.code}</span></button>`}).join('');
+    count.textContent=view.length+' of '+colours.length+' colours';
+  }
+  chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;filter=+b.dataset.f;chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));render()});
+  render();
+
+  const dlg=document.getElementById('dlg'),$=id=>document.getElementById(id);
+  function show(k){
+    cur=(k+view.length)%view.length;const c=colours[view[cur]];
+    $('dSwatch').style.background=c.hex;$('dName').textContent=c.name;$('dCode').textContent=c.code;$('dFam').textContent=c.fam;
+    $('dPos').textContent=(cur+1)+' / '+view.length+(filter>=0?' in '+fams[filter][0].toLowerCase():'');
+    $('dPair').innerHTML=[-1,1,2].map(o=>{const n=colours[view[(cur+o+view.length)%view.length]];return `<div><div class="tex" style="background:${n.hex};aspect-ratio:1.3;border-radius:10px"></div><small>${n.name}</small></div>`}).join('');
+    $('sample').href='#sample-'+c.code;
+    try{history.replaceState(null,'','#'+c.code)}catch(e){}
+  }
+  grid.addEventListener('click',e=>{const b=e.target.closest('.sw');if(!b)return;show(+b.dataset.k);dlg.showModal()});
+  $('prev').addEventListener('click',()=>show(cur-1));$('next').addEventListener('click',()=>show(cur+1));
+  $('close').addEventListener('click',()=>dlg.close());
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  dlg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1)}if(e.key==='ArrowRight'){e.preventDefault();show(cur+1)}});
+  dlg.addEventListener('close',()=>{try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}const b=grid.querySelector(`[data-k="${cur}"]`);if(b)b.focus()});
+  let x0=null;const big=document.querySelector('.big');
+  big.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  big.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));x0=null});
+  const h=location.hash.slice(1);const hk=view.findIndex(i=>colours[i].code===h);if(hk>-1){show(hk);dlg.showModal()}
+  $('sample').addEventListener('click',e=>{e.preventDefault();$('sample').textContent='Sample request noted (demo)'});
+})();
+</script>
+</body>
+</html>
