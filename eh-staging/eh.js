@@ -66,6 +66,15 @@
       if (matchMedia('(hover: hover)').matches) art.addEventListener('mouseenter', open); }
   });
 
+  // Anchor scrolling that lands exactly: smooth scroll, then correct once it ends (images and reveals shift the layout mid-scroll)
+  var anchorTop = function (el) { return el.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(el).scrollMarginTop) || 0); };
+  var scrollToEl = function (el) {
+    window.scrollTo({ top: anchorTop(el), behavior: reduce ? 'auto' : 'smooth' });
+    var done = false, fix = function () { if (done) return; done = true; if (Math.abs(anchorTop(el) - window.scrollY) > 4) window.scrollTo({ top: anchorTop(el), behavior: 'auto' }); };
+    if ('onscrollend' in window) addEventListener('scrollend', fix, { once: true });
+    setTimeout(fix, 1600);
+  };
+
   // Deep links from the Materials menu (#material-preview-clay-board etc.): open that material and bring the section into view
   var openMaterialFromHash = function (instant) {
     // links use #material-<slug> (no element has that id, so neither the browser nor Webflow jumps to the collapsed panel)
@@ -77,21 +86,14 @@
     if (b && !art.classList.contains('is-active')) b.click();
     var sec = document.getElementById('materials');
     if (!sec) return;
-    var go = function () {
-      var top = sec.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(sec).scrollMarginTop) || 0);
-      window.scrollTo({ top: top, behavior: instant || reduce ? 'auto' : 'smooth' });
-    };
-    go();
+    if (!instant) { scrollToEl(sec); return; }
+    var go = function () { window.scrollTo({ top: anchorTop(sec), behavior: 'auto' }); };
     // arriving from another page: layout, fonts and images are still settling, so land again once they have
-    if (instant) { setTimeout(go, 250); setTimeout(go, 800); }
+    go(); setTimeout(go, 250); setTimeout(go, 800);
   };
   if (document.readyState === 'complete') openMaterialFromHash(true);
   else addEventListener('load', function () { openMaterialFromHash(true); });
   addEventListener('hashchange', function () { openMaterialFromHash(false); });
-  // clicking the same material twice does not fire hashchange
-  $$('a[href*="#material-"]').forEach(function (a) {
-    a.addEventListener('click', function () { if (a.hash === location.hash && a.pathname === location.pathname) setTimeout(function () { openMaterialFromHash(false); }, 0); });
-  });
 
   // FAQ accordion
   $$('.material-faq-list article').forEach(function (art) {
@@ -177,5 +179,25 @@
     $$('.eh-mnav-toggle', mBack).forEach(function (t) {
       t.addEventListener('click', function () { var sub = t.nextElementSibling, o = !sub.classList.contains('eh-shown'); sub.classList.toggle('eh-shown', o); t.setAttribute('aria-expanded', o ? 'true' : 'false'); t.lastElementChild.textContent = o ? '−' : '+'; });
     });
+    // any real link in the menu closes it (for same-page links the page would otherwise scroll behind the open menu)
+    $$('.eh-mnav a[href]:not(.eh-btn)', mBack).forEach(function (a) {
+      a.addEventListener('click', function () { mBack.classList.remove('eh-shown'); mOpen.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; });
+    });
   }
+
+  // Same-page anchor links (#about, #projects, #material-clay-board...): handled here instead of by Webflow so they land exactly
+  window.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.classList.contains('eh-btn') || !a.hash || a.hash === '#') return;
+    if (a.host !== location.host || a.pathname !== location.pathname) return;
+    var mat = /^#material-/.test(a.hash);
+    var el = document.getElementById(mat ? 'materials' : decodeURIComponent(a.hash.slice(1)));
+    if (!el) return;
+    e.preventDefault(); e.stopPropagation();
+    if (mBack && mBack.classList.contains('eh-shown')) { mBack.classList.remove('eh-shown'); mOpen.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    $$('.materials-nav-menu.is-open').forEach(function (m) { m.classList.remove('is-open'); });
+    if (location.hash !== a.hash) history.pushState(null, '', a.hash);
+    if (mat) openMaterialFromHash(false); else scrollToEl(el);
+  }, true);
 })();
