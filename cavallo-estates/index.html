@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cavallo Estates · VIP access (sample)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Sample landing page concept for a pre-construction estate home community, built for Google Ads traffic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16201b;--ink-2:#46524b;--paper:#f6f2ea;--paper-2:#ece5d8;--line:#d9d0bf;
+  --green:#1f3a2e;--green-2:#2b4e3e;--brass:#a8814a;--brass-2:#8a6634;--white:#fff;
+  --r:14px;--wrap:1200px;
+  --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{text-wrap:pretty}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:999px;border:0;font:600 15px/1 var(--sans);text-decoration:none;cursor:pointer;transition:background-color .15s ease,transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-brass{background:var(--brass);color:#fff}
+.btn-brass:hover{background:var(--brass-2)}
+.btn-ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+
+/* VIP bar */
+.vipbar{background:var(--green);color:#e9e2d3;font-size:14px;text-align:center;padding:10px 16px}
+.vipbar button{background:none;border:0;color:#fff;font:600 14px var(--sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px}
+
+/* Nav: one exit only, so the logo and links stay on the page */
+.nav{position:sticky;top:0;z-index:40;background:rgba(246,242,234,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:70px}
+.brand{font-family:var(--serif);font-size:22px;text-decoration:none;letter-spacing:.02em}
+.brand small{display:block;font:500 11px/1 var(--sans);letter-spacing:.14em;color:var(--ink-2);margin-top:3px}
+.nav nav{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.nav nav a{text-decoration:none;color:var(--ink-2);padding:8px 0}
+.nav nav a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 20px}
+
+/* Hero */
+.hero{position:relative;color:#fff;min-height:min(86vh,760px);display:flex;align-items:flex-end}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,14,.72) 0%,rgba(10,18,14,.35) 55%,rgba(10,18,14,.1) 100%),linear-gradient(180deg,rgba(10,18,14,.1) 0%,rgba(10,18,14,.2) 45%,rgba(10,18,14,.7) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:120px;padding-bottom:64px;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end}
+.hero .place{font-size:14px;letter-spacing:.06em;opacity:.9;margin:0 0 14px}
+.hero h1{font-size:clamp(44px,6.4vw,84px);max-width:12ch}
+.hero .lede{font-size:18px;max-width:46ch;margin:18px 0 0;opacity:.92}
+.pricecard{background:rgba(246,242,234,.96);color:var(--ink);border-radius:var(--r);padding:28px}
+.pricecard .from{font-size:14px;color:var(--ink-2);margin:0}
+.pricecard .price{font-family:var(--serif);font-size:44px;line-height:1.1;margin:2px 0 6px}
+.pricecard ul{list-style:none;padding:0;margin:14px 0 22px;font-size:15px;color:var(--ink-2)}
+.pricecard li{padding:7px 0;border-top:1px solid var(--line)}
+.pricecard .btn{width:100%}
+.pricecard .fine{font-size:12px;color:var(--ink-2);margin:12px 0 0;text-align:center}
+
+/* Sections */
+section{scroll-margin-top:80px}
+.sec{padding:104px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(34px,4.2vw,54px);max-width:16ch}
+.sec-head p{max-width:42ch;color:var(--ink-2);margin:0}
+
+/* Collections: whole card is the click target */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{position:relative;background:var(--white);border-radius:var(--r);overflow:hidden;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(22,32,27,.45)}
+.card img{aspect-ratio:4/3;width:100%;object-fit:cover}
+.card .body{padding:22px 22px 24px}
+.card h3{font-size:26px}
+.card .meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-2);font-size:14px;margin:8px 0 14px}
+.card .go{font-weight:600;font-size:14px;color:var(--brass-2)}
+.card button.stretch{all:unset;cursor:pointer}
+.card button.stretch::after{content:"";position:absolute;inset:0}
+.card button.stretch:focus-visible::after{outline:3px solid var(--brass);outline-offset:-3px;border-radius:var(--r)}
+
+/* Floor plans gated */
+.plans{background:var(--paper-2)}
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.plan{background:var(--white);border-radius:var(--r);padding:18px;position:relative}
+.plan svg{width:100%;height:auto;aspect-ratio:1;display:block;transition:filter .3s ease-out}
+.plan h3{font-size:20px;margin-top:14px}
+.plan p{margin:4px 0 0;font-size:14px;color:var(--ink-2)}
+.locked .plan svg{filter:blur(7px)}
+.locked .plan .sqft{filter:blur(5px);user-select:none}
+.gate{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--green);color:#eee6d6;border-radius:var(--r);padding:22px 26px}
+.gate p{margin:0}
+.unlocked .gate{display:none}
+
+/* Location */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.loc img{border-radius:var(--r);aspect-ratio:5/4;object-fit:cover;width:100%}
+.drive{list-style:none;padding:0;margin:26px 0 0}
+.drive li{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:16px}
+.drive li span:last-child{color:var(--ink-2)}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.gallery img:first-child{grid-row:span 2}
+
+/* Pricing */
+.pricing{background:var(--green);color:#efe8da}
+.pricing .sec-head p{color:#c9c0ae}
+.ptable{width:100%;border-collapse:collapse;font-size:16px}
+.ptable th,.ptable td{text-align:left;padding:16px 12px;border-bottom:1px solid rgba(239,232,218,.18)}
+.ptable th{font:500 13px var(--sans);letter-spacing:.06em;color:#c9c0ae}
+.ptable .blur{filter:blur(6px);user-select:none}
+.unlocked .ptable .blur{filter:none}
+.pricing .after{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+
+/* Booking */
+.book{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.cal{background:var(--white);border-radius:var(--r);padding:26px;border:1px solid var(--line)}
+.cal .days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0 18px}
+.cal .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.chip{min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font:500 14px var(--sans);cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--brass)}
+.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.cal .note{font-size:13px;color:var(--ink-2);margin:16px 0 0}
+
+/* Footer */
+footer{background:#111814;color:#a9b1aa;font-size:13px;padding:44px 0 120px}
+footer .wrap{display:grid;gap:14px}
+footer strong{color:#e8e2d5;font-weight:500}
+
+/* Modal form */
+dialog{border:0;border-radius:18px;padding:0;width:min(520px,calc(100% - 32px));box-shadow:0 30px 80px -20px rgba(0,0,0,.5);color:var(--ink)}
+dialog::backdrop{background:rgba(10,18,14,.6)}
+dialog[open]{animation:pop .22s ease-out}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.mhead{background:var(--green);color:#efe8da;padding:26px 28px}
+.mhead h2{font-size:32px}
+.mhead p{margin:8px 0 0;font-size:15px;color:#c9c0ae}
+form{padding:24px 28px 28px;display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:14px;font-weight:500}
+input,select{font:16px var(--sans);min-height:48px;padding:0 14px;border:1px solid #bfb4a0;border-radius:10px;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:var(--brass)}
+.err{color:#a1281c;font-size:13px;font-weight:500;min-height:0}
+.consent{font-size:12px;color:var(--ink-2);margin:0}
+.x{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer}
+.thanks{padding:34px 28px 30px;text-align:center}
+.thanks h2{font-size:34px}
+.thanks p{color:var(--ink-2)}
+
+/* Mobile action bar */
+.mbar{display:none}
+
+@media (max-width:991px){
+  .hero .wrap{grid-template-columns:1fr;gap:28px}
+  .cards{grid-template-columns:1fr 1fr}
+  .plan-grid{grid-template-columns:1fr 1fr}
+  .loc,.book{grid-template-columns:1fr}
+  .nav nav{display:none}
+  .nav .btn{margin-left:auto}
+}
+@media (max-width:767px){
+  .wrap{padding:0 16px}
+  .sec{padding:72px 0}
+  .sec-head{display:block}
+  .sec-head p{margin-top:14px}
+  .cards{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 140px 140px}
+  .gallery img:first-child{grid-column:span 2;grid-row:auto}
+  .gate{flex-direction:column;align-items:flex-start}
+  .ptable th:nth-child(3),.ptable td:nth-child(3){display:none}
+  .cal .days{grid-template-columns:repeat(3,1fr)}
+  .nav .btn{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--line)}
+  .mbar a,.mbar button{min-height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--sans);text-decoration:none;border:0}
+  .mbar .call{background:var(--white);box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}
+  .mbar .wa{background:#1f7a4d;color:#fff}
+  .mbar .vip{background:var(--brass);color:#fff;cursor:pointer}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .card,.btn,.plan svg{transition:none}
+  dialog[open]{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="vipbar">VIP pricing and first choice of lots open to registrants before the public launch. <button type="button" data-open>Register for VIP access</button></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Cavallo Estates<small>KING TOWNSHIP, ONTARIO</small></a>
+    <nav aria-label="Sections">
+      <a href="#homes">Homes</a><a href="#plans">Floor plans</a><a href="#location">Location</a><a href="#gallery">Gallery</a><a href="#pricing">Pricing</a>
+    </nav>
+    <button class="btn btn-brass" type="button" data-open>Get VIP access</button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <img src="https://images.unsplash.com/photo-1762694913173-29bb6e5808d4?w=2200&q=80&auto=format&fit=crop" alt="A large stone estate home surrounded by mature trees" fetchpriority="high">
+  <div class="wrap">
+    <div>
+      <p class="place">Nobleton · King Township</p>
+      <h1>Estate living on the edge of the countryside.</h1>
+      <p class="lede">A limited collection of detached estate homes on generous lots, a short drive north of the city. Register to see floor plans and the price list before anyone else.</p>
+    </div>
+    <div class="pricecard">
+      <p class="from">Estate homes from</p>
+      <p class="price">$X,XXX,XXX</p>
+      <ul>
+        <li>Detached homes on large lots</li>
+        <li>Floor plans and price list for registrants</li>
+        <li>Private VIP appointments</li>
+      </ul>
+      <button class="btn btn-brass" type="button" data-open>Get VIP access</button>
+      <p class="fine">Takes 20 seconds. No obligation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="homes">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Three collections, one setting.</h2>
+      <p>Each collection is sized for a different stage of family life. Tap a collection to get its floor plans.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1775675956638-96acc907187d?w=1200&q=75&auto=format&fit=crop" alt="Exterior of a tan stone house with a dark roof" loading="lazy">
+        <div class="body">
+          <h3>The Paddock Collection</h3>
+          <div class="meta"><span>4 bedrooms</span><span>3,X00 sq ft</span><span>60 ft lots</span></div>
+          <button class="stretch go" type="button" data-open data-interest="Paddock Collection">Get Paddock floor plans</button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1783125127082-3fb6c1bccd72?w=1200&q=75&auto=format&fit=crop" alt="Contemporary home with a stone facade and large windows" loading="lazy">
+        <div class="body">
+          <h3>The Stable Collection</h3>
+          <div class="meta"><span>4 to 5 bedrooms</span><span>4,X00 sq ft</span><span>70 ft lots</span></div>
+          <button class="stretch go" type="button" data-open data-interest="Stable Collection">Get Stable floor plans</button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1774384734393-3a8e89c956d4?w=1200&q=75&auto=format&fit=crop" alt="Stone mansion behind green hedges and trees" loading="lazy">
+        <div class="body">
+          <h3>The Estate Collection</h3>
+          <div class="meta"><span>5 bedrooms</span><span>5,X00 sq ft</span><span>Estate lots</span></div>
+          <button class="stretch go" type="button" data-open data-interest="Estate Collection">Get Estate floor plans</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec plans locked" id="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Floor plans</h2>
+      <p>Full plans with room dimensions are released to VIP registrants first.</p>
+    </div>
+    <div class="plan-grid" id="planGrid"></div>
+    <div class="gate">
+      <p><strong>Plans are blurred until you register.</strong> They unlock right here on this page as soon as you do.</p>
+      <button class="btn btn-brass" type="button" data-open>Unlock floor plans</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="location">
+  <div class="wrap loc">
+    <img src="https://images.unsplash.com/photo-1620998258282-bc3bd5fee9e9?w=1400&q=75&auto=format&fit=crop" alt="A winding road through dense green forest seen from above" loading="lazy">
+    <div>
+      <div class="sec-head" style="margin-bottom:0"><h2>Quiet roads, quick to the city.</h2></div>
+      <p style="color:var(--ink-2);max-width:46ch">Nobleton keeps its village feel, with conservation land, golf and equestrian country around it and the 400-series highways close by.</p>
+      <ul class="drive">
+        <li><span>Highway 400</span><span>XX min</span></li>
+        <li><span>Toronto Pearson Airport</span><span>XX min</span></li>
+        <li><span>Downtown Toronto</span><span>XX min</span></li>
+        <li><span>Schools and village shops</span><span>XX min</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Gallery</h2><p>Renderings and finishes will be added as the builder releases them.</p></div>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?w=1400&q=75&auto=format&fit=crop" alt="White kitchen with a large island and glass doors" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1683629357935-f3f4777ddf41?w=800&q=70&auto=format&fit=crop" alt="Kitchen with a centre island and sink" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1760387420079-08739037853e?w=800&q=70&auto=format&fit=crop" alt="Stone house with a red front door and chimney" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1548941489-3e64750ebbaa?w=800&q=70&auto=format&fit=crop" alt="Open green fields under a wide sky" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1671197244266-73129c97c096?w=800&q=70&auto=format&fit=crop" alt="Modern kitchen with marble counters and stools" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="sec pricing locked" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><h2>Pricing</h2><p>VIP pricing is offered to registrants before public release and can change without notice.</p></div>
+    <table class="ptable">
+      <thead><tr><th>Collection</th><th>From</th><th>Lot size</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Paddock</td><td class="blur">$X,XXX,900</td><td>60 ft</td><td>VIP release</td></tr>
+        <tr><td>Stable</td><td class="blur">$X,XXX,900</td><td>70 ft</td><td>VIP release</td></tr>
+        <tr><td>Estate</td><td class="blur">$X,XXX,900</td><td>Estate</td><td>Limited</td></tr>
+      </tbody>
+    </table>
+    <div class="after">
+      <button class="btn btn-brass" type="button" data-open>See VIP pricing</button>
+      <a class="btn btn-ghost" href="#book">Book a VIP appointment</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="book">
+  <div class="wrap book">
+    <div>
+      <div class="sec-head" style="display:block;margin-bottom:18px"><h2>Book a private VIP appointment.</h2></div>
+      <p style="color:var(--ink-2);max-width:44ch">Walk through the plans, lots and incentives with me one to one, in person or on video. Pick a time and you get a calendar invite straight away.</p>
+      <p style="color:var(--ink-2);max-width:44ch">On the live page this panel is your Calendly, so bookings land in your calendar and your CRM.</p>
+    </div>
+    <div class="cal" aria-label="Booking calendar preview">
+      <strong>Choose a day</strong>
+      <div class="days" id="days"></div>
+      <strong>Choose a time</strong>
+      <div class="slots" id="slots"></div>
+      <button class="btn btn-brass" type="button" id="bookBtn" style="width:100%;margin-top:18px" disabled>Pick a day and time</button>
+      <p class="note">Preview only. No booking is made on this sample.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Cavallo Estates</strong> · Represented by [Agent name], [Brokerage], Brokerage. Not intended to solicit buyers under contract.</div>
+    <div>Prices, sizes, specifications and availability are subject to change without notice. Images are artist's concepts. E.&amp;O.E.</div>
+    <div><strong>Sample concept</strong> by Abdelrahman Elgendy for review. Prices, plans, drive times and photos are placeholders, and the form on this page sends nothing.</div>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="Quick actions">
+  <a class="call" href="tel:+10000000000">Call</a>
+  <a class="wa" href="https://wa.me/10000000000" rel="noopener">WhatsApp</a>
+  <button class="vip" type="button" data-open>Get VIP access</button>
+</div>
+
+<dialog id="vip" aria-labelledby="vipTitle">
+  <div style="position:relative">
+    <div class="mhead">
+      <h2 id="vipTitle">Get VIP access</h2>
+      <p>Floor plans and the price list unlock on this page the moment you register.</p>
+      <button class="x" type="button" aria-label="Close" data-close>&times;</button>
+    </div>
+    <form id="vipForm" novalidate>
+      <label>Full name<input name="name" autocomplete="name" required></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
+      <label>I am a
+        <select name="type" required>
+          <option value="">Choose one</option>
+          <option>Buyer, end user</option>
+          <option>Investor</option>
+          <option>Realtor</option>
+        </select>
+      </label>
+      <input type="hidden" name="interest">
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn btn-brass" type="submit">Unlock plans and pricing</button>
+      <p class="consent">By registering you agree to receive updates about this community. Unsubscribe any time.</p>
+    </form>
+    <div class="thanks" id="thanks" hidden>
+      <h2>You're on the VIP list.</h2>
+      <p>Floor plans and pricing are now unlocked on this page. On the live site, your details reach the agent's inbox and CRM instantly.</p>
+      <button class="btn btn-brass" type="button" data-close data-goto="#plans">See floor plans</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  const plans=[["The Paddock A","4 bed · 3.5 bath","3,XXX sq ft"],["The Paddock B","4 bed · 4 bath","3,XXX sq ft"],["The Stable","5 bed · 4.5 bath","4,XXX sq ft"],["The Estate","5 bed · 5.5 bath","5,XXX sq ft"]];
+  const grid=document.getElementById('planGrid');
+  const svg=(i)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><rect x="12" y="12" width="176" height="176" fill="#faf8f3" stroke="#1f3a2e" stroke-width="3"/>${[
+    '<path d="M12 90h96M108 12v120M108 132h80M60 90v98M150 132v56" stroke="#1f3a2e" stroke-width="2" fill="none"/>',
+    '<path d="M12 80h120M132 12v176M60 80v108M132 120h56M12 140h48" stroke="#1f3a2e" stroke-width="2" fill="none"/>',
+    '<path d="M12 70h176M80 12v58M140 12v58M12 130h110M122 70v118M60 130v58" stroke="#1f3a2e" stroke-width="2" fill="none"/>',
+    '<path d="M12 64h70M82 12v112M82 124h106M140 12v112M12 124h70M40 124v64M140 124v64" stroke="#1f3a2e" stroke-width="2" fill="none"/>'][i]}<rect x="130" y="150" width="40" height="22" fill="#a8814a" opacity=".25"/></svg>`;
+  plans.forEach((p,i)=>{grid.insertAdjacentHTML('beforeend',`<div class="plan">${svg(i)}<h3>${p[0]}</h3><p>${p[1]}</p><p class="sqft">${p[2]}</p></div>`)});
+
+  const dlg=document.getElementById('vip'),form=document.getElementById('vipForm'),thanks=document.getElementById('thanks'),err=document.getElementById('err');
+  let unlocked=false;try{unlocked=localStorage.getItem('cavalloVip')==='1'}catch(e){}
+  const unlock=()=>{document.querySelectorAll('.locked').forEach(s=>s.classList.add('unlocked'))};
+  if(unlocked)unlock();
+  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{
+    form.interest.value=b.dataset.interest||'';
+    if(unlocked){form.hidden=true;thanks.hidden=false}else{form.hidden=false;thanks.hidden=true}
+    dlg.showModal();
+  }));
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>{dlg.close();if(b.dataset.goto)document.querySelector(b.dataset.goto).scrollIntoView()}));
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=form.elements,missing=[];
+    if(!f.name.value.trim())missing.push('your name');
+    if(!/^\S+@\S+\.\S+$/.test(f.email.value))missing.push('a valid email');
+    if(f.phone.value.replace(/\D/g,'').length<10)missing.push('a 10-digit phone number');
+    if(!f.type.value)missing.push('whether you are a buyer, investor or realtor');
+    if(missing.length){err.textContent='Please add '+missing.join(', ')+'.';return}
+    err.textContent='';unlocked=true;try{localStorage.setItem('cavalloVip','1')}catch(e){}
+    unlock();form.hidden=true;thanks.hidden=false;
+  });
+
+  // Exit intent on desktop, once per visit
+  let shown=false;
+  document.addEventListener('mouseout',e=>{if(!shown&&!unlocked&&!e.relatedTarget&&e.clientY<8&&matchMedia('(pointer:fine)').matches){shown=true;form.hidden=false;thanks.hidden=true;dlg.showModal()}});
+
+  // Booking preview
+  const days=document.getElementById('days'),slots=document.getElementById('slots'),bookBtn=document.getElementById('bookBtn');
+  let d=new Date(),n=0,pick={};
+  while(n<5){d.setDate(d.getDate()+1);if(d.getDay()===0)continue;const lbl=d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'});days.insertAdjacentHTML('beforeend',`<button type="button" class="chip" aria-pressed="false" data-k="day">${lbl}</button>`);n++}
+  ['10:00 am','11:30 am','1:00 pm','2:30 pm','4:00 pm','6:00 pm'].forEach(t=>slots.insertAdjacentHTML('beforeend',`<button type="button" class="chip" aria-pressed="false" data-k="time">${t}</button>`));
+  document.querySelector('.cal').addEventListener('click',e=>{
+    const c=e.target.closest('.chip');if(!c)return;
+    c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
+    c.setAttribute('aria-pressed','true');pick[c.dataset.k]=c.textContent;
+    if(pick.day&&pick.time){bookBtn.disabled=false;bookBtn.textContent='Request '+pick.day+', '+pick.time}
+  });
+  bookBtn.addEventListener('click',()=>{bookBtn.textContent='Requested. You would get an invite by email.';bookBtn.disabled=true});
+})();
+</script>
+</body>
+</html>

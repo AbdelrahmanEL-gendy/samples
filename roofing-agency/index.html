@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4Point Marketing · homepage (sample)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Sample homepage concept for a marketing agency that works with established roofing companies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,700;62..125,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e1113;--bg-2:#161a1d;--bg-3:#1f2427;--line:#2c3236;--ink:#f2efe9;--ink-2:#a9b0b4;
+  --orange:#ff6b2c;--orange-2:#e9551a;--paper:#f2efe9;--paper-ink:#121517;
+  --r:12px;--wrap:1200px;
+  --disp:"Archivo",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-stretch:88%;font-weight:800;line-height:1.02;margin:0;letter-spacing:-.015em;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:10px;font:600 15px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:background-color .15s ease,transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-o{background:var(--orange);color:#111}
+.btn-o:hover{background:#ff8550}
+.btn-line{box-shadow:inset 0 0 0 1px #4a5257;color:var(--ink)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(14,17,19,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:30px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font:800 19px var(--disp);font-stretch:95%;text-decoration:none}
+.logo svg{width:30px;height:30px}
+.nav nav{display:flex;gap:26px;margin-left:auto;font-size:14px}
+.nav nav a{text-decoration:none;color:var(--ink-2);padding:8px 0}
+.nav nav a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 20px}
+
+/* Hero */
+.hero{padding:88px 0 0;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.tag{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--ink-2);margin-bottom:22px}
+.tag i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.hero h1{font-size:clamp(40px,4.6vw,66px);max-width:19ch}
+.hero h1 span{color:var(--orange)}
+.hero .lede{font-size:19px;color:var(--ink-2);max-width:48ch;margin:24px 0 32px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .for{margin-top:28px;font-size:14px;color:var(--ink-2)}
+.hero .for b{color:var(--ink);font-weight:600}
+.shot{position:relative}
+.shot img{border-radius:16px;aspect-ratio:4/5;object-fit:cover;width:100%;filter:saturate(.85) contrast(1.05)}
+.board{position:absolute;left:-36px;bottom:36px;background:var(--paper);color:var(--paper-ink);border-radius:14px;padding:18px 20px;width:270px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.board small{display:block;font-size:12px;color:#5b6266;margin-bottom:10px}
+.board .row{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-top:1px solid #dcd7cd}
+.board .row b{font-family:var(--disp);font-size:16px}
+.board .row:first-of-type{border-top:0}
+
+/* Pain strip */
+.strip{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.strip div.q{padding:30px 28px 30px 0;font-size:17px;color:var(--ink-2)}
+.strip div.q+div.q{padding-left:28px;border-left:1px solid var(--line)}
+.strip div.q b{display:block;font:700 20px/1.25 var(--disp);font-stretch:92%;color:var(--ink);margin-bottom:6px}
+
+/* Sections */
+section{scroll-margin-top:80px}
+.sec{padding:112px 0}
+.head{max-width:760px;margin-bottom:52px}
+.head h2{font-size:clamp(36px,4.4vw,60px)}
+.head p{color:var(--ink-2);font-size:18px;margin:18px 0 0;max-width:56ch}
+
+/* Calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.calc .in{padding:36px;background:var(--bg-2);display:grid;gap:26px}
+.calc .out{padding:36px;background:var(--paper);color:var(--paper-ink);display:flex;flex-direction:column}
+.field label{display:flex;justify-content:space-between;font-size:15px;font-weight:500;margin-bottom:10px}
+.field output{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--orange)}
+input[type=range]{width:100%;accent-color:var(--orange);height:28px;cursor:pointer}
+.out small{font-size:14px;color:#5b6266}
+.big{font:800 clamp(44px,5.4vw,72px)/1 var(--disp);font-stretch:85%;margin:8px 0 6px;letter-spacing:-.02em}
+.out .line{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid #d6d0c5;font-size:15px}
+.out .line b{font-family:var(--disp)}
+.out .btn{margin-top:auto;align-self:flex-start}
+.out .note{font-size:12px;color:#5b6266;margin:14px 0 0}
+
+/* Services: system steps */
+.sys{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.step .k{font:700 13px var(--sans);color:var(--orange);margin-bottom:40px;display:block}
+.step h3{font-size:24px;font-stretch:92%}
+.step p{color:var(--ink-2);font-size:15px;margin:10px 0 0}
+
+/* Proof: whole card is a link */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.case{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .2s ease,transform .2s ease-out}
+.case:hover{border-color:#5a6267;transform:translateY(-3px)}
+.case img{aspect-ratio:16/10;object-fit:cover;width:100%;filter:saturate(.8)}
+.case .b{padding:22px}
+.case .metric{font:800 40px/1 var(--disp);font-stretch:85%;color:var(--orange)}
+.case p{color:var(--ink-2);font-size:15px;margin:8px 0 14px}
+.case a{font-weight:600;font-size:14px;text-decoration:none}
+.case a::after{content:"";position:absolute;inset:0}
+.ph{display:inline-block;font-size:11px;font-weight:600;color:#111;background:#ffd2bd;border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+
+/* Fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fit div{border-radius:var(--r);padding:30px;border:1px solid var(--line)}
+.fit .yes{background:var(--bg-2)}
+.fit h3{font-size:24px;font-stretch:92%;margin-bottom:14px}
+.fit ul{margin:0;padding-left:20px;color:var(--ink-2)}
+.fit li{margin:8px 0}
+
+/* Book */
+.book{background:var(--paper);color:var(--paper-ink)}
+.book .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.book h2{font-size:clamp(36px,4.4vw,60px)}
+.book p{color:#454c50;font-size:17px}
+.ghl{background:#fff;border:1px solid #d6d0c5;border-radius:16px;padding:26px}
+.ghl .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-weight:600}
+.ghl .top span{font-size:12px;font-weight:500;color:#5b6266}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.chip{min-height:44px;border-radius:10px;border:1px solid #d6d0c5;background:#f7f5f1;font:500 14px var(--sans);cursor:pointer;color:var(--paper-ink)}
+.chip:hover{border-color:var(--orange-2)}
+.chip[aria-pressed="true"]{background:var(--paper-ink);color:#fff;border-color:var(--paper-ink)}
+.ghl form{display:grid;gap:12px;margin-top:18px}
+.ghl label{display:grid;gap:6px;font-size:14px;font-weight:500}
+.ghl input,.ghl select{font:16px var(--sans);min-height:48px;padding:0 14px;border:1px solid #b9b2a6;border-radius:10px;color:var(--paper-ink);background:#fff}
+.ghl .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:#a1281c;font-size:13px;font-weight:600;margin:0}
+.done{text-align:center;padding:30px 10px}
+.done h3{font-size:30px}
+
+footer{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media (max-width:991px){
+  .hero .wrap,.calc,.book .wrap{grid-template-columns:1fr}
+  .shot{max-width:520px}
+  .board{left:16px}
+  .sys{grid-template-columns:1fr 1fr}
+  .cases{grid-template-columns:1fr 1fr}
+  .nav nav{display:none}
+  .nav .btn{margin-left:auto}
+}
+@media (max-width:767px){
+  .wrap{padding:0 16px}
+  .hero{padding-top:56px}
+  .sec{padding:76px 0}
+  .strip .wrap{grid-template-columns:1fr}
+  .strip div.q,.strip div.q+div.q{padding:22px 0;border-left:0}
+  .strip div.q+div.q{border-top:1px solid var(--line)}
+  .sys,.cases,.fit{grid-template-columns:1fr}
+  .calc .in,.calc .out{padding:24px}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .ghl .two{grid-template-columns:1fr}
+  .board{position:relative;left:auto;bottom:auto;margin:-60px 16px 0;width:auto}
+  .nav .btn{padding:0 14px;font-size:14px;white-space:nowrap}
+  .logo{white-space:nowrap;font-size:17px}
+  .hide-s{display:none}
+  .strip{margin-top:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.case{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="4Point Marketing home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#ff6b2c"/><path d="M6 19L16 9l10 10" fill="none" stroke="#111" stroke-width="3.2" stroke-linejoin="round"/><path d="M11 24h10" stroke="#111" stroke-width="3.2"/></svg>
+      4Point Marketing
+    </a>
+    <nav aria-label="Main">
+      <a href="#math">The math</a><a href="#system">How we work</a><a href="#results">Results</a><a href="#fit">Who it's for</a>
+    </nav>
+    <a class="btn btn-o" href="#book">Book a<span class="hide-s">&nbsp;strategy</span>&nbsp;call</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tag"><i></i>Marketing for roofing companies doing $2M to $15M+</div>
+      <h1>More booked inspections. <span>Fewer</span> tire‑kickers.</h1>
+      <p class="lede">We run the ads, the follow-up and the reporting for established roofing companies, and we measure ourselves the way you do: cost per inspection, close rate and revenue per job.</p>
+      <div class="ctas">
+        <a class="btn btn-o" href="#book">Book a strategy call</a>
+        <a class="btn btn-line" href="#math">Run your numbers</a>
+      </div>
+      <p class="for">Built for owners with <b>crews to keep busy</b>, not startups looking for their first lead.</p>
+    </div>
+    <div class="shot">
+      <img src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1200&q=80&auto=format&fit=crop" alt="A roofer fastening shingles on a residential roof with a power drill">
+      <div class="board" aria-label="Example weekly report">
+        <small>Weekly report, every Monday</small>
+        <div class="row"><span>Booked inspections</span><b>XX</b></div>
+        <div class="row"><span>Cost per inspection</span><b>$XXX</b></div>
+        <div class="row"><span>Closed jobs</span><b>XX</b></div>
+        <div class="row"><span>Revenue from ads</span><b>$XXX,XXX</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="wrap">
+      <div class="q"><b>Leads that never pick up.</b>Shared leads sold to five roofers at once burn your sales team's day.</div>
+      <div class="q"><b>Reports full of clicks.</b>Impressions and CTR don't tell you whether a crew is booked next month.</div>
+      <div class="q"><b>Storm-season whiplash.</b>Feast after hail, famine in the off-season, and no plan for either.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="math">
+  <div class="wrap">
+    <div class="head">
+      <h2>Run your own numbers before you talk to anyone.</h2>
+      <p>Move the sliders to your real figures. This is the same math we use on the first call, so you know what a realistic goal looks like.</p>
+    </div>
+    <div class="calc">
+      <div class="in">
+        <div class="field"><label for="leads">Booked inspections per month <output id="oLeads"></output></label><input id="leads" type="range" min="10" max="200" step="5" value="60"></div>
+        <div class="field"><label for="close">Close rate <output id="oClose"></output></label><input id="close" type="range" min="10" max="60" step="1" value="30"></div>
+        <div class="field"><label for="ticket">Average job value <output id="oTicket"></output></label><input id="ticket" type="range" min="5000" max="40000" step="500" value="14000"></div>
+        <div class="field"><label for="lift">Extra inspections from better marketing <output id="oLift"></output></label><input id="lift" type="range" min="0" max="100" step="5" value="25"></div>
+      </div>
+      <div class="out" aria-live="polite">
+        <small>Added revenue per year at your close rate</small>
+        <div class="big" id="oBig"></div>
+        <div class="line"><span>Extra inspections a month</span><b id="oExtra"></b></div>
+        <div class="line"><span>Extra jobs a month</span><b id="oJobs"></b></div>
+        <div class="line"><span>Revenue today, per year</span><b id="oNow"></b></div>
+        <a class="btn btn-o" href="#book" style="margin-top:24px">Talk through these numbers</a>
+        <p class="note">An estimate from your own inputs, not a promise of results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="system" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <h2>One system, from the first ad to the signed contract.</h2>
+      <p>Most agencies stop at the lead. The money is lost after it, so that's where we spend most of our time.</p>
+    </div>
+    <div class="sys">
+      <div class="step"><span class="k">Step one</span><h3>Exclusive demand</h3><p>Google, Local Services and Meta campaigns aimed at homeowners in your service area, never shared with other roofers.</p></div>
+      <div class="step"><span class="k">Step two</span><h3>Speed to lead</h3><p>Every enquiry gets a text in under a minute and lands in your GoHighLevel pipeline with its source attached.</p></div>
+      <div class="step"><span class="k">Step three</span><h3>Booked, not just called</h3><p>Follow-up sequences and reminders that turn enquiries into inspections on your calendar, and cut no-shows.</p></div>
+      <div class="step"><span class="k">Step four</span><h3>Revenue reporting</h3><p>Closed jobs tied back to the ad that produced them, so you know what each inspection is really worth.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="results" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <h2>Results from roofers like you.</h2>
+      <p>Real numbers from current clients go here. One honest figure does more than any design choice on this page.</p>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <img src="https://images.unsplash.com/photo-1726589004565-bedfba94d3a2?w=1000&q=70&auto=format&fit=crop" alt="A roofer working on a pitched roof" loading="lazy">
+        <div class="b"><div class="metric">+XX%<span class="ph">placeholder</span></div><p>Booked inspections for a [City] residential roofer in [X] months.</p><a href="#book">Ask about this result</a></div>
+      </article>
+      <article class="case">
+        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1000&q=70&auto=format&fit=crop" alt="A roofer standing on the roof of a house" loading="lazy">
+        <div class="b"><div class="metric">$XXX<span class="ph">placeholder</span></div><p>Cost per booked inspection, down from $XXX, for a [State] storm-restoration company.</p><a href="#book">Ask about this result</a></div>
+      </article>
+      <article class="case">
+        <img src="https://images.unsplash.com/photo-1755114203680-d39d95efa82c?w=1000&q=70&auto=format&fit=crop" alt="Aerial view of a suburban house with a grey roof" loading="lazy">
+        <div class="b"><div class="metric">$X.XM<span class="ph">placeholder</span></div><p>Revenue tracked to ads in year one for a [City] roofing and exteriors firm.</p><a href="#book">Ask about this result</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="fit" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2>Who we're a fit for.</h2></div>
+    <div class="fit">
+      <div class="yes"><h3>A good fit</h3><ul><li>$2M to $15M+ in annual revenue</li><li>Crews and a sales process already in place</li><li>Ready to spend on ads to grow, and wants to see the return</li><li>Uses a CRM, or will let us set GoHighLevel up</li></ul></div>
+      <div><h3>Probably not yet</h3><ul><li>Just starting out, still finding the first customers</li><li>Looking for the cheapest leads, not booked jobs</li><li>No one available to call leads back the same day</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="wrap">
+    <div>
+      <h2>Book a 30-minute strategy call.</h2>
+      <p>Bring your numbers. You'll leave with a realistic target for inspections and cost per job, whether or not we work together.</p>
+      <p style="font-size:14px;color:#5b6266">On the live site this panel is your GoHighLevel calendar and form, so every booking lands in your pipeline with its source.</p>
+    </div>
+    <div class="ghl" id="ghl">
+      <div class="top">Pick a time <span>Central time</span></div>
+      <div class="days" id="days"></div>
+      <div class="slots" id="slots"></div>
+      <form id="bookForm" novalidate>
+        <div class="two">
+          <label>Name<input name="name" autocomplete="name"></label>
+          <label>Company<input name="company" autocomplete="organization"></label>
+        </div>
+        <div class="two">
+          <label>Email<input name="email" type="email" autocomplete="email"></label>
+          <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label>Annual revenue
+          <select name="rev"><option value="">Choose a range</option><option>Under $2M</option><option>$2M to $5M</option><option>$5M to $15M</option><option>$15M+</option></select>
+        </label>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn btn-o" type="submit">Book my strategy call</button>
+      </form>
+      <div class="done" id="done" hidden><h3>You're booked.</h3><p>On the live site you'd get a confirmation by email and text, and the booking would appear in GoHighLevel.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 4Point Marketing</span>
+    <span>Sample concept by Abdelrahman Elgendy for review. Photos and figures are placeholders, and nothing on this page sends data.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const money=n=>n>=1e6?'$'+(n/1e6).toFixed(n>=1e7?1:2)+'M':'$'+Math.round(n).toLocaleString('en-US');
+  function calc(){
+    const L=+$('leads').value,C=+$('close').value/100,T=+$('ticket').value,U=+$('lift').value/100;
+    $('oLeads').textContent=L;$('oClose').textContent=Math.round(C*100)+'%';$('oTicket').textContent=money(T);$('oLift').textContent='+'+Math.round(U*100)+'%';
+    const extra=L*U,jobs=extra*C;
+    $('oExtra').textContent='+'+Math.round(extra);
+    $('oJobs').textContent='+'+jobs.toFixed(1);
+    $('oNow').textContent=money(L*C*T*12);
+    $('oBig').textContent='+'+money(jobs*T*12);
+  }
+  ['leads','close','ticket','lift'].forEach(id=>$(id).addEventListener('input',calc));calc();
+
+  const days=$('days'),slots=$('slots');let d=new Date(),n=0,pick={};
+  while(n<5){d.setDate(d.getDate()+1);if(d.getDay()===0||d.getDay()===6)continue;days.insertAdjacentHTML('beforeend',`<button type="button" class="chip" aria-pressed="false" data-k="day">${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}</button>`);n++}
+  ['9:00 am','10:30 am','1:00 pm','2:30 pm','4:00 pm','5:30 pm'].forEach(t=>slots.insertAdjacentHTML('beforeend',`<button type="button" class="chip" aria-pressed="false" data-k="time">${t}</button>`));
+  $('ghl').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true');pick[c.dataset.k]=c.textContent});
+  $('bookForm').addEventListener('submit',e=>{
+    e.preventDefault();const f=e.target.elements,m=[];
+    if(!pick.day||!pick.time)m.push('a day and time');
+    if(!f.name.value.trim())m.push('your name');
+    if(!/^\S+@\S+\.\S+$/.test(f.email.value))m.push('a valid email');
+    if(f.phone.value.replace(/\D/g,'').length<10)m.push('a 10-digit phone number');
+    if(!f.rev.value)m.push('your revenue range');
+    if(m.length){$('err').textContent='Please add '+m.join(', ')+'.';return}
+    $('bookForm').hidden=true;days.hidden=true;slots.hidden=true;document.querySelector('.ghl .top').hidden=true;$('done').hidden=false;
+  });
+})();
+</script>
+</body>
+</html>
