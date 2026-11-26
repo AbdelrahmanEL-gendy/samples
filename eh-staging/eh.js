@@ -67,7 +67,7 @@
   });
 
   // Deep links from the Materials menu (#material-preview-clay-board etc.): open that material and bring the section into view
-  var openMaterialFromHash = function () {
+  var openMaterialFromHash = function (instant) {
     var h = location.hash;
     if (h.indexOf('#material-preview-') !== 0) return;
     var panel = document.getElementById(h.slice(1)), art = panel && panel.closest('article');
@@ -75,13 +75,21 @@
     var b = $(':scope > .eh-btn', art);
     if (b && !art.classList.contains('is-active')) b.click();
     var sec = document.getElementById('materials');
-    if (sec) setTimeout(function () { sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 30);
+    if (!sec) return;
+    var go = function () {
+      var top = sec.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(sec).scrollMarginTop) || 0);
+      window.scrollTo({ top: top, behavior: instant || reduce ? 'auto' : 'smooth' });
+    };
+    go();
+    // arriving from another page: layout, fonts and images are still settling, so land again once they have
+    if (instant) { setTimeout(go, 250); setTimeout(go, 800); }
   };
-  openMaterialFromHash();
-  addEventListener('hashchange', openMaterialFromHash);
+  if (document.readyState === 'complete') openMaterialFromHash(true);
+  else addEventListener('load', function () { openMaterialFromHash(true); });
+  addEventListener('hashchange', function () { openMaterialFromHash(false); });
   // clicking the same material twice does not fire hashchange
   $$('a[href*="#material-preview-"]').forEach(function (a) {
-    a.addEventListener('click', function () { if (a.hash === location.hash && a.pathname === location.pathname) setTimeout(openMaterialFromHash, 0); });
+    a.addEventListener('click', function () { if (a.hash === location.hash && a.pathname === location.pathname) setTimeout(function () { openMaterialFromHash(false); }, 0); });
   });
 
   // FAQ accordion
