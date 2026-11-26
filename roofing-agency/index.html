@@ -61,15 +61,18 @@ p{margin:0;text-wrap:pretty}
 /* Pins: a short story, lead to booked inspection, played roof by roof */
 .pins{position:absolute;inset:0;z-index:0;pointer-events:none}
 .pin{position:absolute;width:0;height:0}
-.pin .dot{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.45);opacity:0;transform:scale(.4);transition:opacity .3s ease-out,transform .4s var(--ease),background-color .3s ease}
+.pin .dot{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.45);opacity:0;transform:translateY(-10px) scale(.2);transition:opacity .35s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.34,1.56,.64,1),background-color .4s ease,box-shadow .5s cubic-bezier(.22,1,.36,1)}
 .pin .ring{position:absolute;left:-18px;top:-18px;width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.85);opacity:0}
 .pin.lead .dot,.pin.done .dot{opacity:1;transform:none}
-.pin.lead .ring{animation:ring 1.1s ease-out 2}
-.pin.done .dot{background:var(--lime);box-shadow:0 0 0 4px rgba(211,240,6,.3),0 2px 8px rgba(0,0,0,.45)}
+.pin.lead .ring{animation:ring 1.2s cubic-bezier(.22,1,.36,1) 2}
+.pin.done .dot{animation:pop .5s cubic-bezier(.34,1.56,.64,1);background:var(--lime);box-shadow:0 0 0 4px rgba(211,240,6,.3),0 2px 8px rgba(0,0,0,.45)}
 .pin.signed .dot{background:#fff;box-shadow:0 0 0 4px rgba(211,240,6,.9),0 2px 8px rgba(0,0,0,.45)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
 @keyframes ring{from{opacity:.9;transform:scale(.4)}to{opacity:0;transform:scale(1.4)}}
-.tip{position:absolute;z-index:1;transform:translate(-50%,calc(-100% - 18px));background:rgba(255,255,255,.97);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35;box-shadow:0 12px 28px -10px rgba(0,0,0,.5);white-space:nowrap;opacity:0;transition:opacity .25s ease-out,transform .35s var(--ease),left .45s var(--ease),top .45s var(--ease)}
-.tip.on{opacity:1}
+.tip{position:absolute;z-index:1;transform:translate(-50%,calc(-100% - 18px));background:rgba(255,255,255,.97);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35;box-shadow:0 12px 28px -10px rgba(0,0,0,.5);white-space:nowrap;opacity:0;filter:blur(4px);transform:translate(-50%,calc(-100% - 8px)) scale(.92);transform-origin:50% 100%;transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.34,1.4,.64,1),filter .4s ease-out}
+.tip.on{opacity:1;filter:none;transform:translate(-50%,calc(-100% - 18px)) scale(1)}
+.tip b,.tip .st{transition:opacity .25s ease}
+.tip.swap b,.tip.swap .st{opacity:0}
 .tip::after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:inherit;transform:translateX(-50%) rotate(45deg);border-radius:2px}
 .tip b{display:block;font-weight:500}
 .tip span{color:var(--ink-3);font-size:12px}
@@ -79,7 +82,7 @@ p{margin:0;text-wrap:pretty}
 .tip.s3 .st i{background:#8fb300}
 .rrow b{transition:color .3s ease}
 .rrow b.bump{color:#5f7a00}
-@media (prefers-reduced-motion:reduce){.pin .dot,.tip{transition:none}.pin.lead .ring{animation:none}}
+@media (prefers-reduced-motion:reduce){.pin .dot,.tip{transition:none;filter:none}.pin.lead .ring,.pin.done .dot{animation:none}}
 @media (max-width:767px){.tip{font-size:12px;padding:6px 10px}}
 
 .report{position:relative;z-index:1;align-self:flex-end;margin:40px 32px 32px;width:min(460px,calc(100% - 64px));background:var(--white);color:var(--ink-2);border-radius:var(--r-panel);padding:20px 22px;box-shadow:0 30px 60px -24px rgba(10,6,12,.6)}
@@ -195,7 +198,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .hero{margin:8px;border-radius:18px;min-height:auto}
   .hero .copy{padding:48px 20px 0}
   .hero .ctas .btn{flex:1}
-  .report{margin:28px 12px 12px;padding:16px}
+  .report{margin:220px 12px 12px;padding:16px}
   .rrow{grid-template-columns:1fr auto}
   .rrow i{display:none}
   .bars{display:none}
@@ -385,10 +388,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   function place(){
     const W=hero.clientWidth,H=hero.clientHeight,iw=himg.naturalWidth||1600,ih=himg.naturalHeight||900;
     const sc=Math.max(W/iw,H/ih),rw=iw*sc,rh=ih*sc,ox=(W-rw)*.5,oy=(H-rh)*.3;
-    pins.forEach((p,i)=>{p.style.left=(ox+rw*roofs[i][0]/100)+'px';p.style.top=(oy+rh*roofs[i][1]/100)+'px'});
+    const hr=hero.getBoundingClientRect(),pad=14;
+    const block=[...hero.querySelectorAll('.copy h1,.copy .lede,.copy .ctas,.report')].map(e=>{const r=e.getBoundingClientRect();return {l:r.left-hr.left-pad,t:r.top-hr.top-pad-70,r:r.right-hr.left+pad,b:r.bottom-hr.top+pad}});
+    pins.forEach((p,i)=>{const x=ox+rw*roofs[i][0]/100,y=oy+rh*roofs[i][1]/100;p.style.left=x+'px';p.style.top=y+'px';
+      const off=x<24||x>W-24||y<90||y>H-24||block.some(b=>x>b.l&&x<b.r&&y>b.t&&y<b.b);p.dataset.off=off?'1':'';p.hidden=off});
     return {ox,oy,rw,rh};
   }
-  function show(i,cls,html){const p=pins[i];tip.style.left=p.style.left;tip.style.top=p.style.top;tip.className='tip on '+cls;tip.innerHTML=html}
+  function show(i,cls,html){const p=pins[i];
+    if(!tip.classList.contains('on')){tip.style.left=p.style.left;tip.style.top=p.style.top;tip.innerHTML=html;tip.className='tip '+cls;void tip.offsetWidth;tip.className='tip on '+cls;return}
+    tip.classList.add('swap');setTimeout(()=>{tip.innerHTML=html;tip.className='tip on '+cls},200)}
   const B=$('rBooked'),S=$('rSigned'),R=$('rRev');
   let booked,signed,rev;
   const fmt=n=>'$'+n.toLocaleString('en-US');
@@ -403,8 +411,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     if(running)return;running=true;
     while(running){
       resetStory();await wait(700);
-      for(let i=0;i<pins.length&&running;i++){
-        const [when,what,isSigned]=steps[i];
+      place();const live=pins.map((p,k)=>k).filter(k=>!pins[k].dataset.off);let n=0;
+      if(!live.length){booked=47;signed=16;rev=214400;setNums();running=false;return}
+      for(const i of live){if(!running)break;
+        const [when,what,isSigned]=steps[n++%steps.length];
         pins[i].className='pin lead';
         show(i,'s1','<b>New lead</b><span class="st"><i></i>Google search, roof replacement</span>');await wait(1100);
         show(i,'s2','<b>Texted back in '+(28+i*7)+'s</b><span class="st"><i></i>Lead in GoHighLevel</span>');await wait(1000);
@@ -419,7 +429,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     }
   }
   function stop(){running=false;timers.forEach(clearTimeout);timers=[]}
-  function finalState(){booked=47;signed=16;rev=214400;setNums();pins.forEach((p,i)=>p.className='pin done'+(steps[i][2]?' signed':''));show(0,'s3','<b>Inspection booked</b><span class="st"><i></i>Tue 9:00</span>')}
+  function finalState(){booked=47;signed=16;rev=214400;setNums();place();pins.forEach((p,i)=>p.className='pin done'+(steps[i][2]?' signed':''));const f=pins.findIndex(p=>!p.dataset.off);if(f>-1)show(f,'s3','<b>Inspection booked</b><span class="st"><i></i>Tue 9:00</span>')}
   const start=()=>{place();if(reduce){finalState()}else{play()}};
   if(himg.complete)start();else himg.addEventListener('load',start);
   addEventListener('resize',()=>{place();const on=pins.findIndex(p=>/lead|done/.test(p.className));});
