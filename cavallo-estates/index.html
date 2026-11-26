@@ -253,7 +253,12 @@ html.deck .gal{flex:1;min-height:0;grid-template-rows:1fr 1fr}
 html.deck .split{flex:1;min-height:0}
 html.deck .split img{min-height:0}
 html.deck footer{padding:16px 0 0;margin:0}
-html.deck aside{position:static;height:100%;overflow:auto;scrollbar-width:none;align-content:start}
+html.deck aside{position:static;height:calc(100% - 68px);overflow:hidden;display:flex;flex-direction:column;gap:12px}
+html.deck .reg{flex:1;min-height:0;overflow:auto;scrollbar-width:none;display:flex;flex-direction:column}
+html.deck #regForm,html.deck #regForm form{display:flex;flex-direction:column;flex:1}
+html.deck #regForm form{gap:10px}
+html.deck #regForm form .btn{margin-top:auto}
+html.deck .agent{flex:none}
 html.deck .col h3{font-size:24px;white-space:nowrap}
 html.deck .stagebar{display:flex;align-items:center;gap:12px;position:absolute;left:0;right:0;bottom:0;height:52px}
 .stagebar .where{font-size:14px;color:var(--ink-2)}
