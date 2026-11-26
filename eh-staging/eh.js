@@ -68,9 +68,10 @@
 
   // Deep links from the Materials menu (#material-preview-clay-board etc.): open that material and bring the section into view
   var openMaterialFromHash = function (instant) {
-    var h = location.hash;
-    if (h.indexOf('#material-preview-') !== 0) return;
-    var panel = document.getElementById(h.slice(1)), art = panel && panel.closest('article');
+    // links use #material-<slug> (no element has that id, so neither the browser nor Webflow jumps to the collapsed panel)
+    var h = location.hash, m = h.match(/^#material-(?:preview-)?([a-z-]+)$/);
+    if (!m) return;
+    var panel = document.getElementById('material-preview-' + m[1]), art = panel && panel.closest('article');
     if (!art) return;
     var b = $(':scope > .eh-btn', art);
     if (b && !art.classList.contains('is-active')) b.click();
@@ -88,7 +89,7 @@
   else addEventListener('load', function () { openMaterialFromHash(true); });
   addEventListener('hashchange', function () { openMaterialFromHash(false); });
   // clicking the same material twice does not fire hashchange
-  $$('a[href*="#material-preview-"]').forEach(function (a) {
+  $$('a[href*="#material-"]').forEach(function (a) {
     a.addEventListener('click', function () { if (a.hash === location.hash && a.pathname === location.pathname) setTimeout(function () { openMaterialFromHash(false); }, 0); });
   });
 
