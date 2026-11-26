@@ -130,6 +130,9 @@
     });
   }
 
+  // Webflow adds a default placeholder to converted inputs; the reference has none
+  $$('.contact-form-fields input[placeholder="Example text"]').forEach(function (i) { i.removeAttribute('placeholder'); });
+
   // Contact form: the submit control is a link in Webflow, so submit the native form (Webflow handles sending and the success state)
   $$('.contact-form-submit .eh-btn').forEach(function (b) {
     b.addEventListener('click', function () { var f = b.closest('form'); if (f) { if (f.requestSubmit) f.requestSubmit(); else if (f.reportValidity()) f.submit(); } });

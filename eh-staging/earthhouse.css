@@ -48,9 +48,11 @@ a.eh-btn{cursor:pointer;-webkit-user-select:none;user-select:none;text-decoratio
 .eh-tw-send{border-bottom:1px solid rgba(52,55,48,.2);padding:1.5rem 0;font-size:.875rem;line-height:1.625;color:#5d5f58}
 .eh-tw-sendh{font-size:1.125rem!important;line-height:1.75rem;font-weight:500;color:#343730;margin:0}
 .eh-tw-sendlist{margin:.75rem 0 0;display:grid;list-style:disc;gap:.375rem;padding-left:1.25rem}
-.eh-tw-mt4{margin:1rem 0 0}
+.eh-tw-sendlist li{margin:0}
+.eh-tw-mt4{margin:0}
 .eh-tw-mt2{margin:.5rem 0 0}
-.eh-tw-maillink{display:inline-flex;min-height:2.75rem;align-items:center;word-break:break-all;color:#ae350e;text-decoration:underline;text-underline-offset:4px}
+.eh-tw-maillink{display:inline;word-break:break-all;color:inherit;text-decoration:none}
+.eh-tw-maillink:hover{color:#ae350e;text-decoration:underline;text-underline-offset:4px}
 .eh-tw-maillink:focus-visible{outline:2px solid #ae350e;outline-offset:2px}
 .contact-enquiry-form.w-form{margin:0}
 .contact-enquiry-form form{margin:0}
@@ -58,7 +60,7 @@ a.eh-btn{cursor:pointer;-webkit-user-select:none;user-select:none;text-decoratio
 .contact-form-fields .w-input,.contact-form-fields .w-select{margin-bottom:0}
 .contact-form-consent .w-checkbox{display:contents}
 .contact-form-consent .w-checkbox-input{float:none;margin:.15rem 0 0}
-.contact-form-consent .w-form-label{display:none}
+.contact-form-consent .w-form-label,.contact-form-consent .w-checkbox::before,.contact-form-consent .w-checkbox::after{display:none}
 .contact-enquiry-form .w-form-done{margin-top:1.5rem;padding:1.5rem;background:#f4efe6;color:#343730;text-align:left;font-size:1rem;line-height:1.5}
 .contact-enquiry-form .w-form-fail{margin-top:1rem;padding:1rem;background:#fbe9e4;color:#ae350e;font-size:.875rem;line-height:1.5}
 @media (prefers-reduced-motion:reduce){.testimonials-track{transition:none}}
