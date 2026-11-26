@@ -23,7 +23,8 @@
     var ids = ['about', 'materials', 'wall-system', 'explore-clay', 'projects', 'contact'];
     var onScroll = function () {
       var hero = $('.hero');
-      var scrolled = window.scrollY >= (hero ? hero.offsetHeight : innerHeight) - 96;
+      // solid once the hero has (almost) left the screen, including after an anchor jump that stops at the section's scroll margin
+      var scrolled = hero ? hero.getBoundingClientRect().bottom <= header.offsetHeight + 40 : window.scrollY > 40;
       header.classList.toggle('is-scrolled', scrolled);
       if (logo) logo.src = scrolled ? LOGO_DARK : LOGO_WHITE;
       var y = window.scrollY + innerHeight * 0.35, cur = '';
@@ -63,6 +64,24 @@
     };
     if (b) { b.addEventListener('click', function () { if (art.classList.contains('is-active')) { art.classList.remove('is-active'); b.setAttribute('aria-expanded', 'false'); p && p.setAttribute('aria-hidden', 'true'); } else open(); });
       if (matchMedia('(hover: hover)').matches) art.addEventListener('mouseenter', open); }
+  });
+
+  // Deep links from the Materials menu (#material-preview-clay-board etc.): open that material and bring the section into view
+  var openMaterialFromHash = function () {
+    var h = location.hash;
+    if (h.indexOf('#material-preview-') !== 0) return;
+    var panel = document.getElementById(h.slice(1)), art = panel && panel.closest('article');
+    if (!art) return;
+    var b = $(':scope > .eh-btn', art);
+    if (b && !art.classList.contains('is-active')) b.click();
+    var sec = document.getElementById('materials');
+    if (sec) setTimeout(function () { sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 30);
+  };
+  openMaterialFromHash();
+  addEventListener('hashchange', openMaterialFromHash);
+  // clicking the same material twice does not fire hashchange
+  $$('a[href*="#material-preview-"]').forEach(function (a) {
+    a.addEventListener('click', function () { if (a.hash === location.hash && a.pathname === location.pathname) setTimeout(openMaterialFromHash, 0); });
   });
 
   // FAQ accordion
