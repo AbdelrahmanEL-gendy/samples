@@ -137,6 +137,18 @@ section{padding-bottom:88px}
 .rows li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
 .rows li span:last-child{color:var(--ink-2);text-align:right}
 
+.pfill{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-top:20px}
+html.deck #builder .panel{display:flex;flex-direction:column}
+html.deck .pfill{flex:1;min-height:0;aspect-ratio:auto}
+.pick{margin-top:20px;display:grid;gap:8px}
+.pdays{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.ptimes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:6px}
+.pc{min-height:44px;border-radius:var(--r-ctl);border:1px solid rgba(28,26,22,.18);background:#fff;font:500 14px var(--sans);color:var(--ink);cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.pc:hover{border-color:var(--ink-3)}
+.pc[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.pdays .pc{display:grid;line-height:1.2;padding:6px 0}
+.pdays .pc small{font-size:11px;font-weight:400;opacity:.7}
+#pbook:disabled{opacity:.5;cursor:default}
 /* Aside: registration + agent */
 aside{position:sticky;top:136px;align-self:start;display:grid;gap:12px}
 .reg{background:var(--card);border-radius:var(--r-panel);box-shadow:inset 0 0 0 1px var(--line),0 18px 40px -30px rgba(28,26,22,.4);padding:20px 22px}
@@ -218,6 +230,40 @@ footer{padding:0 32px 100px;max-width:1520px;margin:0 auto;font-size:12px;color:
   .mbar .btn{width:100%;padding:0 10px}
   footer{padding:0 16px 100px}
 }
+
+/* Deck mode: one screen, each section is a slide, like the reference */
+.stagebar{display:none}
+html.deck,html.deck body{height:100%;overflow:hidden}
+html.deck .shell{height:calc(100vh - 120px - 60px);padding:20px 32px 12px;grid-template-rows:minmax(0,1fr)}
+html.deck main{position:relative;height:100%;min-height:0}
+html.deck main section{position:absolute;inset:0 0 60px 0;overflow:auto;padding:0 4px 8px 0;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .3s ease-out,transform .45s var(--ease),visibility 0s linear .45s;scrollbar-width:thin}
+html.deck main section.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+html.deck main section.up{transform:translateY(-14px)}
+html.deck .lead{margin:4px 0 20px}
+html.deck .lead h1{font-size:clamp(44px,4.4vw,72px)}
+html.deck .bento{flex:1;min-height:0;grid-template-rows:minmax(0,auto) minmax(0,1fr)}
+html.deck .hero-photo{min-height:0}
+html.deck .thumbs img{aspect-ratio:auto;height:100%;max-height:200px}
+html.deck .head{margin-bottom:20px}
+html.deck .cols{grid-template-columns:repeat(5,1fr);flex:1;min-height:0}
+html.deck .col,html.deck .col:nth-child(4),html.deck .col:nth-child(5){grid-column:auto;display:flex;flex-direction:column}
+html.deck .col img,html.deck .col:nth-child(4) img,html.deck .col:nth-child(5) img{aspect-ratio:auto;flex:1;min-height:0;height:100%}
+html.deck .col .b{flex-direction:column;align-items:flex-start}
+html.deck .gal{flex:1;min-height:0;grid-template-rows:1fr 1fr}
+html.deck .split{flex:1;min-height:0}
+html.deck .split img{min-height:0}
+html.deck footer{padding:16px 0 0;margin:0}
+html.deck aside{position:static;height:100%;overflow:auto;scrollbar-width:none;align-content:start}
+html.deck .col h3{font-size:24px;white-space:nowrap}
+html.deck .stagebar{display:flex;align-items:center;gap:12px;position:absolute;left:0;right:0;bottom:0;height:52px}
+.stagebar .where{font-size:14px;color:var(--ink-2)}
+.stagebar .where b{color:var(--ink);font-weight:500}
+.stagebar .dots{display:flex;gap:6px;margin:0 auto}
+.stagebar .dots i{width:6px;height:6px;border-radius:50%;background:rgba(28,26,22,.2);transition:background-color .2s ease,width .2s var(--ease)}
+.stagebar .dots i.on{background:var(--ink);width:18px;border-radius:3px}
+.stagebar .btn{min-height:40px}
+.stagebar .btn:disabled{opacity:.4;cursor:default}
+@media (prefers-reduced-motion:reduce){html.deck main section{transition:none;transform:none}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .btn,.col,.lock,.tabs a,.seg label{transition:none}
@@ -361,14 +407,25 @@ footer{padding:0 32px 100px;max-width:1520px;margin:0 auto;font-size:12px;color:
           <li><span>Status</span><span>Officially launched, signing underway</span></li>
           <li><span>First closings</span><span>Spring 2028</span></li>
         </ul>
+        <img class="pfill" src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1000&q=70&auto=format&fit=crop" alt="Stone and brick home with a two-car garage" loading="lazy">
       </div>
       <div class="panel" id="book">
         <h3>Book a VIP appointment</h3>
         <p>Walk through plans, lots and incentives one to one, in person or on video. On the live page this is your Calendly, so bookings land in your calendar and CRM.</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px"><a class="btn btn-ink" href="#register">Request an appointment</a></div>
+        <div class="pick" id="pick" aria-label="Appointment times preview">
+          <div class="pdays" id="pdays"></div>
+          <div class="ptimes" id="ptimes"></div>
+          <button class="btn btn-ink" type="button" id="pbook" disabled>Pick a day and time</button>
+        </div>
       </div>
     </div>
   </section>
+  <div class="stagebar" aria-label="Slide controls">
+    <span class="where" id="where" aria-live="polite"></span>
+    <span class="dots" id="dots" aria-hidden="true"></span>
+    <button class="btn btn-line" type="button" id="prev"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Previous</button>
+    <button class="btn btn-ink" type="button" id="next">Next<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
 </main>
 
 <aside aria-label="VIP registration">
@@ -448,8 +505,60 @@ footer{padding:0 32px 100px;max-width:1520px;margin:0 auto;font-size:12px;color:
 
   // Tabs follow the section in view
   const links=[...document.querySelectorAll('.tabs a')];
-  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+en.target.id?'true':'false'))}}),{rootMargin:'-40% 0px -55% 0px'});
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&!document.documentElement.classList.contains('deck')){links.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+en.target.id?'true':'false'))}}),{rootMargin:'-40% 0px -55% 0px'});
   document.querySelectorAll('main section').forEach(s=>io.observe(s));
+
+
+  // Appointment picker preview
+  const pd=document.getElementById('pdays'),pt=document.getElementById('ptimes'),pb=document.getElementById('pbook');let dd=new Date(),c=0,sel={};
+  while(c<5){dd.setDate(dd.getDate()+1);if(dd.getDay()===0)continue;pd.insertAdjacentHTML('beforeend',`<button type="button" class="pc" aria-pressed="false" data-k="d" data-v="${dd.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'})}"><small>${dd.toLocaleDateString('en-CA',{weekday:'short'})}</small>${dd.getDate()}</button>`);c++}
+  ['10:00 am','11:30 am','1:00 pm','2:30 pm','4:00 pm','6:00 pm'].forEach(t=>pt.insertAdjacentHTML('beforeend',`<button type="button" class="pc" aria-pressed="false" data-k="t" data-v="${t}">${t}</button>`));
+  document.getElementById('pick').addEventListener('click',e=>{const b=e.target.closest('.pc');if(!b)return;b.parentElement.querySelectorAll('.pc').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');sel[b.dataset.k]=b.dataset.v;if(sel.d&&sel.t){pb.disabled=false;pb.textContent='Request '+sel.d+', '+sel.t}});
+  pb.addEventListener('click',()=>{pb.textContent='Requested. The agent confirms by text.';pb.disabled=true});
+  // Deck mode
+  const mq=matchMedia('(min-width:1181px) and (min-height:700px)');
+  const secs=[...document.querySelectorAll('main section')],names=links.map(a=>a.textContent.trim());
+  const where=document.getElementById('where'),dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next');
+  dots.innerHTML=secs.map(()=>'<i></i>').join('');
+  let cur=0,lock=0;
+  const foot=document.querySelector('footer'),footHome=foot.parentNode,footNext=foot.nextSibling;
+  function go(i){
+    i=Math.max(0,Math.min(secs.length-1,i));
+    secs.forEach((x,k)=>{x.classList.toggle('on',k===i);x.classList.toggle('up',k<i);x.inert=k!==i});
+    links.forEach((a,k)=>a.setAttribute('aria-current',k===i?'true':'false'));
+    [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+    where.innerHTML='<b>'+names[i]+'</b> &nbsp;'+(i+1)+' / '+secs.length;
+    prev.disabled=i===0;next.disabled=i===secs.length-1;
+    next.firstChild.textContent=i<secs.length-1?'Next: '+names[i+1]:'Next';
+    cur=i;secs[i].scrollTop=0;
+    try{history.replaceState(null,'','#'+secs[i].id)}catch(e){}
+  }
+  function setMode(){
+    const on=mq.matches;
+    document.documentElement.classList.toggle('deck',on);
+    if(on){secs[secs.length-1].appendChild(foot);const h=location.hash.slice(1);const k=secs.findIndex(x=>x.id===h);go(k<0?0:k)}
+    else{footHome.insertBefore(foot,footNext);secs.forEach(x=>{x.inert=false;x.classList.remove('on','up')})}
+  }
+  mq.addEventListener('change',setMode);setMode();
+  prev.addEventListener('click',()=>go(cur-1));next.addEventListener('click',()=>go(cur+1));
+  document.querySelector('main').addEventListener('wheel',e=>{
+    if(!mq.matches)return;const s=secs[cur],dn=e.deltaY>0;
+    const canScroll=dn?s.scrollTop+s.clientHeight<s.scrollHeight-2:s.scrollTop>0;
+    if(canScroll||Math.abs(e.deltaY)<8)return;
+    e.preventDefault();const t=Date.now();if(t-lock<900)return;lock=t;go(cur+(dn?1:-1));
+  },{passive:false});
+  document.addEventListener('keydown',e=>{
+    if(!mq.matches||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;
+    if(['ArrowDown','PageDown','ArrowRight'].includes(e.key)){e.preventDefault();go(cur+1)}
+    if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)){e.preventDefault();go(cur-1)}
+  });
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]');if(!a||!mq.matches)return;
+    const k=secs.findIndex(x=>'#'+x.id===a.getAttribute('href'));
+    if(k>-1){e.preventDefault();go(k)}
+    else if(a.getAttribute('href')==='#book'){e.preventDefault();go(secs.length-1)}
+  });
+
 })();
 </script>
 </body>

@@ -51,13 +51,28 @@ p{margin:0;text-wrap:pretty}
 .nav nav a:hover{color:var(--ink)}
 
 .hero{position:relative;margin:12px;border-radius:24px;overflow:hidden;min-height:min(820px,calc(100vh - 120px));display:flex;flex-direction:column;justify-content:space-between;color:#fff;isolation:isolate}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;z-index:-2}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,14,22,.6) 0%,rgba(20,14,22,.2) 50%,rgba(20,14,22,.5) 100%)}
-.hero .copy{padding:88px 56px 0;max-width:1000px}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(24,14,26,.72) 0%,rgba(24,14,26,.35) 38%,rgba(24,14,26,.05) 60%,rgba(24,14,26,.35) 100%)}
+.hero .copy{position:relative;z-index:1;padding:80px 56px 0;max-width:1000px}
 .hero h1{color:#fff;font-size:clamp(40px,5.2vw,76px);max-width:21ch}
 .hero .lede{font-size:18px;color:rgba(255,255,255,.88);max-width:50ch;margin:20px 0 32px}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.report{align-self:flex-end;margin:40px 32px 32px;width:min(460px,calc(100% - 64px));background:var(--white);color:var(--ink-2);border-radius:var(--r-panel);padding:20px 22px;box-shadow:0 30px 60px -24px rgba(10,6,12,.6)}
+
+/* Pins: each one is a booked inspection on a real roof */
+.pins{position:absolute;inset:0;z-index:0;pointer-events:none}
+.pin{position:absolute;transform:translate(-50%,-100%)}
+.pin i{display:block;width:14px;height:14px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(211,240,6,.28),0 2px 6px rgba(0,0,0,.4);margin:0 auto}
+.pin b{display:block;width:2px;height:12px;background:var(--lime);margin:2px auto 0;border-radius:1px}
+.pin span{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);white-space:nowrap;background:rgba(255,255,255,.96);color:var(--ink);font-size:12px;font-weight:500;padding:6px 10px;border-radius:8px;box-shadow:0 8px 20px -8px rgba(0,0,0,.45)}
+.pin span em{font-style:normal;color:var(--ink-3);font-weight:400}
+.pin{animation:drop .5s var(--ease) both}
+@keyframes drop{from{opacity:0;transform:translate(-50%,-140%)}to{opacity:1;transform:translate(-50%,-100%)}}
+.hero .count{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-size:14px;color:rgba(255,255,255,.88)}
+.hero .count b{font-weight:600;color:var(--lime);font-size:15px}
+@media (prefers-reduced-motion:reduce){.pin{animation:none}}
+@media (max-width:767px){.pin span{display:none}.pin.keep span{display:block}.pins .hide-m{display:none}}
+
+.report{position:relative;z-index:1;align-self:flex-end;margin:40px 32px 32px;width:min(460px,calc(100% - 64px));background:var(--white);color:var(--ink-2);border-radius:var(--r-panel);padding:20px 22px;box-shadow:0 30px 60px -24px rgba(10,6,12,.6)}
 .report header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
 .report header b{font-weight:500;font-size:15px;color:var(--ink)}
 .report header span{font-size:12px;color:var(--ink-3)}
@@ -209,7 +224,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <main id="top">
 <section class="hero">
-  <img src="https://images.unsplash.com/photo-1748701821466-0b9f8bf839ac?w=2400&q=80&auto=format&fit=crop" alt="A storm cloud building over a lone house on open land" fetchpriority="high">
+  <img src="https://images.unsplash.com/photo-1682666276895-cecc3d5a20d6?w=2400&q=80&auto=format&fit=crop" alt="Aerial view of a suburban neighbourhood at sunset" fetchpriority="high">
+  <div class="pins" aria-hidden="true">
+    <div class="pin" style="left:22%;top:72%;animation-delay:.25s"><i></i><b></b></div>
+    <div class="pin keep" style="left:34%;top:61%;animation-delay:.4s"><i></i><b></b><span>Inspection booked <em>Tue 9:00</em></span></div>
+    <div class="pin hide-m" style="left:47%;top:78%;animation-delay:.55s"><i></i><b></b></div>
+    <div class="pin hide-m" style="left:56%;top:58%;animation-delay:.7s"><i></i><b></b><span>Signed <em>$18,400 re-roof</em></span></div>
+    <div class="pin" style="left:63%;top:69%;animation-delay:.85s"><i></i><b></b></div>
+    <div class="pin hide-m" style="left:12%;top:83%;animation-delay:1s"><i></i><b></b><span>Inspection booked <em>Wed 2:30</em></span></div>
+    <div class="pin hide-m" style="left:41%;top:90%;animation-delay:1.15s"><i></i><b></b></div>
+  </div>
   <div class="copy">
     <h1>Booked roof inspections, not just leads</h1>
     <p class="lede">4Point runs the ads, the follow-up and the reporting for roofing companies doing $2M to $15M a year, and we're judged on the numbers you already watch.</p>
@@ -224,7 +248,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="rrow"><span>Cost per inspection</span><b class="num">$186</b><i>−$22 vs October</i></div>
     <div class="rrow"><span>Signed jobs</span><b class="num">16</b><i>34% close rate</i></div>
     <div class="rrow"><span>Revenue from ads</span><b class="num">$214,400</b><i>+18% vs October</i></div>
-    <div class="bars" aria-hidden="true"><span style="height:38%"></span><span style="height:45%"></span><span style="height:41%"></span><span style="height:56%"></span><span style="height:62%"></span><span style="height:70%"></span><span style="height:84%"></span></div>
     <small>Example figures for illustration</small>
   </aside>
 </section>
