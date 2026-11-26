@@ -28,7 +28,7 @@
       if (logo) logo.src = scrolled ? LOGO_DARK : LOGO_WHITE;
       var y = window.scrollY + innerHeight * 0.35, cur = '';
       ids.forEach(function (id) { var el = document.getElementById(id); if (el && y >= el.offsetTop) cur = id; });
-      $$('#primary-navigation > a').forEach(function (a) { var on = a.getAttribute('href') === '#' + cur; a.classList.toggle('is-active', on); });
+      $$('#primary-navigation > a').forEach(function (a) { var on = !!cur && a.getAttribute('href') === '#' + cur; a.classList.toggle('is-active', on); });
     };
     onScroll(); addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll);
   }
