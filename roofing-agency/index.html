@@ -5,347 +5,347 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>4Point Marketing · homepage (sample)</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="Sample homepage concept for a marketing agency that works with established roofing companies.">
+<meta name="description" content="Sample homepage for 4Point Marketing, a marketing agency for roofing companies doing $2M to $15M a year.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,700;62..125,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0e1113;--bg-2:#161a1d;--bg-3:#1f2427;--line:#2c3236;--ink:#f2efe9;--ink-2:#a9b0b4;
-  --orange:#ff6b2c;--orange-2:#e9551a;--paper:#f2efe9;--paper-ink:#121517;
-  --r:12px;--wrap:1200px;
-  --disp:"Archivo",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif;
+  --plum:#331f33;--plum-2:#432c43;--on-plum:#f4eff4;--on-plum-2:#c6b8c6;
+  --ink:#1f1720;--ink-2:#4b4350;--ink-3:#736b78;
+  --white:#fff;--mist:#f3f6f7;--line:rgba(31,23,32,.1);
+  --lime:#d3f006;--lime-2:#c2dd05;--chalk:#3b82c4;
+  --r-ctl:10px;--r-panel:20px;
+  --ease:cubic-bezier(.23,1,.32,1);
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--white);color:var(--ink-2);font:16px/1.6 "Inter",system-ui,sans-serif;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+::selection{background:var(--lime);color:var(--ink)}
 img{display:block;max-width:100%}
 a{color:inherit}
-h1,h2,h3{font-family:var(--disp);font-stretch:88%;font-weight:800;line-height:1.02;margin:0;letter-spacing:-.015em;text-wrap:balance}
-p{text-wrap:pretty}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:10px;font:600 15px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:background-color .15s ease,transform .15s ease}
+h1,h2,h3{color:var(--ink);font-weight:500;margin:0;line-height:1.08;letter-spacing:-.04em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.num{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--chalk);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:0;font:500 15px/1 "Inter",sans-serif;letter-spacing:-.01em;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .15s ease,transform .15s var(--ease),box-shadow .15s ease}
 .btn:active{transform:scale(.97)}
-.btn-o{background:var(--orange);color:#111}
-.btn-o:hover{background:#ff8550}
-.btn-line{box-shadow:inset 0 0 0 1px #4a5257;color:var(--ink)}
-.btn-line:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-lime{background:var(--lime);color:var(--ink)}
+.btn-lime:hover{background:var(--lime-2)}
+.btn-glass{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.btn-glass:hover{box-shadow:inset 0 0 0 1px #fff}
+.btn-plum{background:var(--plum);color:var(--on-plum)}
+.btn-plum:hover{background:var(--plum-2)}
 
-/* Nav */
-.nav{position:sticky;top:0;z-index:30;background:rgba(14,17,19,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:30px;height:72px}
-.logo{display:flex;align-items:center;gap:10px;font:800 19px var(--disp);font-stretch:95%;text-decoration:none}
-.logo svg{width:30px;height:30px}
-.nav nav{display:flex;gap:26px;margin-left:auto;font-size:14px}
-.nav nav a{text-decoration:none;color:var(--ink-2);padding:8px 0}
+.note{background:var(--plum);color:var(--on-plum-2);font-size:13px;text-align:center;padding:9px 16px}
+.note b{color:var(--on-plum);font-weight:500}
+.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:32px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
+.logo svg{width:28px;height:28px}
+.nav nav{display:flex;gap:28px;margin-left:auto;font-size:15px}
+.nav nav a{text-decoration:none;color:var(--ink-2);padding:8px 0;transition:color .15s ease}
 .nav nav a:hover{color:var(--ink)}
-.nav .btn{min-height:44px;padding:0 20px}
 
-/* Hero */
-.hero{padding:88px 0 0;position:relative;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.tag{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--ink-2);margin-bottom:22px}
-.tag i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
-.hero h1{font-size:clamp(40px,4.6vw,66px);max-width:19ch}
-.hero h1 span{color:var(--orange)}
-.hero .lede{font-size:19px;color:var(--ink-2);max-width:48ch;margin:24px 0 32px}
+.hero{position:relative;margin:12px;border-radius:24px;overflow:hidden;min-height:min(820px,calc(100vh - 120px));display:flex;flex-direction:column;justify-content:space-between;color:#fff;isolation:isolate}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,14,22,.6) 0%,rgba(20,14,22,.2) 50%,rgba(20,14,22,.5) 100%)}
+.hero .copy{padding:88px 56px 0;max-width:1000px}
+.hero h1{color:#fff;font-size:clamp(40px,5.2vw,76px);max-width:21ch}
+.hero .lede{font-size:18px;color:rgba(255,255,255,.88);max-width:50ch;margin:20px 0 32px}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.hero .for{margin-top:28px;font-size:14px;color:var(--ink-2)}
-.hero .for b{color:var(--ink);font-weight:600}
-.shot{position:relative}
-.shot img{border-radius:16px;aspect-ratio:4/5;object-fit:cover;width:100%;filter:saturate(.85) contrast(1.05)}
-.board{position:absolute;left:-36px;bottom:36px;background:var(--paper);color:var(--paper-ink);border-radius:14px;padding:18px 20px;width:270px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
-.board small{display:block;font-size:12px;color:#5b6266;margin-bottom:10px}
-.board .row{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-top:1px solid #dcd7cd}
-.board .row b{font-family:var(--disp);font-size:16px}
-.board .row:first-of-type{border-top:0}
+.report{align-self:flex-end;margin:40px 32px 32px;width:min(460px,calc(100% - 64px));background:var(--white);color:var(--ink-2);border-radius:var(--r-panel);padding:20px 22px;box-shadow:0 30px 60px -24px rgba(10,6,12,.6)}
+.report header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.report header b{font-weight:500;font-size:15px;color:var(--ink)}
+.report header span{font-size:12px;color:var(--ink-3)}
+.rrow{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.rrow:first-of-type{border-top:0}
+.rrow b{font-weight:500;font-size:20px;letter-spacing:-.03em;color:var(--ink)}
+.rrow i{font-style:normal;font-size:12px;color:#2f7a3d;min-width:96px;text-align:right}
+.bars{display:flex;align-items:flex-end;gap:6px;height:56px;margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+.bars span{flex:1;background:#e7e2e8;border-radius:3px 3px 0 0}
+.bars span:last-child{background:var(--plum)}
+.report small{display:block;font-size:12px;color:var(--ink-3);margin-top:8px}
 
-/* Pain strip */
-.strip{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
-.strip div.q{padding:30px 28px 30px 0;font-size:17px;color:var(--ink-2)}
-.strip div.q+div.q{padding-left:28px;border-left:1px solid var(--line)}
-.strip div.q b{display:block;font:700 20px/1.25 var(--disp);font-stretch:92%;color:var(--ink);margin-bottom:6px}
+.chalk{display:block;height:6px;width:120px;margin:18px 0 0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'%3E%3Cpath d='M1 3.2 C20 2.4 40 3.9 60 3 S100 2.3 119 3.4' stroke='%233b82c4' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat}
 
-/* Sections */
-section{scroll-margin-top:80px}
-.sec{padding:112px 0}
-.head{max-width:760px;margin-bottom:52px}
-.head h2{font-size:clamp(36px,4.4vw,60px)}
-.head p{color:var(--ink-2);font-size:18px;margin:18px 0 0;max-width:56ch}
+.pipe{padding:96px 0 40px}
+.pipe h2{font-size:clamp(30px,3.2vw,44px);max-width:22ch}
+.stages{display:grid;grid-template-columns:repeat(4,1fr);margin-top:48px;position:relative}
+.stages::before{content:"";position:absolute;left:0;right:0;top:9px;height:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 4' preserveAspectRatio='none'%3E%3Cpath d='M0 2.2 C80 1.4 160 2.9 240 2 S340 1.4 400 2.4' stroke='%233b82c4' stroke-width='2' fill='none'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
+.stage{position:relative;padding:36px 24px 0 0}
+.stage::before{content:"";position:absolute;top:4px;left:0;width:12px;height:12px;border-radius:50%;background:var(--white);box-shadow:inset 0 0 0 2px var(--chalk)}
+.stage h3{font-size:20px;letter-spacing:-.03em}
+.stage p{font-size:15px;margin-top:8px;max-width:30ch}
+.stage .tag{display:block;font-size:13px;color:var(--ink-3);margin-top:12px}
 
-/* Calculator */
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
-.calc .in{padding:36px;background:var(--bg-2);display:grid;gap:26px}
-.calc .out{padding:36px;background:var(--paper);color:var(--paper-ink);display:flex;flex-direction:column}
-.field label{display:flex;justify-content:space-between;font-size:15px;font-weight:500;margin-bottom:10px}
-.field output{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--orange)}
-input[type=range]{width:100%;accent-color:var(--orange);height:28px;cursor:pointer}
-.out small{font-size:14px;color:#5b6266}
-.big{font:800 clamp(44px,5.4vw,72px)/1 var(--disp);font-stretch:85%;margin:8px 0 6px;letter-spacing:-.02em}
-.out .line{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid #d6d0c5;font-size:15px}
-.out .line b{font-family:var(--disp)}
+.statement{padding:64px 0 104px}
+.statement p{font-size:clamp(24px,2.6vw,36px);line-height:1.3;letter-spacing:-.03em;color:var(--ink);max-width:32ch;font-weight:500}
+.statement p span{color:var(--ink-3)}
+
+.mist{background:var(--mist);padding:104px 0;border-radius:28px;margin:0 12px}
+.sv{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.sv h2{font-size:clamp(32px,3.6vw,48px);max-width:14ch}
+.sv .intro{margin-top:16px;max-width:38ch}
+.sv .photo{margin-top:32px;border-radius:var(--r-panel);overflow:hidden;aspect-ratio:4/3}
+.sv .photo img{width:100%;height:100%;object-fit:cover}
+.item{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:24px 0;border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.item .ic{width:40px;height:40px;border-radius:var(--r-ctl);background:var(--white);display:grid;place-items:center;color:var(--plum)}
+.item .ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5}
+.item h3{font-size:20px;letter-spacing:-.03em}
+.item p{font-size:15px;margin-top:6px}
+
+.calc-sec{background:var(--plum);color:var(--on-plum-2);margin:12px;border-radius:28px;padding:104px 0}
+.calc-sec h2{color:var(--on-plum);font-size:clamp(32px,3.6vw,48px);max-width:18ch}
+.calc-sec .intro{max-width:52ch;margin-top:16px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px}
+.in{background:var(--plum-2);border-radius:var(--r-panel);padding:28px;display:grid;gap:24px}
+.field label{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--on-plum);margin-bottom:10px}
+.field output{font-weight:500;color:var(--lime)}
+input[type=range]{width:100%;accent-color:var(--lime);height:28px;cursor:pointer}
+.out{background:var(--white);color:var(--ink-2);border-radius:var(--r-panel);padding:28px;display:flex;flex-direction:column}
+.out small{font-size:14px}
+.big{font-size:clamp(48px,5.6vw,80px);line-height:1;letter-spacing:-.05em;color:var(--ink);font-weight:500;margin:10px 0 18px}
+.line{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
+.line b{color:var(--ink);font-weight:500}
 .out .btn{margin-top:auto;align-self:flex-start}
-.out .note{font-size:12px;color:#5b6266;margin:14px 0 0}
+.out .fine{font-size:12px;color:var(--ink-3);margin-top:12px}
 
-/* Services: system steps */
-.sys{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
-.step{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:26px}
-.step .k{font:700 13px var(--sans);color:var(--orange);margin-bottom:40px;display:block}
-.step h3{font-size:24px;font-stretch:92%}
-.step p{color:var(--ink-2);font-size:15px;margin:10px 0 0}
+.fit{padding:104px 0}
+.fit h2{font-size:clamp(32px,3.6vw,48px);max-width:16ch}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.cols>div{border-radius:var(--r-panel);padding:28px;box-shadow:inset 0 0 0 1px var(--line)}
+.cols>div:first-child{background:var(--mist);box-shadow:none}
+.cols h3{font-size:22px;margin-bottom:12px}
+.cols ul{list-style:none;padding:0;margin:0}
+.cols li{display:flex;gap:10px;padding:8px 0;font-size:15px}
+.cols li svg{flex:none;width:18px;height:18px;margin-top:3px;fill:none;stroke-width:1.8}
 
-/* Proof: whole card is a link */
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.case{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .2s ease,transform .2s ease-out}
-.case:hover{border-color:#5a6267;transform:translateY(-3px)}
-.case img{aspect-ratio:16/10;object-fit:cover;width:100%;filter:saturate(.8)}
-.case .b{padding:22px}
-.case .metric{font:800 40px/1 var(--disp);font-stretch:85%;color:var(--orange)}
-.case p{color:var(--ink-2);font-size:15px;margin:8px 0 14px}
-.case a{font-weight:600;font-size:14px;text-decoration:none}
-.case a::after{content:"";position:absolute;inset:0}
-.ph{display:inline-block;font-size:11px;font-weight:600;color:#111;background:#ffd2bd;border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.book{padding:0 0 104px}
+.book .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.book h2{font-size:clamp(32px,3.6vw,48px);max-width:14ch}
+.book .intro{margin-top:16px;max-width:40ch}
+.book .hint{font-size:14px;color:var(--ink-3);margin-top:16px;max-width:42ch}
+.ghl{border-radius:var(--r-panel);box-shadow:inset 0 0 0 1px var(--line),0 24px 48px -32px rgba(31,23,32,.35);padding:24px}
+.ghl .top{display:flex;justify-content:space-between;font-weight:500;color:var(--ink);margin-bottom:12px}
+.ghl .top span{font-weight:400;font-size:13px;color:var(--ink-3)}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.chip{min-height:44px;border-radius:var(--r-ctl);border:1px solid var(--line);background:var(--white);font:500 14px "Inter",sans-serif;color:var(--ink);cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.chip:hover{border-color:var(--ink-3)}
+.chip[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--on-plum)}
+form{display:grid;gap:10px;margin-top:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label.f{display:grid;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2)}
+input:not([type=range]),select{font:16px "Inter",sans-serif;color:var(--ink);min-height:46px;padding:0 14px;border-radius:var(--r-ctl);border:1px solid rgba(31,23,32,.2);background:#fff}
+input:not([type=range]):focus,select:focus{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px rgba(51,31,51,.15)}
+.err{font-size:13px;color:#a12a1f;font-weight:500}
+.done{text-align:center;padding:40px 12px}
+.done h3{font-size:28px}
+.done p{margin-top:8px}
 
-/* Fit */
-.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.fit div{border-radius:var(--r);padding:30px;border:1px solid var(--line)}
-.fit .yes{background:var(--bg-2)}
-.fit h3{font-size:24px;font-stretch:92%;margin-bottom:14px}
-.fit ul{margin:0;padding-left:20px;color:var(--ink-2)}
-.fit li{margin:8px 0}
-
-/* Book */
-.book{background:var(--paper);color:var(--paper-ink)}
-.book .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
-.book h2{font-size:clamp(36px,4.4vw,60px)}
-.book p{color:#454c50;font-size:17px}
-.ghl{background:#fff;border:1px solid #d6d0c5;border-radius:16px;padding:26px}
-.ghl .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-weight:600}
-.ghl .top span{font-size:12px;font-weight:500;color:#5b6266}
-.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
-.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.chip{min-height:44px;border-radius:10px;border:1px solid #d6d0c5;background:#f7f5f1;font:500 14px var(--sans);cursor:pointer;color:var(--paper-ink)}
-.chip:hover{border-color:var(--orange-2)}
-.chip[aria-pressed="true"]{background:var(--paper-ink);color:#fff;border-color:var(--paper-ink)}
-.ghl form{display:grid;gap:12px;margin-top:18px}
-.ghl label{display:grid;gap:6px;font-size:14px;font-weight:500}
-.ghl input,.ghl select{font:16px var(--sans);min-height:48px;padding:0 14px;border:1px solid #b9b2a6;border-radius:10px;color:var(--paper-ink);background:#fff}
-.ghl .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.err{color:#a1281c;font-size:13px;font-weight:600;margin:0}
-.done{text-align:center;padding:30px 10px}
-.done h3{font-size:30px}
-
-footer{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color:var(--ink-2)}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:13px;color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media (max-width:991px){
-  .hero .wrap,.calc,.book .wrap{grid-template-columns:1fr}
-  .shot{max-width:520px}
-  .board{left:16px}
-  .sys{grid-template-columns:1fr 1fr}
-  .cases{grid-template-columns:1fr 1fr}
   .nav nav{display:none}
   .nav .btn{margin-left:auto}
+  .hero .copy{padding:64px 32px 0}
+  .report{align-self:stretch;margin:32px;width:auto}
+  .stages{grid-template-columns:1fr 1fr;row-gap:40px}
+  .stages::before{display:none}
+  .sv,.calc,.book .grid{grid-template-columns:1fr}
 }
 @media (max-width:767px){
   .wrap{padding:0 16px}
-  .hero{padding-top:56px}
-  .sec{padding:76px 0}
-  .strip .wrap{grid-template-columns:1fr}
-  .strip div.q,.strip div.q+div.q{padding:22px 0;border-left:0}
-  .strip div.q+div.q{border-top:1px solid var(--line)}
-  .sys,.cases,.fit{grid-template-columns:1fr}
-  .calc .in,.calc .out{padding:24px}
-  .days{grid-template-columns:repeat(3,1fr)}
-  .ghl .two{grid-template-columns:1fr}
-  .board{position:relative;left:auto;bottom:auto;margin:-60px 16px 0;width:auto}
-  .nav .btn{padding:0 14px;font-size:14px;white-space:nowrap}
-  .logo{white-space:nowrap;font-size:17px}
+  .note{font-size:12px}
+  .nav .wrap{height:64px;gap:12px}
+  .logo{font-size:16px}
+  .nav .btn{min-height:44px;padding:0 14px;font-size:14px}
   .hide-s{display:none}
-  .strip{margin-top:64px}
+  .hero{margin:8px;border-radius:18px;min-height:auto}
+  .hero .copy{padding:48px 20px 0}
+  .hero .ctas .btn{flex:1}
+  .report{margin:28px 12px 12px;padding:16px}
+  .rrow{grid-template-columns:1fr auto}
+  .rrow i{display:none}
+  .bars{display:none}
+  .pipe{padding:72px 0 24px}
+  .stages{grid-template-columns:1fr}
+  .statement{padding:40px 0 72px}
+  .mist,.calc-sec{margin:8px;border-radius:18px;padding:72px 0}
+  .in,.out{padding:20px}
+  .cols,.two{grid-template-columns:1fr}
+  .fit{padding:72px 0}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .book{padding-bottom:72px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .btn,.case{transition:none}
+  .btn,.chip,.nav nav a{transition:none}
 }
 </style>
 </head>
 <body>
 
+<div class="note"><b>Now booking Q1 strategy calls.</b> We work with a limited number of roofing companies in each metro.</div>
+
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="4Point Marketing home">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#ff6b2c"/><path d="M6 19L16 9l10 10" fill="none" stroke="#111" stroke-width="3.2" stroke-linejoin="round"/><path d="M11 24h10" stroke="#111" stroke-width="3.2"/></svg>
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#331f33"/><path d="M6 17l8-8 8 8" fill="none" stroke="#d3f006" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 21h8" stroke="#d3f006" stroke-width="2.4" stroke-linecap="round"/></svg>
       4Point Marketing
     </a>
     <nav aria-label="Main">
-      <a href="#math">The math</a><a href="#system">How we work</a><a href="#results">Results</a><a href="#fit">Who it's for</a>
+      <a href="#how">How it works</a><a href="#services">Services</a><a href="#math">Run your numbers</a><a href="#fit">Who it's for</a>
     </nav>
-    <a class="btn btn-o" href="#book">Book a<span class="hide-s">&nbsp;strategy</span>&nbsp;call</a>
+    <a class="btn btn-lime" href="#book"><span>Book a<span class="hide-s"> strategy</span> call</span></a>
   </div>
 </header>
 
 <main id="top">
 <section class="hero">
-  <div class="wrap">
-    <div>
-      <div class="tag"><i></i>Marketing for roofing companies doing $2M to $15M+</div>
-      <h1>More booked inspections. <span>Fewer</span> tire‑kickers.</h1>
-      <p class="lede">We run the ads, the follow-up and the reporting for established roofing companies, and we measure ourselves the way you do: cost per inspection, close rate and revenue per job.</p>
-      <div class="ctas">
-        <a class="btn btn-o" href="#book">Book a strategy call</a>
-        <a class="btn btn-line" href="#math">Run your numbers</a>
-      </div>
-      <p class="for">Built for owners with <b>crews to keep busy</b>, not startups looking for their first lead.</p>
-    </div>
-    <div class="shot">
-      <img src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1200&q=80&auto=format&fit=crop" alt="A roofer fastening shingles on a residential roof with a power drill">
-      <div class="board" aria-label="Example weekly report">
-        <small>Weekly report, every Monday</small>
-        <div class="row"><span>Booked inspections</span><b>XX</b></div>
-        <div class="row"><span>Cost per inspection</span><b>$XXX</b></div>
-        <div class="row"><span>Closed jobs</span><b>XX</b></div>
-        <div class="row"><span>Revenue from ads</span><b>$XXX,XXX</b></div>
-      </div>
+  <img src="https://images.unsplash.com/photo-1748701821466-0b9f8bf839ac?w=2400&q=80&auto=format&fit=crop" alt="A storm cloud building over a lone house on open land" fetchpriority="high">
+  <div class="copy">
+    <h1>Booked roof inspections, not just leads</h1>
+    <p class="lede">4Point runs the ads, the follow-up and the reporting for roofing companies doing $2M to $15M a year, and we're judged on the numbers you already watch.</p>
+    <div class="ctas">
+      <a class="btn btn-lime" href="#book">Book a strategy call</a>
+      <a class="btn btn-glass" href="#math">Run your numbers</a>
     </div>
   </div>
-  <div class="strip">
-    <div class="wrap">
-      <div class="q"><b>Leads that never pick up.</b>Shared leads sold to five roofers at once burn your sales team's day.</div>
-      <div class="q"><b>Reports full of clicks.</b>Impressions and CTR don't tell you whether a crew is booked next month.</div>
-      <div class="q"><b>Storm-season whiplash.</b>Feast after hail, famine in the off-season, and no plan for either.</div>
+  <aside class="report" aria-label="Sample Monday report">
+    <header><b>Monday report</b><span>Sample, November</span></header>
+    <div class="rrow"><span>Booked inspections</span><b class="num">47</b><i>+9 vs October</i></div>
+    <div class="rrow"><span>Cost per inspection</span><b class="num">$186</b><i>−$22 vs October</i></div>
+    <div class="rrow"><span>Signed jobs</span><b class="num">16</b><i>34% close rate</i></div>
+    <div class="rrow"><span>Revenue from ads</span><b class="num">$214,400</b><i>+18% vs October</i></div>
+    <div class="bars" aria-hidden="true"><span style="height:38%"></span><span style="height:45%"></span><span style="height:41%"></span><span style="height:56%"></span><span style="height:62%"></span><span style="height:70%"></span><span style="height:84%"></span></div>
+    <small>Example figures for illustration</small>
+  </aside>
+</section>
+
+<section class="pipe" id="how">
+  <div class="wrap">
+    <h2>We follow every lead until it's a signed job</h2>
+    <span class="chalk" aria-hidden="true"></span>
+    <div class="stages">
+      <div class="stage"><h3>Exclusive demand</h3><p>Google, Local Services and Meta campaigns in your service area, never shared with another roofer.</p><span class="tag">Measured as cost per lead</span></div>
+      <div class="stage"><h3>Speed to lead</h3><p>A text inside a minute, and every enquiry lands in GoHighLevel with its source attached.</p><span class="tag">Measured as reply time</span></div>
+      <div class="stage"><h3>Booked inspection</h3><p>Follow-up and reminders that put homeowners on your calendar and cut no-shows.</p><span class="tag">Measured as cost per inspection</span></div>
+      <div class="stage"><h3>Signed job</h3><p>Closed revenue tied back to the campaign that produced it, so you know what each roof is worth.</p><span class="tag">Measured as revenue from ads</span></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="math">
+<section class="statement">
   <div class="wrap">
-    <div class="head">
-      <h2>Run your own numbers before you talk to anyone.</h2>
-      <p>Move the sliders to your real figures. This is the same math we use on the first call, so you know what a realistic goal looks like.</p>
+    <p>Most agencies hand over a lead and call it a win. <span>We stay on it until a crew is on the roof, because that's the number that pays your payroll.</span></p>
+  </div>
+</section>
+
+<section class="mist" id="services">
+  <div class="wrap sv">
+    <div>
+      <h2>Everything between the ad and the contract</h2>
+      <p class="intro">One team for the whole path, so nothing falls between an ad agency, a call centre and a CRM consultant.</p>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1200&q=75&auto=format&fit=crop" alt="A roofer fastening shingles on a steep residential roof" loading="lazy"></div>
     </div>
+    <div>
+      <div class="item"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><div><h3>Google Ads and Local Services</h3><p>Search campaigns for replacement and storm keywords, plus Local Services profile management so you show up with the Google Guaranteed badge.</p></div></div>
+      <div class="item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div><div><h3>Meta campaigns</h3><p>Homeowner campaigns that run steady through the off-season and scale up when hail hits your area.</p></div></div>
+      <div class="item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h4l3-7 4 14 3-7h2"/></svg></div><div><h3>GoHighLevel setup and follow-up</h3><p>Pipelines, text and email sequences, missed-call text back and calendar reminders, built for how your sales team works.</p></div></div>
+      <div class="item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div><div><h3>Revenue reporting</h3><p>One Monday report: inspections, cost per inspection, signed jobs and revenue from ads, in numbers your office manager can check.</p></div></div>
+      <div class="item"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div><div><h3>Websites and landing pages</h3><p>Fast pages for each service and city, with the inspection form above the fold and tested end to end.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-sec" id="math">
+  <div class="wrap">
+    <h2>Run your own numbers before you talk to anyone</h2>
+    <p class="intro">Move the sliders to your real figures. It's the same math we use on the first call, so you know what a realistic goal looks like.</p>
     <div class="calc">
       <div class="in">
-        <div class="field"><label for="leads">Booked inspections per month <output id="oLeads"></output></label><input id="leads" type="range" min="10" max="200" step="5" value="60"></div>
-        <div class="field"><label for="close">Close rate <output id="oClose"></output></label><input id="close" type="range" min="10" max="60" step="1" value="30"></div>
-        <div class="field"><label for="ticket">Average job value <output id="oTicket"></output></label><input id="ticket" type="range" min="5000" max="40000" step="500" value="14000"></div>
-        <div class="field"><label for="lift">Extra inspections from better marketing <output id="oLift"></output></label><input id="lift" type="range" min="0" max="100" step="5" value="25"></div>
+        <div class="field"><label for="leads">Booked inspections per month <output id="oLeads" class="num"></output></label><input id="leads" type="range" min="10" max="200" step="5" value="60"></div>
+        <div class="field"><label for="close">Close rate <output id="oClose" class="num"></output></label><input id="close" type="range" min="10" max="60" step="1" value="30"></div>
+        <div class="field"><label for="ticket">Average job value <output id="oTicket" class="num"></output></label><input id="ticket" type="range" min="5000" max="40000" step="500" value="14000"></div>
+        <div class="field"><label for="lift">Extra inspections from better marketing <output id="oLift" class="num"></output></label><input id="lift" type="range" min="0" max="100" step="5" value="25"></div>
       </div>
       <div class="out" aria-live="polite">
         <small>Added revenue per year at your close rate</small>
-        <div class="big" id="oBig"></div>
-        <div class="line"><span>Extra inspections a month</span><b id="oExtra"></b></div>
-        <div class="line"><span>Extra jobs a month</span><b id="oJobs"></b></div>
-        <div class="line"><span>Revenue today, per year</span><b id="oNow"></b></div>
-        <a class="btn btn-o" href="#book" style="margin-top:24px">Talk through these numbers</a>
-        <p class="note">An estimate from your own inputs, not a promise of results.</p>
+        <div class="big num" id="oBig"></div>
+        <div class="line"><span>Extra inspections a month</span><b class="num" id="oExtra"></b></div>
+        <div class="line"><span>Extra signed jobs a month</span><b class="num" id="oJobs"></b></div>
+        <div class="line"><span>Revenue today, per year</span><b class="num" id="oNow"></b></div>
+        <a class="btn btn-plum" href="#book" style="margin-top:24px">Talk through these numbers</a>
+        <p class="fine">An estimate from your own inputs, not a promise of results.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="system" style="padding-top:0">
+<section class="fit" id="fit">
   <div class="wrap">
-    <div class="head">
-      <h2>One system, from the first ad to the signed contract.</h2>
-      <p>Most agencies stop at the lead. The money is lost after it, so that's where we spend most of our time.</p>
-    </div>
-    <div class="sys">
-      <div class="step"><span class="k">Step one</span><h3>Exclusive demand</h3><p>Google, Local Services and Meta campaigns aimed at homeowners in your service area, never shared with other roofers.</p></div>
-      <div class="step"><span class="k">Step two</span><h3>Speed to lead</h3><p>Every enquiry gets a text in under a minute and lands in your GoHighLevel pipeline with its source attached.</p></div>
-      <div class="step"><span class="k">Step three</span><h3>Booked, not just called</h3><p>Follow-up sequences and reminders that turn enquiries into inspections on your calendar, and cut no-shows.</p></div>
-      <div class="step"><span class="k">Step four</span><h3>Revenue reporting</h3><p>Closed jobs tied back to the ad that produced them, so you know what each inspection is really worth.</p></div>
+    <h2>Built for established roofers</h2>
+    <div class="cols">
+      <div><h3>A good fit</h3><ul>
+        <li><svg viewBox="0 0 24 24" stroke="#2f7a3d" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>$2M to $15M+ in annual revenue</li>
+        <li><svg viewBox="0 0 24 24" stroke="#2f7a3d" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Crews and a sales process already in place</li>
+        <li><svg viewBox="0 0 24 24" stroke="#2f7a3d" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Ready to spend on ads and wants to see the return</li>
+        <li><svg viewBox="0 0 24 24" stroke="#2f7a3d" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Uses a CRM, or will let us set up GoHighLevel</li>
+      </ul></div>
+      <div><h3>Probably not yet</h3><ul>
+        <li><svg viewBox="0 0 24 24" stroke="#736b78" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Still finding your first customers</li>
+        <li><svg viewBox="0 0 24 24" stroke="#736b78" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Shopping for the cheapest leads, not booked jobs</li>
+        <li><svg viewBox="0 0 24 24" stroke="#736b78" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>No one free to call leads back the same day</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="results" style="padding-top:0">
-  <div class="wrap">
-    <div class="head">
-      <h2>Results from roofers like you.</h2>
-      <p>Real numbers from current clients go here. One honest figure does more than any design choice on this page.</p>
-    </div>
-    <div class="cases">
-      <article class="case">
-        <img src="https://images.unsplash.com/photo-1726589004565-bedfba94d3a2?w=1000&q=70&auto=format&fit=crop" alt="A roofer working on a pitched roof" loading="lazy">
-        <div class="b"><div class="metric">+XX%<span class="ph">placeholder</span></div><p>Booked inspections for a [City] residential roofer in [X] months.</p><a href="#book">Ask about this result</a></div>
-      </article>
-      <article class="case">
-        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1000&q=70&auto=format&fit=crop" alt="A roofer standing on the roof of a house" loading="lazy">
-        <div class="b"><div class="metric">$XXX<span class="ph">placeholder</span></div><p>Cost per booked inspection, down from $XXX, for a [State] storm-restoration company.</p><a href="#book">Ask about this result</a></div>
-      </article>
-      <article class="case">
-        <img src="https://images.unsplash.com/photo-1755114203680-d39d95efa82c?w=1000&q=70&auto=format&fit=crop" alt="Aerial view of a suburban house with a grey roof" loading="lazy">
-        <div class="b"><div class="metric">$X.XM<span class="ph">placeholder</span></div><p>Revenue tracked to ads in year one for a [City] roofing and exteriors firm.</p><a href="#book">Ask about this result</a></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="fit" style="padding-top:0">
-  <div class="wrap">
-    <div class="head"><h2>Who we're a fit for.</h2></div>
-    <div class="fit">
-      <div class="yes"><h3>A good fit</h3><ul><li>$2M to $15M+ in annual revenue</li><li>Crews and a sales process already in place</li><li>Ready to spend on ads to grow, and wants to see the return</li><li>Uses a CRM, or will let us set GoHighLevel up</li></ul></div>
-      <div><h3>Probably not yet</h3><ul><li>Just starting out, still finding the first customers</li><li>Looking for the cheapest leads, not booked jobs</li><li>No one available to call leads back the same day</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec book" id="book">
-  <div class="wrap">
+<section class="book" id="book">
+  <div class="wrap grid">
     <div>
-      <h2>Book a 30-minute strategy call.</h2>
-      <p>Bring your numbers. You'll leave with a realistic target for inspections and cost per job, whether or not we work together.</p>
-      <p style="font-size:14px;color:#5b6266">On the live site this panel is your GoHighLevel calendar and form, so every booking lands in your pipeline with its source.</p>
+      <h2>Book a 30-minute strategy call</h2>
+      <p class="intro">Bring your numbers. You'll leave with a realistic target for inspections and cost per job, whether or not we work together.</p>
+      <p class="hint">On the live site this panel is your GoHighLevel calendar and form, so every booking lands in your pipeline with its source.</p>
     </div>
     <div class="ghl" id="ghl">
       <div class="top">Pick a time <span>Central time</span></div>
       <div class="days" id="days"></div>
       <div class="slots" id="slots"></div>
       <form id="bookForm" novalidate>
-        <div class="two">
-          <label>Name<input name="name" autocomplete="name"></label>
-          <label>Company<input name="company" autocomplete="organization"></label>
-        </div>
-        <div class="two">
-          <label>Email<input name="email" type="email" autocomplete="email"></label>
-          <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
-        </div>
-        <label>Annual revenue
-          <select name="rev"><option value="">Choose a range</option><option>Under $2M</option><option>$2M to $5M</option><option>$5M to $15M</option><option>$15M+</option></select>
-        </label>
+        <div class="two"><label class="f">Name<input name="name" autocomplete="name"></label><label class="f">Company<input name="company" autocomplete="organization"></label></div>
+        <div class="two"><label class="f">Email<input name="email" type="email" autocomplete="email"></label><label class="f">Phone<input name="phone" type="tel" autocomplete="tel"></label></div>
+        <label class="f">Annual revenue<select name="rev"><option value="">Choose a range</option><option>Under $2M</option><option>$2M to $5M</option><option>$5M to $15M</option><option>$15M+</option></select></label>
         <p class="err" id="err" role="alert"></p>
-        <button class="btn btn-o" type="submit">Book my strategy call</button>
+        <button class="btn btn-lime" type="submit">Book my strategy call</button>
       </form>
-      <div class="done" id="done" hidden><h3>You're booked.</h3><p>On the live site you'd get a confirmation by email and text, and the booking would appear in GoHighLevel.</p></div>
+      <div class="done" id="done" hidden><h3>You're booked</h3><p>On the live site you'd get a confirmation by email and text, and the booking would appear in GoHighLevel.</p></div>
     </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <span>&copy; 4Point Marketing</span>
-    <span>Sample concept by Abdelrahman Elgendy for review. Photos and figures are placeholders, and nothing on this page sends data.</span>
-  </div>
+  <div class="wrap"><span>© 4Point Marketing, Texas</span><span>Sample homepage by Abdelrahman Elgendy for review. Report figures are examples, photos are stock, and nothing on this page sends data.</span></div>
 </footer>
 
 <script>
 (function(){
   const $=id=>document.getElementById(id);
-  const money=n=>n>=1e6?'$'+(n/1e6).toFixed(n>=1e7?1:2)+'M':'$'+Math.round(n).toLocaleString('en-US');
+  const money=n=>n>=1e6?'$'+(n/1e6).toFixed(2)+'M':'$'+Math.round(n).toLocaleString('en-US');
   function calc(){
     const L=+$('leads').value,C=+$('close').value/100,T=+$('ticket').value,U=+$('lift').value/100;
     $('oLeads').textContent=L;$('oClose').textContent=Math.round(C*100)+'%';$('oTicket').textContent=money(T);$('oLift').textContent='+'+Math.round(U*100)+'%';
     const extra=L*U,jobs=extra*C;
-    $('oExtra').textContent='+'+Math.round(extra);
-    $('oJobs').textContent='+'+jobs.toFixed(1);
-    $('oNow').textContent=money(L*C*T*12);
-    $('oBig').textContent='+'+money(jobs*T*12);
+    $('oExtra').textContent='+'+Math.round(extra);$('oJobs').textContent='+'+jobs.toFixed(1);
+    $('oNow').textContent=money(L*C*T*12);$('oBig').textContent='+'+money(jobs*T*12);
   }
   ['leads','close','ticket','lift'].forEach(id=>$(id).addEventListener('input',calc));calc();
 
@@ -357,10 +357,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     e.preventDefault();const f=e.target.elements,m=[];
     if(!pick.day||!pick.time)m.push('a day and time');
     if(!f.name.value.trim())m.push('your name');
-    if(!/^\S+@\S+\.\S+$/.test(f.email.value))m.push('a valid email');
+    if(!/^\S+@\S+\.\S+$/.test(f.email.value))m.push('an email like name@company.com');
     if(f.phone.value.replace(/\D/g,'').length<10)m.push('a 10-digit phone number');
     if(!f.rev.value)m.push('your revenue range');
-    if(m.length){$('err').textContent='Please add '+m.join(', ')+'.';return}
+    if(m.length){$('err').textContent='Add '+m.join(', ')+' to book.';return}
     $('bookForm').hidden=true;days.hidden=true;slots.hidden=true;document.querySelector('.ghl .top').hidden=true;$('done').hidden=false;
   });
 })();

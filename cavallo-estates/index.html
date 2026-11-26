@@ -3,438 +3,453 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cavallo Estates · VIP access (sample)</title>
+<title>Cavallo Estates Nobleton · VIP registration (sample)</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="Sample landing page concept for a pre-construction estate home community, built for Google Ads traffic.">
+<meta name="description" content="Sample VIP registration page for Cavallo Estates, luxury detached homes and bungalows by Treasure Hill in Nobleton.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;1,500&family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#16201b;--ink-2:#46524b;--paper:#f6f2ea;--paper-2:#ece5d8;--line:#d9d0bf;
-  --green:#1f3a2e;--green-2:#2b4e3e;--brass:#a8814a;--brass-2:#8a6634;--white:#fff;
-  --r:14px;--wrap:1200px;
-  --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;
+  --paper:#f4f1ea;--paper-2:#ebe6dc;--card:#fbfaf7;--line:rgba(28,26,22,.12);
+  --ink:#1c1a16;--ink-2:#58534a;--ink-3:#6b655a;
+  --night:#1d1b17;--night-2:#2a2722;--on-night:#efe9dd;--on-night-2:#b9b1a2;
+  --tan:#9a7344;--tan-ink:#7a5a32;
+  --r-ctl:10px;--r-card:16px;--r-panel:20px;
+  --serif:"Cormorant",Georgia,serif;--sans:"Albert Sans",system-ui,sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:128px}
 body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+::selection{background:#e3d3bb;color:var(--ink)}
 img{display:block;max-width:100%}
 a{color:inherit}
-h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
-p{text-wrap:pretty}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:999px;border:0;font:600 15px/1 var(--sans);text-decoration:none;cursor:pointer;transition:background-color .15s ease,transform .15s ease}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+h1 em,h2 em{font-style:italic;color:var(--ink-2)}
+p{margin:0;text-wrap:pretty}
+:focus-visible{outline:2px solid var(--tan);outline-offset:3px;border-radius:4px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:0;font:500 15px/1 var(--sans);text-decoration:none;cursor:pointer;transition:background-color .15s ease,transform .15s var(--ease),box-shadow .15s ease;white-space:nowrap}
 .btn:active{transform:scale(.97)}
-.btn-brass{background:var(--brass);color:#fff}
-.btn-brass:hover{background:var(--brass-2)}
-.btn-ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
-:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#38342c}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-tan{background:#d9c19b;color:var(--ink)}
+.btn-tan:hover{background:#e4cfac}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
 
-/* VIP bar */
-.vipbar{background:var(--green);color:#e9e2d3;font-size:14px;text-align:center;padding:10px 16px}
-.vipbar button{background:none;border:0;color:#fff;font:600 14px var(--sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px}
+/* Header */
+.top{position:sticky;top:0;z-index:40;background:rgba(244,241,234,.94);backdrop-filter:blur(8px)}
+.bar{display:flex;align-items:center;gap:20px;height:72px;padding:0 32px}
+.word{display:flex;align-items:center;gap:14px;text-decoration:none}
+.word b{font:500 26px/1 var(--serif);letter-spacing:.06em}
+.word span{font-size:13px;color:var(--ink-2);line-height:1.35;border-left:1px solid var(--line);padding-left:14px}
+.bar .acts{margin-left:auto;display:flex;gap:8px}
+.tabs{display:flex;gap:4px;padding:0 24px;height:48px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{padding:8px 12px;border-radius:8px;font-size:14px;text-decoration:none;color:var(--ink-2);white-space:nowrap;transition:background-color .15s ease,color .15s ease}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="true"]{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
 
-/* Nav: one exit only, so the logo and links stay on the page */
-.nav{position:sticky;top:0;z-index:40;background:rgba(246,242,234,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:28px;height:70px}
-.brand{font-family:var(--serif);font-size:22px;text-decoration:none;letter-spacing:.02em}
-.brand small{display:block;font:500 11px/1 var(--sans);letter-spacing:.14em;color:var(--ink-2);margin-top:3px}
-.nav nav{display:flex;gap:22px;margin-left:auto;font-size:14px}
-.nav nav a{text-decoration:none;color:var(--ink-2);padding:8px 0}
-.nav nav a:hover{color:var(--ink)}
-.nav .btn{min-height:44px;padding:0 20px}
+/* Shell */
+.shell{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;padding:24px 32px 120px;max-width:1520px;margin:0 auto}
+main{min-width:0}
+section{padding-bottom:88px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:28px}
+.head h2{font-size:clamp(36px,3.6vw,56px);max-width:16ch}
+.head p{max-width:40ch;color:var(--ink-2)}
 
-/* Hero */
-.hero{position:relative;color:#fff;min-height:min(86vh,760px);display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,14,.72) 0%,rgba(10,18,14,.35) 55%,rgba(10,18,14,.1) 100%),linear-gradient(180deg,rgba(10,18,14,.1) 0%,rgba(10,18,14,.2) 45%,rgba(10,18,14,.7) 100%)}
-.hero .wrap{position:relative;z-index:1;width:100%;padding-top:120px;padding-bottom:64px;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end}
-.hero .place{font-size:14px;letter-spacing:.06em;opacity:.9;margin:0 0 14px}
-.hero h1{font-size:clamp(44px,6.4vw,84px);max-width:12ch}
-.hero .lede{font-size:18px;max-width:46ch;margin:18px 0 0;opacity:.92}
-.pricecard{background:rgba(246,242,234,.96);color:var(--ink);border-radius:var(--r);padding:28px}
-.pricecard .from{font-size:14px;color:var(--ink-2);margin:0}
-.pricecard .price{font-family:var(--serif);font-size:44px;line-height:1.1;margin:2px 0 6px}
-.pricecard ul{list-style:none;padding:0;margin:14px 0 22px;font-size:15px;color:var(--ink-2)}
-.pricecard li{padding:7px 0;border-top:1px solid var(--line)}
-.pricecard .btn{width:100%}
-.pricecard .fine{font-size:12px;color:var(--ink-2);margin:12px 0 0;text-align:center}
+/* Overview */
+.lead{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin:12px 0 28px}
+.lead h1{font-size:clamp(48px,5.4vw,84px);max-width:14ch}
+.lead p{max-width:34ch;color:var(--ink-2)}
+.bento{display:grid;grid-template-columns:1.55fr 1fr;grid-template-rows:auto auto;gap:12px}
+.hero-photo{position:relative;grid-row:span 2;border-radius:var(--r-panel);overflow:hidden;min-height:520px;background:var(--paper-2)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.hero-photo .cap{position:absolute;left:16px;bottom:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:rgba(29,27,23,.72);backdrop-filter:blur(6px);color:var(--on-night);font-size:13px;padding:8px 12px;border-radius:999px}
+.chip i{width:7px;height:7px;border-radius:50%;background:#8fbf7a}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.thumbs img{border-radius:var(--r-card);aspect-ratio:4/3;object-fit:cover;width:100%}
+.facts{display:grid;grid-template-columns:1fr 1fr;background:var(--night);color:var(--on-night);border-radius:var(--r-panel);overflow:hidden}
+.fact{padding:20px 20px 22px;border-right:1px solid rgba(239,233,221,.1);border-bottom:1px solid rgba(239,233,221,.1)}
+.fact:nth-child(2n){border-right:0}
+.fact:nth-child(n+3){border-bottom:0}
+.fact small{display:block;font-size:13px;color:var(--on-night-2);margin-bottom:10px}
+.fact b{display:block;font:500 32px/1.05 var(--serif);white-space:nowrap}
+.fact span{display:block;font-size:13px;color:var(--on-night-2);margin-top:6px}
 
-/* Sections */
-section{scroll-margin-top:80px}
-.sec{padding:104px 0}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:44px}
-.sec-head h2{font-size:clamp(34px,4.2vw,54px);max-width:16ch}
-.sec-head p{max-width:42ch;color:var(--ink-2);margin:0}
+/* Collections: whole card is the button */
+.cols{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.col{position:relative;grid-column:span 2;background:var(--card);border-radius:var(--r-card);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s ease}
+.col:nth-child(4),.col:nth-child(5){grid-column:span 3}
+.col:hover{box-shadow:inset 0 0 0 1px var(--ink-3),0 12px 28px -18px rgba(28,26,22,.35)}
+.col img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.col:nth-child(4) img,.col:nth-child(5) img{aspect-ratio:16/9}
+.col .b{padding:16px 18px 18px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.col h3{font-size:28px}
+.col p{font-size:14px;color:var(--ink-2);margin-top:4px}
+.col button{all:unset;cursor:pointer;font-size:14px;font-weight:500;color:var(--tan-ink);white-space:nowrap}
+.col button::after{content:"";position:absolute;inset:0;border-radius:var(--r-card)}
+.col button:focus-visible::after{outline:2px solid var(--tan);outline-offset:-2px}
+/* Signature: a surveyor's frontage mark */
+.front{display:flex;align-items:center;gap:8px;font:500 13px var(--sans);color:var(--ink-2);margin-top:10px}
+.front i{position:relative;display:block;height:1px;background:var(--ink-3)}
+.front i::before,.front i::after{content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--ink-3)}
+.front i::before{left:0}.front i::after{right:0}
 
-/* Collections: whole card is the click target */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{position:relative;background:var(--white);border-radius:var(--r);overflow:hidden;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(22,32,27,.45)}
-.card img{aspect-ratio:4/3;width:100%;object-fit:cover}
-.card .body{padding:22px 22px 24px}
-.card h3{font-size:26px}
-.card .meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-2);font-size:14px;margin:8px 0 14px}
-.card .go{font-weight:600;font-size:14px;color:var(--brass-2)}
-.card button.stretch{all:unset;cursor:pointer}
-.card button.stretch::after{content:"";position:absolute;inset:0}
-.card button.stretch:focus-visible::after{outline:3px solid var(--brass);outline-offset:-3px;border-radius:var(--r)}
-
-/* Floor plans gated */
-.plans{background:var(--paper-2)}
-.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.plan{background:var(--white);border-radius:var(--r);padding:18px;position:relative}
-.plan svg{width:100%;height:auto;aspect-ratio:1;display:block;transition:filter .3s ease-out}
-.plan h3{font-size:20px;margin-top:14px}
-.plan p{margin:4px 0 0;font-size:14px;color:var(--ink-2)}
-.locked .plan svg{filter:blur(7px)}
-.locked .plan .sqft{filter:blur(5px);user-select:none}
-.gate{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--green);color:#eee6d6;border-radius:var(--r);padding:22px 26px}
-.gate p{margin:0}
-.unlocked .gate{display:none}
-
-/* Location */
-.loc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.loc img{border-radius:var(--r);aspect-ratio:5/4;object-fit:cover;width:100%}
-.drive{list-style:none;padding:0;margin:26px 0 0}
-.drive li{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:16px}
-.drive li span:last-child{color:var(--ink-2)}
+/* Plans + pricing gated */
+.gated{position:relative;background:var(--card);border-radius:var(--r-panel);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.ptable{width:100%;border-collapse:collapse}
+.ptable th,.ptable td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line);font-size:15px}
+.ptable th{font-weight:500;font-size:13px;color:var(--ink-3)}
+.ptable tr:last-child td{border-bottom:0}
+.ptable td:first-child{font:500 22px var(--serif)}
+.lock{filter:blur(6px);user-select:none;transition:filter .4s var(--ease)}
+.open .lock{filter:none;user-select:auto}
+.veil{position:absolute;inset:auto 0 0 0;padding:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:linear-gradient(180deg,rgba(251,250,247,0),var(--card) 40%)}
+.veil p{font-size:15px;color:var(--ink-2);max-width:42ch;padding-top:28px}
+.open .veil{display:none}
+.plans{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.plan{padding:18px;border-right:1px solid var(--line)}
+.plan:last-child{border-right:0}
+.plan svg{width:100%;height:auto;display:block}
+.plan b{display:block;font:500 20px var(--serif);margin-top:12px}
+.plan span{font-size:13px;color:var(--ink-2)}
 
 /* Gallery */
-.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
-.gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
-.gallery img:first-child{grid-row:span 2}
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:12px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:var(--r-card)}
+.gal img:first-child{grid-row:span 2}
 
-/* Pricing */
-.pricing{background:var(--green);color:#efe8da}
-.pricing .sec-head p{color:#c9c0ae}
-.ptable{width:100%;border-collapse:collapse;font-size:16px}
-.ptable th,.ptable td{text-align:left;padding:16px 12px;border-bottom:1px solid rgba(239,232,218,.18)}
-.ptable th{font:500 13px var(--sans);letter-spacing:.06em;color:#c9c0ae}
-.ptable .blur{filter:blur(6px);user-select:none}
-.unlocked .ptable .blur{filter:none}
-.pricing .after{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+/* Location + builder */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.split img{border-radius:var(--r-panel);width:100%;height:100%;min-height:360px;object-fit:cover}
+.panel{background:var(--card);border-radius:var(--r-panel);box-shadow:inset 0 0 0 1px var(--line);padding:28px}
+.panel h3{font-size:32px;margin-bottom:12px}
+.panel p{color:var(--ink-2)}
+.rows{list-style:none;padding:0;margin:20px 0 0}
+.rows li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
+.rows li span:last-child{color:var(--ink-2);text-align:right}
 
-/* Booking */
-.book{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
-.cal{background:var(--white);border-radius:var(--r);padding:26px;border:1px solid var(--line)}
-.cal .days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0 18px}
-.cal .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.chip{min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font:500 14px var(--sans);cursor:pointer;color:var(--ink)}
-.chip:hover{border-color:var(--brass)}
-.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
-.cal .note{font-size:13px;color:var(--ink-2);margin:16px 0 0}
+/* Aside: registration + agent */
+aside{position:sticky;top:136px;align-self:start;display:grid;gap:12px}
+.reg{background:var(--card);border-radius:var(--r-panel);box-shadow:inset 0 0 0 1px var(--line),0 18px 40px -30px rgba(28,26,22,.4);padding:20px 22px}
+.reg h2{font-size:34px}
+.reg p.sub{color:var(--ink-2);font-size:15px;margin:6px 0 14px}
+form{display:grid;gap:10px}
+label{display:grid;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2)}
+input,select{font:16px var(--sans);color:var(--ink);min-height:46px;padding:0 14px;border-radius:var(--r-ctl);border:1px solid rgba(28,26,22,.22);background:#fff;transition:border-color .15s ease}
+input:hover,select:hover{border-color:rgba(28,26,22,.4)}
+input:focus,select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(154,115,68,.2)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border:0;padding:0;margin:0}
+.seg legend{font-size:13px;font-weight:500;color:var(--ink-2);margin-bottom:6px;padding:0}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:var(--r-ctl);border:1px solid rgba(28,26,22,.22);background:#fff;color:var(--ink);font-size:14px;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}
+.seg input:checked+label{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.seg input:focus-visible+label{outline:2px solid var(--tan);outline-offset:2px}
+.err{font-size:13px;color:#9b2c1f;font-weight:500}
+.fine{font-size:12px;color:var(--ink-3)}
+.reg .btn{width:100%;min-height:48px}
+.done h2{font-size:34px}
+.done p{color:var(--ink-2);margin:8px 0 16px}
+.agent{background:var(--card);border-radius:var(--r-panel);box-shadow:inset 0 0 0 1px var(--line);padding:16px;display:grid;gap:8px}
+.who{display:flex;align-items:center;gap:12px;padding:4px 4px 8px}
+.mono{width:44px;height:44px;border-radius:50%;background:var(--night);color:var(--on-night);display:grid;place-items:center;font:500 20px var(--serif)}
+.who b{display:block;font-weight:500;font-size:15px}
+.who span{font-size:13px;color:var(--ink-2)}
+.agent .acts3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.agent .btn{width:100%;padding:0 8px;font-size:14px}
 
-/* Footer */
-footer{background:#111814;color:#a9b1aa;font-size:13px;padding:44px 0 120px}
-footer .wrap{display:grid;gap:14px}
-footer strong{color:#e8e2d5;font-weight:500}
-
-/* Modal form */
-dialog{border:0;border-radius:18px;padding:0;width:min(520px,calc(100% - 32px));box-shadow:0 30px 80px -20px rgba(0,0,0,.5);color:var(--ink)}
-dialog::backdrop{background:rgba(10,18,14,.6)}
-dialog[open]{animation:pop .22s ease-out}
-@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-.mhead{background:var(--green);color:#efe8da;padding:26px 28px}
-.mhead h2{font-size:32px}
-.mhead p{margin:8px 0 0;font-size:15px;color:#c9c0ae}
-form{padding:24px 28px 28px;display:grid;gap:14px}
-label{display:grid;gap:6px;font-size:14px;font-weight:500}
-input,select{font:16px var(--sans);min-height:48px;padding:0 14px;border:1px solid #bfb4a0;border-radius:10px;background:#fff;color:var(--ink)}
-input:focus,select:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:var(--brass)}
-.err{color:#a1281c;font-size:13px;font-weight:500;min-height:0}
-.consent{font-size:12px;color:var(--ink-2);margin:0}
-.x{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer}
-.thanks{padding:34px 28px 30px;text-align:center}
-.thanks h2{font-size:34px}
-.thanks p{color:var(--ink-2)}
-
-/* Mobile action bar */
+/* Launch strip, like the reference */
+.strip{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--night);color:var(--on-night)}
+.strip .in{display:flex;align-items:center;gap:24px;height:60px;padding:0 32px;max-width:1520px;margin:0 auto}
+.strip b{font:500 22px var(--serif)}
+.strip span{color:var(--on-night-2);font-size:14px}
+.strip .btn{margin-left:auto}
 .mbar{display:none}
 
+footer{padding:0 32px 100px;max-width:1520px;margin:0 auto;font-size:12px;color:var(--ink-3);display:grid;gap:6px}
+
+@media (min-width:1181px) and (max-height:980px){.who{display:none}.reg p.sub{margin:4px 0 10px}.fine{display:none}}
+@media (max-width:1180px){
+  .shell{grid-template-columns:1fr}
+  aside{position:static;grid-row:2}
+  .reg{max-width:560px}
+  .agent{max-width:560px}
+}
 @media (max-width:991px){
-  .hero .wrap{grid-template-columns:1fr;gap:28px}
-  .cards{grid-template-columns:1fr 1fr}
-  .plan-grid{grid-template-columns:1fr 1fr}
-  .loc,.book{grid-template-columns:1fr}
-  .nav nav{display:none}
-  .nav .btn{margin-left:auto}
+  .bento{grid-template-columns:1fr}
+  .hero-photo{grid-row:auto;min-height:420px}
+  .lead,.head{flex-direction:column;align-items:flex-start;gap:12px}
+  .cols{grid-template-columns:1fr 1fr}
+  .col,.col:nth-child(4),.col:nth-child(5){grid-column:span 1}
+  .col:nth-child(5){grid-column:span 2}
+  .plans{grid-template-columns:repeat(3,1fr)}
+  .plan:nth-child(n+4){display:none}
+  .split{grid-template-columns:1fr}
+  .word span{display:none}
 }
 @media (max-width:767px){
-  .wrap{padding:0 16px}
-  .sec{padding:72px 0}
-  .sec-head{display:block}
-  .sec-head p{margin-top:14px}
-  .cards{grid-template-columns:1fr}
-  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 140px 140px}
-  .gallery img:first-child{grid-column:span 2;grid-row:auto}
-  .gate{flex-direction:column;align-items:flex-start}
+  .bar{padding:0 16px;height:60px}
+  .bar .acts .btn-line{display:none}
+  .tabs{padding:0 8px}
+  html{scroll-padding-top:116px}
+  .shell{padding:16px 16px 120px}
+  section{padding-bottom:64px}
+  .hero-photo{min-height:340px}
+  .ill{display:none}
+  .cols{grid-template-columns:1fr}
+  .col,.col:nth-child(5){grid-column:auto}
+  .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 130px 130px}
+  .gal img:first-child{grid-column:span 2;grid-row:auto}
+  .plans{grid-template-columns:1fr 1fr}
+  .plan:nth-child(n+3){display:none}
   .ptable th:nth-child(3),.ptable td:nth-child(3){display:none}
-  .cal .days{grid-template-columns:repeat(3,1fr)}
-  .nav .btn{display:none}
+  .ptable th,.ptable td{padding:14px}
+  .veil{flex-direction:column;align-items:flex-start}
+  .strip{display:none}
   .mbar{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--line)}
-  .mbar a,.mbar button{min-height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--sans);text-decoration:none;border:0}
-  .mbar .call{background:var(--white);box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}
-  .mbar .wa{background:#1f7a4d;color:#fff}
-  .mbar .vip{background:var(--brass);color:#fff;cursor:pointer}
+  .mbar .btn{width:100%;padding:0 10px}
+  footer{padding:0 16px 100px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .card,.btn,.plan svg{transition:none}
-  dialog[open]{animation:none}
+  .btn,.col,.lock,.tabs a,.seg label{transition:none}
 }
 </style>
 </head>
 <body>
 
-<div class="vipbar">VIP pricing and first choice of lots open to registrants before the public launch. <button type="button" data-open>Register for VIP access</button></div>
-
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#top">Cavallo Estates<small>KING TOWNSHIP, ONTARIO</small></a>
-    <nav aria-label="Sections">
-      <a href="#homes">Homes</a><a href="#plans">Floor plans</a><a href="#location">Location</a><a href="#gallery">Gallery</a><a href="#pricing">Pricing</a>
-    </nav>
-    <button class="btn btn-brass" type="button" data-open>Get VIP access</button>
+<header class="top">
+  <div class="bar">
+    <a class="word" href="#overview"><b>CAVALLO</b><span>Nobleton, King Township<br>Luxury detached homes by Treasure Hill</span></a>
+    <div class="acts">
+      <a class="btn btn-line" href="#book">Book a VIP appointment</a>
+      <a class="btn btn-ink" href="#register">Get VIP access</a>
+    </div>
   </div>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#overview" aria-current="true">Overview</a>
+    <a href="#collections">Collections</a>
+    <a href="#plans">Floor plans</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#builder">The builder</a>
+  </nav>
 </header>
 
-<main id="top">
-<section class="hero" aria-label="Introduction">
-  <img src="https://images.unsplash.com/photo-1762694913173-29bb6e5808d4?w=2200&q=80&auto=format&fit=crop" alt="A large stone estate home surrounded by mature trees" fetchpriority="high">
-  <div class="wrap">
-    <div>
-      <p class="place">Nobleton · King Township</p>
-      <h1>Estate living on the edge of the countryside.</h1>
-      <p class="lede">A limited collection of detached estate homes on generous lots, a short drive north of the city. Register to see floor plans and the price list before anyone else.</p>
+<div class="shell">
+<main>
+  <section id="overview">
+    <div class="lead">
+      <h1>A grand address. <em>A lasting legacy.</em></h1>
+      <p>Cavallo Estates is a new community of luxury singles and bungalows by Treasure Hill at Highway 27 and Fairmont Ridge Trail, officially launched with signing underway.</p>
     </div>
-    <div class="pricecard">
-      <p class="from">Estate homes from</p>
-      <p class="price">$X,XXX,XXX</p>
-      <ul>
-        <li>Detached homes on large lots</li>
-        <li>Floor plans and price list for registrants</li>
-        <li>Private VIP appointments</li>
-      </ul>
-      <button class="btn btn-brass" type="button" data-open>Get VIP access</button>
-      <p class="fine">Takes 20 seconds. No obligation.</p>
+    <div class="bento">
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1605146768851-eda79da39897?w=1800&q=80&auto=format&fit=crop" alt="Two-storey brick and stone home with a double garage" fetchpriority="high">
+        <div class="cap"><span class="chip"><i></i>Officially launched, signing has begun</span><span class="chip ill">Illustrative photo</span></div>
+      </div>
+      <div class="thumbs">
+        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=700&q=70&auto=format&fit=crop" alt="Stone and brick home with a two-car garage" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1696814543693-31fcf942ccb7?w=700&q=70&auto=format&fit=crop" alt="Living room with a stone fireplace" loading="lazy">
+      </div>
+      <div class="facts">
+        <div class="fact"><small>Starting from</small><b class="num">$999,900</b><span>Official price list, November 2026</span></div>
+        <div class="fact"><small>Designs</small><b class="num">25</b><span>In five collections by lot frontage</span></div>
+        <div class="fact"><small>Basements</small><b>Finished</b><span>Included in every home</span></div>
+        <div class="fact"><small>Closings</small><b class="num">Spring 2028</b><span>Signing has begun</span></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="homes">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Three collections, one setting.</h2>
-      <p>Each collection is sized for a different stage of family life. Tap a collection to get its floor plans.</p>
+  <section id="collections">
+    <div class="head">
+      <h2>Five collections, <em>by lot frontage</em></h2>
+      <p>Two-storey singles and bungalows on 32, 50 and 62 foot lots. Choose one to get its floor plans.</p>
     </div>
-    <div class="cards">
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1775675956638-96acc907187d?w=1200&q=75&auto=format&fit=crop" alt="Exterior of a tan stone house with a dark roof" loading="lazy">
-        <div class="body">
-          <h3>The Paddock Collection</h3>
-          <div class="meta"><span>4 bedrooms</span><span>3,X00 sq ft</span><span>60 ft lots</span></div>
-          <button class="stretch go" type="button" data-open data-interest="Paddock Collection">Get Paddock floor plans</button>
-        </div>
+    <div class="cols">
+      <article class="col">
+        <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=900&q=70&auto=format&fit=crop" alt="Row of new two-storey homes with garages" loading="lazy">
+        <div class="b"><div><h3>The Manor</h3><p>Two-storey singles</p><div class="front"><i style="width:32px"></i>32′ lots</div></div><button type="button" data-want="The Manor">Get plans</button></div>
       </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1783125127082-3fb6c1bccd72?w=1200&q=75&auto=format&fit=crop" alt="Contemporary home with a stone facade and large windows" loading="lazy">
-        <div class="body">
-          <h3>The Stable Collection</h3>
-          <div class="meta"><span>4 to 5 bedrooms</span><span>4,X00 sq ft</span><span>70 ft lots</span></div>
-          <button class="stretch go" type="button" data-open data-interest="Stable Collection">Get Stable floor plans</button>
-        </div>
+      <article class="col">
+        <img src="https://images.unsplash.com/photo-1653569511862-8a0320ae66cc?w=900&q=70&auto=format&fit=crop" alt="Bungalow with a stone path to the front door" loading="lazy">
+        <div class="b"><div><h3>The Atessa</h3><p>Bungalows</p><div class="front"><i style="width:32px"></i>32′ lots</div></div><button type="button" data-want="The Atessa">Get plans</button></div>
       </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1774384734393-3a8e89c956d4?w=1200&q=75&auto=format&fit=crop" alt="Stone mansion behind green hedges and trees" loading="lazy">
-        <div class="body">
-          <h3>The Estate Collection</h3>
-          <div class="meta"><span>5 bedrooms</span><span>5,X00 sq ft</span><span>Estate lots</span></div>
-          <button class="stretch go" type="button" data-open data-interest="Estate Collection">Get Estate floor plans</button>
-        </div>
+      <article class="col">
+        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&q=70&auto=format&fit=crop" alt="Stone and brick two-storey home" loading="lazy">
+        <div class="b"><div><h3>The Westport</h3><p>Two-storey singles</p><div class="front"><i style="width:50px"></i>50′ lots</div></div><button type="button" data-want="The Westport">Get plans</button></div>
+      </article>
+      <article class="col">
+        <img src="https://images.unsplash.com/photo-1773427663260-8418a314f0ee?w=1200&q=70&auto=format&fit=crop" alt="Brick bungalow behind a wide lawn" loading="lazy">
+        <div class="b"><div><h3>The Waterford</h3><p>Bungalows</p><div class="front"><i style="width:50px"></i>50′ lots</div></div><button type="button" data-want="The Waterford">Get plans</button></div>
+      </article>
+      <article class="col">
+        <img src="https://images.unsplash.com/photo-1773427646596-01b53d5b6196?w=1200&q=70&auto=format&fit=crop" alt="Large brick and stone bungalow on an estate lot" loading="lazy">
+        <div class="b"><div><h3>The Worthington</h3><p>Estate bungalows</p><div class="front"><i style="width:62px"></i>62′ lots</div></div><button type="button" data-want="The Worthington">Get plans</button></div>
       </article>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec plans locked" id="plans">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Floor plans</h2>
-      <p>Full plans with room dimensions are released to VIP registrants first.</p>
+  <section id="plans">
+    <div class="head"><h2>Floor plans</h2><p>Plans for all 25 designs go to VIP registrants first. They unlock on this page as soon as you register.</p></div>
+    <div class="gated" data-gate>
+      <div class="plans lock" id="planRow"></div>
+      <div class="veil"><p>Register once to open every floor plan and the official price list.</p><a class="btn btn-ink" href="#register">Unlock floor plans</a></div>
     </div>
-    <div class="plan-grid" id="planGrid"></div>
-    <div class="gate">
-      <p><strong>Plans are blurred until you register.</strong> They unlock right here on this page as soon as you do.</p>
-      <button class="btn btn-brass" type="button" data-open>Unlock floor plans</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="location">
-  <div class="wrap loc">
-    <img src="https://images.unsplash.com/photo-1620998258282-bc3bd5fee9e9?w=1400&q=75&auto=format&fit=crop" alt="A winding road through dense green forest seen from above" loading="lazy">
-    <div>
-      <div class="sec-head" style="margin-bottom:0"><h2>Quiet roads, quick to the city.</h2></div>
-      <p style="color:var(--ink-2);max-width:46ch">Nobleton keeps its village feel, with conservation land, golf and equestrian country around it and the 400-series highways close by.</p>
-      <ul class="drive">
-        <li><span>Highway 400</span><span>XX min</span></li>
-        <li><span>Toronto Pearson Airport</span><span>XX min</span></li>
-        <li><span>Downtown Toronto</span><span>XX min</span></li>
-        <li><span>Schools and village shops</span><span>XX min</span></li>
-      </ul>
+  <section id="pricing">
+    <div class="head"><h2>Pricing</h2><p>From $999,900. Per-collection pricing comes from Treasure Hill's official price list.</p></div>
+    <div class="gated" data-gate>
+      <table class="ptable">
+        <thead><tr><th scope="col">Collection</th><th scope="col">Home type</th><th scope="col">Frontage</th><th scope="col">From</th></tr></thead>
+        <tbody>
+          <tr><td>The Manor</td><td>Singles</td><td>32′</td><td class="lock num">$999,900</td></tr>
+          <tr><td>The Atessa</td><td>Bungalows</td><td>32′</td><td class="lock num">On price list</td></tr>
+          <tr><td>The Westport</td><td>Singles</td><td>50′</td><td class="lock num">On price list</td></tr>
+          <tr><td>The Waterford</td><td>Bungalows</td><td>50′</td><td class="lock num">On price list</td></tr>
+          <tr><td>The Worthington</td><td>Bungalows</td><td>62′</td><td class="lock num">On price list</td></tr>
+        </tbody>
+      </table>
+      <div class="veil"><p>The full price list opens when you register.</p><a class="btn btn-ink" href="#register">See VIP pricing</a></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="gallery" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head"><h2>Gallery</h2><p>Renderings and finishes will be added as the builder releases them.</p></div>
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?w=1400&q=75&auto=format&fit=crop" alt="White kitchen with a large island and glass doors" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1683629357935-f3f4777ddf41?w=800&q=70&auto=format&fit=crop" alt="Kitchen with a centre island and sink" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1760387420079-08739037853e?w=800&q=70&auto=format&fit=crop" alt="Stone house with a red front door and chimney" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1548941489-3e64750ebbaa?w=800&q=70&auto=format&fit=crop" alt="Open green fields under a wide sky" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1671197244266-73129c97c096?w=800&q=70&auto=format&fit=crop" alt="Modern kitchen with marble counters and stools" loading="lazy">
+  <section id="gallery">
+    <div class="head"><h2>Gallery</h2><p>Illustrative photography. The builder's renderings replace these on the live page.</p></div>
+    <div class="gal">
+      <img src="https://images.unsplash.com/photo-1778731660295-39adb1c0b172?w=1400&q=75&auto=format&fit=crop" alt="Kitchen island with bar stools" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1780245997131-1af7a8de9538?w=700&q=70&auto=format&fit=crop" alt="Entry hall with a curved staircase" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1765959617888-30837a158667?w=700&q=70&auto=format&fit=crop" alt="Finished lower level with a fireplace and bookshelves" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1727271173705-c9c6fad3acbb?w=700&q=70&auto=format&fit=crop" alt="Family room with a fireplace" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1605146768851-eda79da39897?w=700&q=70&auto=format&fit=crop" alt="Brick home exterior" loading="lazy">
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec pricing locked" id="pricing">
-  <div class="wrap">
-    <div class="sec-head"><h2>Pricing</h2><p>VIP pricing is offered to registrants before public release and can change without notice.</p></div>
-    <table class="ptable">
-      <thead><tr><th>Collection</th><th>From</th><th>Lot size</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>Paddock</td><td class="blur">$X,XXX,900</td><td>60 ft</td><td>VIP release</td></tr>
-        <tr><td>Stable</td><td class="blur">$X,XXX,900</td><td>70 ft</td><td>VIP release</td></tr>
-        <tr><td>Estate</td><td class="blur">$X,XXX,900</td><td>Estate</td><td>Limited</td></tr>
-      </tbody>
-    </table>
-    <div class="after">
-      <button class="btn btn-brass" type="button" data-open>See VIP pricing</button>
-      <a class="btn btn-ghost" href="#book">Book a VIP appointment</a>
+  <section id="location">
+    <div class="split">
+      <img src="https://images.unsplash.com/photo-1760636549266-bfa580315552?w=1200&q=75&auto=format&fit=crop" alt="Horses grazing in a fenced pasture lined with trees" loading="lazy">
+      <div class="panel">
+        <h3>Nobleton, <em>in King Township</em></h3>
+        <p>Village life in horse country, with the community set at Highway 27 and Fairmont Ridge Trail.</p>
+        <ul class="rows">
+          <li><span>Address</span><span>Highway 27 and Fairmont Ridge Trail</span></li>
+          <li><span>Township</span><span>King Township, York Region</span></li>
+          <li><span>Public schools</span><span>York Region District School Board</span></li>
+          <li><span>Catholic schools</span><span>York Catholic District School Board</span></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="book">
-  <div class="wrap book">
-    <div>
-      <div class="sec-head" style="display:block;margin-bottom:18px"><h2>Book a private VIP appointment.</h2></div>
-      <p style="color:var(--ink-2);max-width:44ch">Walk through the plans, lots and incentives with me one to one, in person or on video. Pick a time and you get a calendar invite straight away.</p>
-      <p style="color:var(--ink-2);max-width:44ch">On the live page this panel is your Calendly, so bookings land in your calendar and your CRM.</p>
+  <section id="builder">
+    <div class="split">
+      <div class="panel">
+        <h3>Built by Treasure Hill</h3>
+        <p>Cavallo Estates is a Treasure Hill community. Every home includes a finished basement, with 25 designs across five collections.</p>
+        <ul class="rows">
+          <li><span>Builder</span><span>Treasure Hill</span></li>
+          <li><span>Status</span><span>Officially launched, signing underway</span></li>
+          <li><span>First closings</span><span>Spring 2028</span></li>
+        </ul>
+      </div>
+      <div class="panel" id="book">
+        <h3>Book a VIP appointment</h3>
+        <p>Walk through plans, lots and incentives one to one, in person or on video. On the live page this is your Calendly, so bookings land in your calendar and CRM.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px"><a class="btn btn-ink" href="#register">Request an appointment</a></div>
+      </div>
     </div>
-    <div class="cal" aria-label="Booking calendar preview">
-      <strong>Choose a day</strong>
-      <div class="days" id="days"></div>
-      <strong>Choose a time</strong>
-      <div class="slots" id="slots"></div>
-      <button class="btn btn-brass" type="button" id="bookBtn" style="width:100%;margin-top:18px" disabled>Pick a day and time</button>
-      <p class="note">Preview only. No booking is made on this sample.</p>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div><strong>Cavallo Estates</strong> · Represented by [Agent name], [Brokerage], Brokerage. Not intended to solicit buyers under contract.</div>
-    <div>Prices, sizes, specifications and availability are subject to change without notice. Images are artist's concepts. E.&amp;O.E.</div>
-    <div><strong>Sample concept</strong> by Abdelrahman Elgendy for review. Prices, plans, drive times and photos are placeholders, and the form on this page sends nothing.</div>
+<aside aria-label="VIP registration">
+  <div class="reg" id="register">
+    <div id="regForm">
+      <h2>Join the VIP list</h2>
+      <p class="sub">Floor plans and the price list open on this page the moment you register.</p>
+      <form id="vip" novalidate>
+        <label>Full name<input name="name" autocomplete="name"></label>
+        <label>Email<input name="email" type="email" autocomplete="email"></label>
+        <label>Mobile<input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+        <fieldset class="seg">
+          <legend>I'm a</legend>
+          <input type="radio" name="type" id="t1" value="Buyer"><label for="t1">Buyer</label>
+          <input type="radio" name="type" id="t2" value="Investor"><label for="t2">Investor</label>
+          <input type="radio" name="type" id="t3" value="Realtor"><label for="t3">Realtor</label>
+        </fieldset>
+        <input type="hidden" name="interest">
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn btn-ink" type="submit">Join the VIP list</button>
+        <p class="fine">You agree to receive updates about Cavallo Estates. Unsubscribe any time.</p>
+      </form>
+    </div>
+    <div class="done" id="regDone" hidden>
+      <h2>You're on the list</h2>
+      <p>Floor plans and pricing are open below. On the live page your details reach the agent's inbox and CRM instantly.</p>
+      <a class="btn btn-ink" href="#plans">See floor plans</a>
+    </div>
   </div>
-</footer>
-
-<div class="mbar" aria-label="Quick actions">
-  <a class="call" href="tel:+10000000000">Call</a>
-  <a class="wa" href="https://wa.me/10000000000" rel="noopener">WhatsApp</a>
-  <button class="vip" type="button" data-open>Get VIP access</button>
+  <div class="agent">
+    <div class="who"><div class="mono">A</div><div><b>Your VIP agent</b><span>Replies within the hour, 7 days a week</span></div></div>
+    <div class="acts3">
+    <a class="btn btn-line" href="#book"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book</a>
+    <a class="btn btn-line" href="tel:+10000000000"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
+    <a class="btn btn-line" href="https://wa.me/10000000000" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>WhatsApp</a>
+    </div>
+  </div>
+</aside>
 </div>
 
-<dialog id="vip" aria-labelledby="vipTitle">
-  <div style="position:relative">
-    <div class="mhead">
-      <h2 id="vipTitle">Get VIP access</h2>
-      <p>Floor plans and the price list unlock on this page the moment you register.</p>
-      <button class="x" type="button" aria-label="Close" data-close>&times;</button>
-    </div>
-    <form id="vipForm" novalidate>
-      <label>Full name<input name="name" autocomplete="name" required></label>
-      <label>Email<input name="email" type="email" autocomplete="email" required></label>
-      <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
-      <label>I am a
-        <select name="type" required>
-          <option value="">Choose one</option>
-          <option>Buyer, end user</option>
-          <option>Investor</option>
-          <option>Realtor</option>
-        </select>
-      </label>
-      <input type="hidden" name="interest">
-      <p class="err" id="err" role="alert"></p>
-      <button class="btn btn-brass" type="submit">Unlock plans and pricing</button>
-      <p class="consent">By registering you agree to receive updates about this community. Unsubscribe any time.</p>
-    </form>
-    <div class="thanks" id="thanks" hidden>
-      <h2>You're on the VIP list.</h2>
-      <p>Floor plans and pricing are now unlocked on this page. On the live site, your details reach the agent's inbox and CRM instantly.</p>
-      <button class="btn btn-brass" type="button" data-close data-goto="#plans">See floor plans</button>
-    </div>
-  </div>
-</dialog>
+<footer>
+  <div>Prices, specifications and availability are subject to change without notice. Images are illustrative. E.&amp;O.E. Not intended to solicit buyers under contract.</div>
+  <div>Sample page by Abdelrahman Elgendy for review. Project facts are from public launch materials; per-collection prices are masked, and the form sends nothing.</div>
+</footer>
+
+<div class="strip" role="region" aria-label="Launch notice">
+  <div class="in"><b>Officially launched, from $999K</b><span>Signing has begun. Worksheets open now.</span><a class="btn btn-tan" href="#register">Get the price list</a></div>
+</div>
+
+<div class="mbar" aria-label="Quick actions">
+  <a class="btn btn-line" href="tel:+10000000000">Call</a>
+  <a class="btn btn-line" href="https://wa.me/10000000000" rel="noopener">WhatsApp</a>
+  <a class="btn btn-ink" href="#register">Get VIP access</a>
+</div>
 
 <script>
 (function(){
-  const plans=[["The Paddock A","4 bed · 3.5 bath","3,XXX sq ft"],["The Paddock B","4 bed · 4 bath","3,XXX sq ft"],["The Stable","5 bed · 4.5 bath","4,XXX sq ft"],["The Estate","5 bed · 5.5 bath","5,XXX sq ft"]];
-  const grid=document.getElementById('planGrid');
-  const svg=(i)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><rect x="12" y="12" width="176" height="176" fill="#faf8f3" stroke="#1f3a2e" stroke-width="3"/>${[
-    '<path d="M12 90h96M108 12v120M108 132h80M60 90v98M150 132v56" stroke="#1f3a2e" stroke-width="2" fill="none"/>',
-    '<path d="M12 80h120M132 12v176M60 80v108M132 120h56M12 140h48" stroke="#1f3a2e" stroke-width="2" fill="none"/>',
-    '<path d="M12 70h176M80 12v58M140 12v58M12 130h110M122 70v118M60 130v58" stroke="#1f3a2e" stroke-width="2" fill="none"/>',
-    '<path d="M12 64h70M82 12v112M82 124h106M140 12v112M12 124h70M40 124v64M140 124v64" stroke="#1f3a2e" stroke-width="2" fill="none"/>'][i]}<rect x="130" y="150" width="40" height="22" fill="#a8814a" opacity=".25"/></svg>`;
-  plans.forEach((p,i)=>{grid.insertAdjacentHTML('beforeend',`<div class="plan">${svg(i)}<h3>${p[0]}</h3><p>${p[1]}</p><p class="sqft">${p[2]}</p></div>`)});
+  // Floor plan line drawings
+  const plans=[["The Manor","Singles, 32′"],["The Atessa","Bungalows, 32′"],["The Westport","Singles, 50′"],["The Waterford","Bungalows, 50′"],["The Worthington","Bungalows, 62′"]];
+  const walls=['M10 80h70M80 10v120M80 130h50M45 80v70','M10 70h120M70 10v140M10 110h60','M10 60h120M60 10v50M100 10v50M10 110h80M90 60v90','M10 55h60M70 10v100M70 110h60M100 10v100','M10 50h50M60 10v90M60 100h70M100 10v90M30 100v50'];
+  document.getElementById('planRow').innerHTML=plans.map((p,i)=>`<div class="plan"><svg viewBox="0 0 140 160" aria-hidden="true"><rect x="10" y="10" width="120" height="140" fill="#fff" stroke="#1c1a16" stroke-width="2.5"/><path d="${walls[i]}" stroke="#1c1a16" stroke-width="1.4" fill="none"/><path d="M96 150v-10a10 10 0 0 1 10-10" stroke="#9a7344" stroke-width="1.2" fill="none"/></svg><b>${p[0]}</b><span>${p[1]}</span></div>`).join('');
 
-  const dlg=document.getElementById('vip'),form=document.getElementById('vipForm'),thanks=document.getElementById('thanks'),err=document.getElementById('err');
-  let unlocked=false;try{unlocked=localStorage.getItem('cavalloVip')==='1'}catch(e){}
-  const unlock=()=>{document.querySelectorAll('.locked').forEach(s=>s.classList.add('unlocked'))};
-  if(unlocked)unlock();
-  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{
-    form.interest.value=b.dataset.interest||'';
-    if(unlocked){form.hidden=true;thanks.hidden=false}else{form.hidden=false;thanks.hidden=true}
-    dlg.showModal();
-  }));
-  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>{dlg.close();if(b.dataset.goto)document.querySelector(b.dataset.goto).scrollIntoView()}));
+  const gates=document.querySelectorAll('[data-gate]'),form=document.getElementById('vip'),err=document.getElementById('err');
+  const open=()=>{gates.forEach(g=>g.classList.add('open'));document.getElementById('regForm').hidden=true;document.getElementById('regDone').hidden=false};
+  try{if(localStorage.getItem('cavalloVip2')==='1')open()}catch(e){}
+  document.querySelectorAll('[data-want]').forEach(b=>b.addEventListener('click',()=>{form.interest.value=b.dataset.want;document.getElementById('register').scrollIntoView();setTimeout(()=>form.name.focus({preventScroll:true}),350)}));
   form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const f=form.elements,missing=[];
-    if(!f.name.value.trim())missing.push('your name');
-    if(!/^\S+@\S+\.\S+$/.test(f.email.value))missing.push('a valid email');
-    if(f.phone.value.replace(/\D/g,'').length<10)missing.push('a 10-digit phone number');
-    if(!f.type.value)missing.push('whether you are a buyer, investor or realtor');
-    if(missing.length){err.textContent='Please add '+missing.join(', ')+'.';return}
-    err.textContent='';unlocked=true;try{localStorage.setItem('cavalloVip','1')}catch(e){}
-    unlock();form.hidden=true;thanks.hidden=false;
+    e.preventDefault();const f=form.elements,m=[];
+    if(!f.name.value.trim())m.push('your name');
+    if(!/^\S+@\S+\.\S+$/.test(f.email.value))m.push('an email like name@example.com');
+    if(f.phone.value.replace(/\D/g,'').length<10)m.push('a 10-digit mobile number');
+    if(!form.querySelector('[name=type]:checked'))m.push('whether you are a buyer, investor or realtor');
+    if(m.length){err.textContent='Add '+m.join(', ')+' to join.';return}
+    try{localStorage.setItem('cavalloVip2','1')}catch(e){}
+    open();
   });
 
-  // Exit intent on desktop, once per visit
-  let shown=false;
-  document.addEventListener('mouseout',e=>{if(!shown&&!unlocked&&!e.relatedTarget&&e.clientY<8&&matchMedia('(pointer:fine)').matches){shown=true;form.hidden=false;thanks.hidden=true;dlg.showModal()}});
-
-  // Booking preview
-  const days=document.getElementById('days'),slots=document.getElementById('slots'),bookBtn=document.getElementById('bookBtn');
-  let d=new Date(),n=0,pick={};
-  while(n<5){d.setDate(d.getDate()+1);if(d.getDay()===0)continue;const lbl=d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'});days.insertAdjacentHTML('beforeend',`<button type="button" class="chip" aria-pressed="false" data-k="day">${lbl}</button>`);n++}
-  ['10:00 am','11:30 am','1:00 pm','2:30 pm','4:00 pm','6:00 pm'].forEach(t=>slots.insertAdjacentHTML('beforeend',`<button type="button" class="chip" aria-pressed="false" data-k="time">${t}</button>`));
-  document.querySelector('.cal').addEventListener('click',e=>{
-    const c=e.target.closest('.chip');if(!c)return;
-    c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
-    c.setAttribute('aria-pressed','true');pick[c.dataset.k]=c.textContent;
-    if(pick.day&&pick.time){bookBtn.disabled=false;bookBtn.textContent='Request '+pick.day+', '+pick.time}
-  });
-  bookBtn.addEventListener('click',()=>{bookBtn.textContent='Requested. You would get an invite by email.';bookBtn.disabled=true});
+  // Tabs follow the section in view
+  const links=[...document.querySelectorAll('.tabs a')];
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+en.target.id?'true':'false'))}}),{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('main section').forEach(s=>io.observe(s));
 })();
 </script>
 </body>
