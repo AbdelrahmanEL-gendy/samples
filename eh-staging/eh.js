@@ -71,8 +71,8 @@
     if (!b || !a) return;
     b.addEventListener('click', function () {
       var o = !art.classList.contains('is-open');
-      $$('.material-faq-list article').forEach(function (x) { x.classList.remove('is-open'); var xb = $('.eh-btn', x), xa = $('.material-faq-answer', x); xb && xb.setAttribute('aria-expanded', 'false'); xa && (xa.hidden = true); });
-      art.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); a.hidden = !o;
+      $$('.material-faq-list article').forEach(function (x) { x.classList.remove('is-open'); var xb = $('.eh-btn', x), xa = $('.material-faq-answer', x); xb && xb.setAttribute('aria-expanded', 'false'); xa && xa.classList.remove('eh-shown'); });
+      art.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); a.classList.toggle('eh-shown', o);
     });
   });
 
@@ -133,13 +133,13 @@
   // Mobile navigation
   var mOpen = $('.eh-menu-open'), mBack = $('.eh-mnav-backdrop');
   if (mOpen && mBack) {
-    var setM = function (o) { mBack.hidden = !o; mOpen.setAttribute('aria-expanded', o ? 'true' : 'false'); document.body.style.overflow = o ? 'hidden' : ''; if (o) $('.eh-mnav', mBack).focus(); else mOpen.focus(); };
+    var setM = function (o) { mBack.classList.toggle('eh-shown', o); mOpen.setAttribute('aria-expanded', o ? 'true' : 'false'); document.body.style.overflow = o ? 'hidden' : ''; if (o) $('.eh-mnav', mBack).focus(); else mOpen.focus(); };
     mOpen.addEventListener('click', function () { setM(true); });
     $('.eh-menu-close', mBack).addEventListener('click', function () { setM(false); });
     mBack.addEventListener('click', function (e) { if (e.target === mBack) setM(false); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !mBack.hidden) setM(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && mBack.classList.contains('eh-shown')) setM(false); });
     $$('.eh-mnav-toggle', mBack).forEach(function (t) {
-      t.addEventListener('click', function () { var sub = t.nextElementSibling, o = sub.hidden; sub.hidden = !o; t.setAttribute('aria-expanded', o ? 'true' : 'false'); t.lastElementChild.textContent = o ? '−' : '+'; });
+      t.addEventListener('click', function () { var sub = t.nextElementSibling, o = !sub.classList.contains('eh-shown'); sub.classList.toggle('eh-shown', o); t.setAttribute('aria-expanded', o ? 'true' : 'false'); t.lastElementChild.textContent = o ? '−' : '+'; });
     });
   }
 })();
