@@ -54,7 +54,7 @@ p{text-wrap:pretty}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,24,19,.82) 0%,rgba(18,24,19,.5) 35%,rgba(18,24,19,.68) 68%,rgba(18,24,19,.95) 100%)}
 .site-head{position:relative;z-index:5}
 .site-head .wrap{display:flex;align-items:center;gap:40px;height:96px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font:400 21px/1 var(--exa);letter-spacing:.02em;text-transform:lowercase}
+.logo{display:flex;align-items:center;gap:12px;min-height:44px;text-decoration:none;font:400 21px/1 var(--exa);letter-spacing:.02em;text-transform:lowercase}
 .logo svg{flex:none}
 .nav{display:flex;gap:30px}
 .nav a{text-decoration:none;font-size:16px;font-weight:400;padding:10px 0;opacity:.86;transition:opacity .15s ease,color .15s ease}
@@ -65,7 +65,7 @@ p{text-wrap:pretty}
 .mnav a{padding:14px 0;border-bottom:1px solid rgba(236,239,213,.14);text-decoration:none;font-size:17px}
 .hero-main{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:48px 0 88px}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px;align-items:center}
-.hero-h1{font:300 clamp(40px,4.3vw,64px)/1.08 var(--exa);letter-spacing:-.005em;color:var(--pale)}
+.hero-h1{font:300 clamp(40px,4.2vw,60px)/1.08 var(--exa);letter-spacing:-.005em;color:var(--pale)}
 .hero-lede{margin-top:28px;font-size:19px;line-height:1.6;color:rgba(236,239,213,.84);max-width:46ch}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
 .btn-lg{min-height:56px;padding:0 28px;font-size:17px}
@@ -281,7 +281,7 @@ footer{background:var(--sand);padding:88px 0 40px;font-size:15px}
 .f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
 footer .logo{color:var(--forest)}
 footer h4{font:400 13px/1 var(--exa);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;color:var(--forest)}
-footer a.fl{display:block;text-decoration:none;padding:5px 0;color:var(--muted)}
+footer a.fl{display:flex;align-items:center;min-height:44px;text-decoration:none;padding:0;color:var(--muted)}
 footer a.fl:hover{color:var(--forest)}
 .f-word{font:400 clamp(70px,13.5vw,196px)/.85 var(--exa);text-transform:lowercase;color:var(--forest);opacity:.1;margin-top:64px;white-space:nowrap;overflow:hidden}
 .f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px;margin-top:24px}
