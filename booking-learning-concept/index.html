@@ -3,284 +3,292 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Website redesign concept: bookings + learning platform</title>
-<meta name="description" content="Concept homepage showing business info, online booking and a one-login hand-off to a white-label learning platform.">
+<title>Fieldhouse concept: bookings and learning platform</title>
+<meta name="description" content="Concept homepage for a hands-on training studio: business info, online booking and a one-login hand-off to a white-label learning platform.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&family=Lexend+Exa:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EDF0EB; --paper-2:#E1E6DF; --ink:#1B1F1C; --ink-2:#4A514C; --line:rgba(27,31,28,.14);
-  --green:#1E3A31; --green-2:#2B5244; --ochre:#B9772A; --ochre-soft:#F3E3CB; --white:#FFFDF9;
-  --r:14px; --ease:cubic-bezier(.22,1,.36,1);
-  --serif:"Newsreader", Georgia, serif; --sans:"Schibsted Grotesk", system-ui, -apple-system, sans-serif;
+  --cream:#F4F0E7; --sand:#EAE2D4; --paper:#FBF9F4; --forest:#253027; --forest-2:#334235; --deep:#1A221C;
+  --lime:#C2CD7F; --lime-2:#D3DC98; --pale:#ECEFD5; --ink:#333333; --muted:#5B655C; --line:rgba(37,48,39,.14);
+  --exa:"Lexend Exa", "Lexend Deca", system-ui, sans-serif; --deca:"Lexend Deca", system-ui, sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+body{background:var(--cream);color:var(--ink);font:300 18px/1.6 var(--deca);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
-button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:2px solid var(--ochre);outline-offset:3px;border-radius:6px}
-.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
-h1,h2,h3{font-weight:400;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1360px,100% - 64px);margin-inline:auto}
+h1,h2,h3{font-weight:300;text-wrap:balance}
 p{text-wrap:pretty}
-.serif{font-family:var(--serif)}
+.exa{font-family:var(--exa);text-transform:uppercase;letter-spacing:.06em}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* concept bar */
-.concept{background:var(--ink);color:#E9E4D8;font-size:13px}
-.concept .wrap{display:flex;gap:16px;justify-content:space-between;align-items:center;min-height:40px;flex-wrap:wrap;padding-block:8px}
-.concept a{color:#F3E3CB;text-underline-offset:3px}
-
-/* header */
-header.site{position:sticky;top:0;z-index:20;background:rgba(244,241,234,.86);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
-header.site .wrap{display:flex;align-items:center;gap:28px;height:72px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:-.01em}
-.brand svg{flex:none}
-.brand span{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:0}
-nav.main{display:flex;gap:26px;margin-left:12px}
-nav.main a{text-decoration:none;font-size:15px;color:var(--ink-2);padding:10px 0;transition:color .15s ease}
-nav.main a:hover{color:var(--ink)}
-.head-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;border:1px solid transparent;text-decoration:none;font-weight:500;font-size:15px;transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .15s ease}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font:500 16px/1 var(--deca);text-decoration:none;transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .15s ease;border:1px solid transparent}
 .btn:active{transform:scale(.98)}
-.btn-primary{background:var(--green);color:var(--white)}
-.btn-primary:hover{background:var(--green-2)}
-.btn-ghost{border-color:var(--line);background:transparent}
-.btn-ghost:hover{border-color:var(--ink)}
-.btn svg{transition:transform .2s var(--ease)}
-.btn:hover svg{transform:translateX(3px)}
-.menu-toggle{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;place-items:center}
-.mnav{border-top:1px solid var(--line);padding:8px 24px 16px;display:grid}
-.mnav a{text-decoration:none;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
-@media (min-width:1101px){.mnav{display:none!important}}
-@media (max-width:1100px){.menu-toggle{display:grid}}
+.btn-lime{background:var(--lime);color:var(--forest)}
+.btn-lime:hover{background:var(--lime-2)}
+.btn-line{border-color:rgba(236,239,213,.55);color:var(--pale)}
+.btn-line:hover{border-color:var(--pale);background:rgba(236,239,213,.08)}
+.btn-dark{background:var(--forest);color:var(--paper)}
+.btn-dark:hover{background:var(--forest-2)}
+.btn-ghost{border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--forest)}
+
+/* concept bar */
+.concept{background:var(--deep);color:#C9CFC3;font-size:13px;position:relative;z-index:30}
+.concept .wrap{display:flex;gap:16px;justify-content:space-between;align-items:center;min-height:38px;flex-wrap:wrap;padding-block:7px}
+.concept a{color:var(--lime);text-underline-offset:3px}
 
 /* hero */
-.hero{padding:56px 0 72px}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:end}
-.hero h1{font-family:var(--serif);font-size:clamp(44px,5.2vw,80px);line-height:1;letter-spacing:-.025em;font-weight:400}
-.hero h1 em{white-space:nowrap}
-.hero h1 em{font-style:normal;color:var(--green-2)}
-.hero .lede{margin-top:26px;font-size:19px;line-height:1.55;color:var(--ink-2);max-width:46ch}
-.hero .ctas{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-.hero .facts{display:flex;gap:28px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2);flex-wrap:wrap}
-.hero .facts strong{display:block;font-size:15px;color:var(--ink);font-weight:500}
-.hero-media{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/4.6}
-.hero-media img{width:100%;height:100%;object-fit:cover}
-.next-card{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,253,249,.94);backdrop-filter:blur(10px);border-radius:16px;padding:16px 18px;display:flex;gap:16px;align-items:center;box-shadow:0 18px 40px -18px rgba(0,0,0,.35)}
-.next-card .when{flex:1;min-width:0}
-.next-card small{display:block;font-size:12.5px;color:var(--ink-2)}
-.next-card strong{font-weight:500;font-size:16px}
-.seats{font-size:13px;background:var(--ochre-soft);color:#6E4512;border-radius:999px;padding:5px 10px;white-space:nowrap}
-.next-card a{flex:none;width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center}
+.hero{position:relative;min-height:min(900px,100svh);color:var(--pale);overflow:hidden;display:flex;flex-direction:column;background:var(--deep)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.82)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,24,19,.82) 0%,rgba(18,24,19,.5) 35%,rgba(18,24,19,.68) 68%,rgba(18,24,19,.95) 100%)}
+.site-head{position:relative;z-index:5}
+.site-head .wrap{display:flex;align-items:center;gap:40px;height:96px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font:400 21px/1 var(--exa);letter-spacing:.02em;text-transform:lowercase}
+.logo svg{flex:none}
+.nav{display:flex;gap:30px}
+.nav a{text-decoration:none;font-size:16px;font-weight:400;padding:10px 0;opacity:.86;transition:opacity .15s ease,color .15s ease}
+.nav a:hover{opacity:1;color:var(--lime)}
+.head-cta{margin-left:auto;display:flex;gap:10px}
+.menu-btn{display:none;width:48px;height:48px;border-radius:50%;border:1px solid rgba(236,239,213,.4);place-items:center;color:var(--pale)}
+.mnav{position:relative;z-index:5;background:var(--deep);padding:8px 32px 20px;display:grid}
+.mnav a{padding:14px 0;border-bottom:1px solid rgba(236,239,213,.14);text-decoration:none;font-size:17px}
+.hero-foot{position:relative;z-index:2;margin-top:auto;padding-bottom:36px}
+.hero-labels{display:flex;justify-content:space-between;gap:24px;font:400 14px/1.2 var(--exa);letter-spacing:.16em;text-transform:uppercase;color:var(--pale);opacity:.9;margin-bottom:8px}
+.wordmark{font:400 clamp(88px,16.4vw,236px)/.82 var(--exa);letter-spacing:.02em;text-transform:lowercase;color:var(--pale);white-space:nowrap;margin-left:-.06em}
+.hero-strap{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-top:28px;flex-wrap:wrap}
+.hero-strap p{max-width:44ch;font-size:18px;color:rgba(236,239,213,.86)}
+.next-chip{display:flex;align-items:center;gap:14px;background:rgba(236,239,213,.1);backdrop-filter:blur(10px);border:1px solid rgba(236,239,213,.18);border-radius:999px;padding:8px 8px 8px 22px;text-decoration:none;transition:background-color .2s ease}
+.next-chip:hover{background:rgba(236,239,213,.16)}
+.next-chip small{display:block;font-size:12px;opacity:.75}
+.next-chip strong{font-weight:400;font-size:15px}
+.next-chip i{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--forest);display:grid;place-items:center;font-style:normal}
 
-/* journey */
-.journey{background:var(--white);border-block:1px solid var(--line)}
-.journey .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
-.step{padding:34px 34px 38px 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
-.step + .step{padding-left:34px;border-left:1px solid var(--line)}
-.step .n{grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:14px;color:var(--ink-2)}
-.step h3{font-family:var(--sans);font-weight:500;font-size:20px}
-.step p{color:var(--ink-2);font-size:15px}
+/* section shells */
+.sec{padding:128px 0}
+.sec-title{font:300 clamp(30px,3.1vw,44px)/1.1 var(--exa);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.sec-sub{color:var(--muted);margin-top:14px}
+.center{text-align:center}
+.center .sec-sub{margin-inline:auto;max-width:60ch}
 
-/* sections */
-section.block{padding:104px 0}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:48px}
-.sec-head h2{font-family:var(--serif);font-size:clamp(36px,4.4vw,60px);line-height:1.02;letter-spacing:-.01em;max-width:16ch}
-.sec-head p{color:var(--ink-2);max-width:48ch;justify-self:end}
+/* program bento */
+.bento{display:grid;grid-template-columns:1.25fr 1fr .8fr;grid-template-rows:300px 300px;gap:14px;margin-top:64px}
+.tile{position:relative;overflow:hidden;text-decoration:none;color:var(--paper);display:block;background:var(--forest)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(18,24,19,.55) 0%,rgba(18,24,19,0) 45%,rgba(18,24,19,.55) 100%);transition:opacity .3s ease}
+.tile:hover img{transform:scale(1.04)}
+.tile .lbl{position:absolute;z-index:2;top:22px;right:26px;font-size:19px;font-weight:400}
+.tile .meta{position:absolute;z-index:2;left:26px;bottom:22px;right:26px;display:flex;justify-content:space-between;align-items:end;gap:12px;font-size:14px;opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.tile:hover .meta,.tile:focus-visible .meta{opacity:1;transform:none}
+.tile .meta b{font-weight:500;background:var(--lime);color:var(--forest);border-radius:999px;padding:9px 16px;font-size:14px}
+.t1{grid-row:1/3;border-radius:72px 72px 0 72px}
+.t2{border-radius:72px 72px 72px 0}
+.t3{border-radius:0 72px 72px 72px}
+.t4{border-radius:72px 0 72px 72px}
+.t5{border-radius:72px 72px 0 72px}
 
-/* programs */
-.programs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.program{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;min-height:300px;transition:border-color .2s ease,transform .25s var(--ease),box-shadow .25s var(--ease)}
-.program:hover{border-color:rgba(27,31,28,.35);transform:translateY(-3px);box-shadow:0 22px 40px -28px rgba(27,31,28,.45)}
-.program:focus-within{border-color:var(--ink)}
-.tag{align-self:flex-start;font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--ink-2)}
-.program h3{font-family:var(--serif);font-size:32px;line-height:1.05;margin-top:22px}
-.program p{color:var(--ink-2);font-size:15px;margin-top:10px}
-.program .meta{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--line)}
-.program .price{font-size:15px}
-.program .price small{display:block;color:var(--ink-2);font-size:12.5px}
-.program a.stretch{font-weight:500;font-size:15px;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
-.program a.stretch::after{content:"";position:absolute;inset:0;border-radius:var(--r)}
-.program.feature{background:var(--green);color:var(--white);border-color:var(--green)}
-.program.feature p,.program.feature .price small{color:#BFD0C7}
-.program.feature .tag{border-color:rgba(255,255,255,.25);color:#DDE7E1}
-.program.feature .meta{border-color:rgba(255,255,255,.18)}
-.note{font-size:13px;color:var(--ink-2);margin-top:18px}
+/* quote band */
+.quote{background:radial-gradient(120% 140% at 85% 30%,#334235 0%,#253027 45%,#1A221C 100%);color:var(--paper);padding:112px 0}
+.quote .eyebrow{font:400 15px/1 var(--exa);letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.quote p.big{font:300 clamp(26px,3.2vw,46px)/1.55 var(--exa);letter-spacing:.06em;text-transform:uppercase;max-width:30ch;margin:24px auto 0}
+.pill-img{display:inline-block;vertical-align:middle;width:2.8em;height:1.2em;border-radius:999px;overflow:hidden;margin:0 .18em;transform:translateY(-.08em)}
+.pill-img img{width:100%;height:100%;object-fit:cover}
 
-/* booking */
-.booking{background:var(--paper-2)}
-.book-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
-.book-copy h2{font-family:var(--serif);font-size:clamp(36px,4.4vw,60px);line-height:1.02;max-width:12ch}
-.book-copy p{color:var(--ink-2);margin-top:18px;max-width:42ch}
-.book-copy ul{list-style:none;padding:0;margin-top:28px;display:grid;gap:14px}
-.book-copy li{display:flex;gap:12px;font-size:15px}
-.book-copy li svg{flex:none;margin-top:3px;color:var(--green-2)}
-.panel{background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 60px -40px rgba(27,31,28,.5);overflow:hidden}
-.panel-head{display:flex;gap:8px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2);align-items:center;flex-wrap:wrap}
-.crumb{padding:5px 10px;border-radius:999px}
-.crumb.on{background:var(--ink);color:#fff}
-.crumb.done{background:var(--paper-2);color:var(--ink)}
-.panel-body{padding:24px 22px 26px;min-height:420px}
-.stage{display:none;animation:in .28s var(--ease)}
-.stage.on{display:block}
-@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.stage h3{font-family:var(--sans);font-weight:500;font-size:18px;margin-bottom:16px}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 16px;transition:border-color .15s ease,background-color .15s ease}
-.opt:hover{border-color:rgba(27,31,28,.4)}
-.opt[aria-pressed="true"]{border-color:var(--green);background:#F1F5F2;box-shadow:inset 0 0 0 1px var(--green)}
-.opt .t{flex:1}
-.opt .t strong{display:block;font-weight:500}
-.opt .t small{color:var(--ink-2);font-size:13px}
-.opt .p{font-size:14px;color:var(--ink-2)}
-.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.day{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:border-color .15s ease,background-color .15s ease}
-.day small{font-size:12px;color:var(--ink-2)}
-.day b{font-weight:500;font-size:18px}
-.day:hover:not(:disabled){border-color:rgba(27,31,28,.4)}
-.day[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.day[aria-pressed="true"] small{color:#CFCBC1}
-.day:disabled{opacity:.42;cursor:not-allowed;text-decoration:line-through}
-.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.slot{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:#fff;transition:border-color .15s ease,background-color .15s ease}
-.slot:hover{border-color:rgba(27,31,28,.4)}
-.slot[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
-.slot-label{font-size:13px;color:var(--ink-2);margin-top:22px}
-.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-.field{display:grid;gap:6px}
-.field.wide{grid-column:1/-1}
-.field label{font-size:13.5px;font-weight:500}
-.field input{min-height:46px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;background:#fff}
-.field input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(43,82,68,.15)}
-.field .err{font-size:13px;color:#A23B1F;display:none}
-.field.bad input{border-color:#A23B1F}
+/* schedule + booking */
+.days{display:inline-flex;gap:4px;background:var(--paper);border-radius:999px;padding:5px;margin-top:30px;flex-wrap:wrap;justify-content:center}
+.day{min-height:44px;padding:0 20px;border-radius:999px;font-size:15px;font-weight:400;color:var(--muted);transition:background-color .2s ease,color .2s ease}
+.day small{display:block;font-size:11px;opacity:.75;line-height:1}
+.day[aria-selected="true"]{background:var(--sand);color:var(--forest)}
+.day:hover{color:var(--forest)}
+.sessions{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.session{display:flex;align-items:center;gap:22px;background:var(--paper);border-radius:999px;padding:0 30px 0 0;text-align:left;width:100%;min-height:136px;transition:transform .25s var(--ease),box-shadow .25s var(--ease);animation:rise .4s var(--ease) both}
+.session:hover{transform:translateY(-3px);box-shadow:0 22px 40px -28px rgba(37,48,39,.5)}
+.session .ph{width:136px;height:136px;border-radius:50%;overflow:hidden;flex:none}
+.session .ph img{width:100%;height:100%;object-fit:cover}
+.session .t{font:400 19px/1.25 var(--exa);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.session .who{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;color:var(--muted);line-height:1.2}
+.session .av{width:32px;height:32px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;font-weight:500;color:var(--forest);flex:none}
+.session .seats{font-size:12.5px;color:var(--muted);margin-top:8px}
+.session .seats b{font-weight:500;color:#7A5A16}
+.session.full{opacity:.5;pointer-events:none}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sched-foot{display:flex;justify-content:center;margin-top:36px}
+
+/* booking drawer */
+.scrim{position:fixed;inset:0;background:rgba(18,24,19,.5);z-index:60;opacity:0;transition:opacity .25s ease}
+.scrim.on{opacity:1}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--cream);z-index:61;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .32s var(--ease);box-shadow:-30px 0 60px -30px rgba(0,0,0,.4)}
+.drawer.on{transform:none}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;border-bottom:1px solid var(--line)}
+.dr-head .steps{display:flex;gap:6px;font-size:13px;color:var(--muted)}
+.dr-head .steps span{padding:6px 12px;border-radius:999px}
+.dr-head .steps span.on{background:var(--forest);color:var(--paper)}
+.dr-head .steps span.done{background:var(--sand);color:var(--forest)}
+.x{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center}
+.dr-body{padding:30px 28px;overflow:auto;flex:1}
+.dr-sum{display:flex;gap:18px;align-items:center;background:var(--paper);border-radius:999px;padding:0 24px 0 0;margin-bottom:28px}
+.dr-sum .ph{width:92px;height:92px;border-radius:50%;overflow:hidden;flex:none}
+.dr-sum .ph img{width:100%;height:100%;object-fit:cover}
+.dr-sum .t{font:400 16px/1.3 var(--exa);letter-spacing:.04em;text-transform:uppercase}
+.dr-sum small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.dr-title{font:300 26px/1.15 var(--exa);letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+.field{display:grid;gap:7px;margin-bottom:16px}
+.field label{font-size:14px;font-weight:500}
+.field input{min-height:52px;border:1px solid var(--line);border-radius:999px;padding:0 22px;font:inherit;font-size:16px;background:var(--paper)}
+.field input:focus{outline:none;border-color:var(--forest);box-shadow:0 0 0 3px rgba(194,205,127,.55)}
+.field .err{font-size:13.5px;color:#9A3412;display:none;padding-left:22px}
+.field.bad input{border-color:#9A3412}
 .field.bad .err{display:block}
-.summary{margin-top:18px;padding:14px 16px;border-radius:12px;background:var(--paper);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.panel-foot{display:flex;justify-content:space-between;gap:12px;padding:16px 22px;border-top:1px solid var(--line);background:#FCFAF6}
-.panel-foot .btn[disabled]{opacity:.4;cursor:not-allowed}
-.confirm{text-align:left}
-.confirm .tick{width:48px;height:48px;border-radius:50%;background:#E3EEE7;color:var(--green);display:grid;place-items:center;margin-bottom:16px}
-.confirm h3{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.05}
-.confirm p{color:var(--ink-2);margin-top:10px}
-.handoff{margin-top:22px;border:1px dashed rgba(27,31,28,.3);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:center}
-.handoff .t{flex:1;font-size:14px;color:var(--ink-2)}
-.handoff .t strong{display:block;color:var(--ink);font-weight:500;font-size:15px}
-.cal-note{font-size:13px;color:var(--ink-2);margin-top:16px}
+.total{display:flex;justify-content:space-between;padding:18px 4px;border-top:1px solid var(--line);margin-top:8px;font-size:16px}
+.dr-foot{padding:20px 28px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:space-between}
+.done .tick{width:64px;height:64px;border-radius:50%;background:var(--lime);color:var(--forest);display:grid;place-items:center;margin-bottom:22px}
+.done p{color:var(--muted);margin-top:8px}
+.handoff{margin-top:26px;background:var(--forest);color:var(--paper);border-radius:36px;padding:26px}
+.handoff .t{font:400 17px/1.3 var(--exa);letter-spacing:.04em;text-transform:uppercase}
+.handoff p{color:#C9D2C3;font-size:15px;margin:8px 0 18px}
+.fine{font-size:13px;color:var(--muted);margin-top:18px}
 
-/* learning */
-.learn{background:var(--green);color:var(--white)}
-.learn .sec-head p{color:#BFD0C7}
-.learn-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:28px;align-items:stretch}
-.app{background:#FBF9F4;color:var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
-.app-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#EDE9DF;font-size:13px;color:var(--ink-2)}
-.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#CFC9BB}
-.url{flex:1;text-align:center;background:#fff;border-radius:8px;padding:6px 10px;font-size:12.5px}
-.app-body{display:grid;grid-template-columns:200px 1fr;min-height:420px}
-.app-side{border-right:1px solid var(--line);padding:20px 16px;display:grid;align-content:start;gap:4px;font-size:14px}
-.app-side .brand span{font-size:22px}
-.app-side a{display:block;padding:9px 10px;border-radius:8px;text-decoration:none;color:var(--ink-2)}
-.app-side a.on{background:var(--paper-2);color:var(--ink)}
-.app-main{padding:24px}
-.app-main h3{font-family:var(--serif);font-size:30px;line-height:1.05}
-.app-main .sub{color:var(--ink-2);font-size:14px;margin-top:6px}
-.resume{margin-top:20px;border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:12px;background:#fff}
-.resume .top{display:flex;justify-content:space-between;gap:12px;font-size:14px}
-.bar{height:8px;background:var(--paper-2);border-radius:999px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--ochre);border-radius:999px;transition:width 1.2s var(--ease)}
-.lessons{margin-top:16px;display:grid;gap:8px;list-style:none;padding:0}
-.lessons li{display:flex;gap:12px;align-items:center;font-size:14px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
-.lessons li .s{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:11px;border:1px solid var(--line)}
-.lessons li.done .s{background:var(--green);border-color:var(--green);color:#fff}
-.lessons li.now{border-color:var(--ochre);box-shadow:inset 0 0 0 1px var(--ochre)}
-.lessons li .d{margin-left:auto;color:var(--ink-2);font-size:13px}
-.how{border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:26px;display:grid;align-content:start;gap:20px}
-.how h3{font-family:var(--serif);font-size:30px;line-height:1.05}
-.how ol{list-style:none;padding:0;display:grid;gap:16px;counter-reset:h}
-.how li{counter-increment:h;display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:15px;color:#DCE6E0}
-.how li::before{content:counter(h);width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:13px}
-.how li strong{color:#fff;font-weight:500;display:block}
-.how .btn-light{background:var(--white);color:var(--ink);align-self:start;justify-self:start}
+/* one login */
+.login-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.feat{list-style:none;padding:0;margin-top:48px;display:grid;gap:6px}
+.feat li button{display:block;width:100%;text-align:left;padding:16px 0 16px 28px;border-left:2px solid rgba(194,205,127,.35);transition:border-color .3s ease}
+.feat li button[aria-selected="true"]{border-left-color:var(--lime)}
+.feat .ft{font:400 clamp(19px,1.7vw,24px)/1.2 var(--exa);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .3s ease}
+.feat button[aria-selected="true"] .ft{color:var(--ink)}
+.feat .fd{font-size:15px;color:var(--muted);margin-top:6px}
+.screen-wrap{position:relative;border-radius:80px 80px 80px 0;overflow:hidden;background:var(--forest);aspect-ratio:1.02/1;padding:44px}
+.screen-wrap::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1587902673915-631e5ba4488f?auto=format&fit=crop&w=1100&q=70") center/cover;opacity:.35;filter:saturate(.6)}
+.screen{position:relative;height:100%;background:var(--paper);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 70px -30px rgba(0,0,0,.6)}
+.scr-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--sand);font-size:12.5px;color:var(--muted)}
+.scr-bar .dots{display:flex;gap:6px}.scr-bar .dots i{width:9px;height:9px;border-radius:50%;background:#CFC7B6}
+.scr-bar .url{flex:1;text-align:center;background:var(--paper);border-radius:999px;padding:5px 12px}
+.scr{display:none;padding:26px;flex:1;animation:rise .35s var(--ease)}
+.scr.on{display:block}
+.scr h3{font:300 22px/1.2 var(--exa);letter-spacing:.04em;text-transform:uppercase}
+.scr .s{color:var(--muted);font-size:14px;margin-top:6px}
+.mail{margin-top:18px;border:1px solid var(--line);border-radius:18px;padding:18px;font-size:14.5px;display:grid;gap:8px;background:#fff}
+.mail b{font-weight:500}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:11px 14px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.rows{display:grid;gap:8px;margin-top:18px}
+.tagl{font-size:12px;background:var(--pale);color:var(--forest);border-radius:999px;padding:3px 10px}
+.loginbox{margin:22px auto 0;max-width:320px;display:grid;gap:10px}
+.loginbox .in{border:1px solid var(--line);border-radius:999px;padding:12px 18px;font-size:14px;color:var(--muted);background:#fff}
+.bar{height:8px;background:var(--sand);border-radius:999px;overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;width:58%;background:var(--lime);border-radius:999px}
 
-/* about */
-.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
-.about-media{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
-.about-media img{border-radius:16px;width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
-.about-media img:last-child{aspect-ratio:3/4;margin-top:60px}
-.about-copy h2{font-family:var(--serif);font-size:clamp(36px,4.4vw,56px);line-height:1.02;max-width:14ch}
-.about-copy p{color:var(--ink-2);margin-top:18px;max-width:50ch}
-.visit{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid var(--line);padding-top:22px;font-size:15px}
-.visit small{display:block;color:var(--ink-2);font-size:13px}
+/* pricing pills */
+#pricing{overflow-x:clip}
+.price-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:128px;gap:14px;margin-top:20px}
+.pp{height:128px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 44px;text-decoration:none;transition:transform .25s var(--ease)}
+.pp:hover{transform:translateY(-3px)}
+.pp small{display:block;font:400 12.5px/1 var(--exa);letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:10px}
+.pp .n{font-size:24px;font-weight:400}
+.pp .v{font-size:34px;font-weight:300;white-space:nowrap}
+.pp .v span{font-size:18px}
+.pp.a{grid-column:7/13;background:var(--sand);border-radius:999px 0 0 999px;margin-right:-32px}
+.pp.b{grid-column:1/8;background:var(--forest);color:var(--paper);margin-left:-32px;border-radius:0 999px 999px 0}
+.pp.c{grid-column:5/11;background:var(--paper)}
+.pimg{border-radius:999px;overflow:hidden;height:128px}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.pimg.i1{grid-column:8/13;margin-right:-32px;border-radius:999px 0 0 999px}
+.pimg.i2{grid-column:1/5;margin-left:-32px;border-radius:0 999px 999px 0}
+.pimg.i3{grid-column:11/13}
+.price-head{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:center}
+.price-head > div{grid-column:1/7}
+.note{font-size:13px;color:var(--muted);margin-top:22px}
 
 /* faq */
-.faq{border-top:1px solid var(--line)}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-size:19px}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font-size:19px;font-weight:400}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary .pm{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex:none;transition:transform .25s var(--ease)}
-.faq details[open] summary .pm{transform:rotate(45deg)}
-.faq details p{padding:0 0 24px;color:var(--ink-2);max-width:68ch}
+.faq .pm{width:36px;height:36px;border-radius:50%;background:var(--paper);display:grid;place-items:center;flex:none;transition:transform .3s var(--ease),background-color .2s ease}
+.faq details[open] .pm{transform:rotate(45deg);background:var(--lime)}
+.faq details p{padding:0 0 26px;color:var(--muted);max-width:62ch}
 
-/* notes for consultant */
-.notes{background:var(--white);border-top:1px solid var(--line)}
-.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.notes-grid > div{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:var(--paper)}
-.notes-grid h3{font-family:var(--sans);font-weight:500;font-size:20px}
-.notes-grid ul{margin-top:12px;padding-left:18px;color:var(--ink-2);font-size:15px;display:grid;gap:8px}
+/* cta */
+.cta{position:relative;overflow:hidden;color:var(--pale);text-align:center;padding:150px 0;background:var(--deep)}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;filter:saturate(.6)}
+.cta .wrap{position:relative}
+.cta h2{font:300 clamp(32px,4vw,58px)/1.1 var(--exa);letter-spacing:.05em;text-transform:uppercase;max-width:20ch;margin:0 auto}
+.cta p{margin:18px auto 0;max-width:48ch;color:rgba(236,239,213,.82)}
+.cta .row-btns{display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+
+/* notes */
+.notes{background:var(--paper)}
+.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.notes-grid > div{background:var(--cream);border-radius:44px 44px 44px 0;padding:34px}
+.notes-grid h3{font:400 18px/1.2 var(--exa);letter-spacing:.06em;text-transform:uppercase}
+.notes-grid ul{margin-top:14px;padding-left:18px;color:var(--muted);font-size:16px;display:grid;gap:8px}
 
 /* footer */
-footer{background:var(--ink);color:#CFCBC1;padding:64px 0 36px;font-size:14px}
-footer .top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
-footer .brand span{color:#fff}
-footer h4{color:#fff;font-weight:500;font-size:17px;margin-bottom:12px}
-footer a{display:block;text-decoration:none;padding:4px 0}
-footer a:hover{color:#fff}
-footer .bottom{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer{background:var(--sand);padding:88px 0 40px;font-size:15px}
+.f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+footer .logo{color:var(--forest)}
+footer h4{font:400 13px/1 var(--exa);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;color:var(--forest)}
+footer a.fl{display:block;text-decoration:none;padding:5px 0;color:var(--muted)}
+footer a.fl:hover{color:var(--forest)}
+.f-word{font:400 clamp(70px,13.5vw,196px)/.85 var(--exa);text-transform:lowercase;color:var(--forest);opacity:.1;margin-top:64px;white-space:nowrap;overflow:hidden}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px;margin-top:24px}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv.in{opacity:1;transform:none}
-
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
 
-@media (max-width:1100px){
-  nav.main{display:none}
-  .hero .wrap,.book-grid,.learn-grid,.about-grid{grid-template-columns:1fr}
-  .hero-media{aspect-ratio:4/3}
-  .sec-head{grid-template-columns:1fr}
-  .sec-head p{justify-self:start}
-  .programs,.notes-grid{grid-template-columns:1fr 1fr}
-  .program.feature{grid-column:1/-1}
-  footer .top{grid-template-columns:1fr 1fr}
+@media (max-width:1180px){
+  .nav{display:none}
+  .menu-btn{display:grid}
+  .head-cta .btn-line{display:none}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,260px)}
+  .t1{grid-row:auto}
+  .sessions{grid-template-columns:1fr 1fr}
+  .login-grid,.faq-grid{grid-template-columns:1fr}
+  .notes-grid{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr 1fr}
 }
-@media (max-width:720px){
-  .wrap{width:min(1240px,100% - 32px)}
-  header.site .wrap{height:64px;gap:12px}
-  .head-actions .btn-ghost{display:none}
-  .head-actions .btn{min-height:44px;padding:0 16px;font-size:14px}
-  .hero{padding:36px 0 56px}
-  .hero .lede{font-size:17px}
-  .journey .wrap{grid-template-columns:1fr}
-  .step,.step + .step{padding:22px 0;border-left:0}
-  .step + .step{border-top:1px solid var(--line)}
-  section.block{padding:72px 0}
-  .programs,.notes-grid{grid-template-columns:1fr}
-  .days{grid-template-columns:repeat(4,1fr)}
-  .fields{grid-template-columns:1fr}
-  .app-body{grid-template-columns:1fr}
-  .app-side{display:none}
-  .about-media img:last-child{margin-top:30px}
-  .visit{grid-template-columns:1fr}
-  footer .top{grid-template-columns:1fr}
-  .next-card{flex-wrap:wrap}
+@media (max-width:460px){.head-cta .btn-lime{display:none}}
+@media (max-width:760px){
+  .wrap{width:min(1360px,100% - 32px)}
+  .site-head .wrap{height:76px;gap:12px}
+  .head-cta .btn{min-height:44px;padding:0 16px;font-size:15px;white-space:nowrap}
+  .logo{font-size:18px}
+  .hero{min-height:auto}
+  .hero-foot{padding-top:120px}
+  .hero-labels{flex-direction:column;gap:8px;font-size:12px}
+  .wordmark{font-size:15.2vw}
+  .sec{padding:88px 0}
+  .bento{grid-template-columns:1fr;grid-template-rows:none}
+  .bento .tile{height:240px}
+  .tile .meta{opacity:1;transform:none}
+  .sessions{grid-template-columns:1fr}
+  .session{min-height:112px}
+  .session .ph{width:112px;height:112px}
+  .days{display:grid;grid-template-columns:repeat(4,1fr);border-radius:28px}
+  .screen-wrap{padding:18px;border-radius:44px 44px 44px 0;aspect-ratio:auto;min-height:440px}
+  .price-head > div{grid-column:1/-1}
+  .price-grid{grid-template-columns:1fr}
+  .pp,.pp.a,.pp.b,.pp.c{grid-column:auto;margin:0;border-radius:44px;padding:26px 28px;min-height:auto;flex-wrap:wrap}
+  .pimg{display:none}
+  .price-grid{grid-auto-rows:auto}
+  .pp{height:auto}
+  .f-top{grid-template-columns:1fr}
+  .quote p.big{font-size:22px}
 }
 </style>
 </head>
@@ -288,277 +296,184 @@ footer .bottom{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,25
 
 <div class="concept">
   <div class="wrap">
-    <span>Concept homepage for your client. The business name, programs, prices and dates are example content.</span>
+    <span>Concept homepage. The business name, programs, prices and times are example content.</span>
     <a href="#notes">What I'd confirm before building</a>
   </div>
 </div>
 
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Fieldhouse home">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="#1E3A31"/><path d="M8 19V9h11M8 14h8" stroke="#F3E3CB" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
-      <span>Fieldhouse</span>
-    </a>
-    <nav class="main" aria-label="Primary">
-      <a href="#programs">Programs</a>
-      <a href="#book">Book a session</a>
-      <a href="#learn">Learn online</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="head-actions">
-      <a class="btn btn-ghost" href="#learn">Student login</a>
-      <a class="btn btn-primary" href="#book">Book a session</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </button>
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1590880795696-20c7dfadacde?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high"></div>
+  <div class="site-head">
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Fieldhouse home">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M4 30C4 14 14 4 30 4c0 16-10 26-26 26Z" fill="#C2CD7F"/><path d="M9 25 24 10" stroke="#253027" stroke-width="2" stroke-linecap="round"/></svg>
+        fieldhouse
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#programs">Programs</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#learn">Learn online</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="head-cta">
+        <a class="btn btn-lime" href="#schedule">Book a Session</a>
+        <a class="btn btn-line" href="#learn">Student Login</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7h14M3 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
     </div>
   </div>
   <nav class="mnav" id="mnav" aria-label="Mobile" hidden>
-    <a href="#programs">Programs</a><a href="#book">Book a session</a><a href="#learn">Learn online</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#learn">Student login</a>
+    <a href="#schedule">Book a Session</a><a href="#programs">Programs</a><a href="#schedule">Schedule</a><a href="#learn">Learn online</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#learn">Student Login</a>
   </nav>
+  <div class="hero-foot">
+    <div class="wrap">
+      <div class="hero-labels" aria-hidden="true"><span>Hands-on workshops</span><span>Small groups</span><span>Online courses</span></div>
+      <h1 class="wordmark"><span aria-hidden="true">fieldhouse</span><span class="sr-only">Fieldhouse: hands-on workshops in Adelaide, with online courses that pick up where the room left off</span></h1>
+      <div class="hero-strap">
+        <p>Learn it at the bench in Adelaide, then keep going on our learning platform with the same login.</p>
+        <a class="next-chip" href="#schedule"><span><small>Next open session</small><strong id="nextWhen">Saturday, 10:00 am</strong></span><i aria-hidden="true">→</i></a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<main id="top">
+<main>
 
-<section class="hero">
+<section class="sec center" id="programs">
   <div class="wrap">
+    <h2 class="sec-title rv">Find your program</h2>
+    <p class="sec-sub rv">Five ways to learn, from a single morning at the bench to a full course you finish online.</p>
+    <div class="bento">
+      <a class="tile t1 rv" href="#schedule" data-prog="Foundations">
+        <img src="https://images.unsplash.com/photo-1497218770144-3fea6dbc33fe?auto=format&fit=crop&w=1100&q=75" alt="Carving chisels laid out on a pale timber workbench" loading="lazy">
+        <span class="lbl">Foundations Workshop</span>
+        <span class="meta"><span>3 hours · in person</span><b>See times</b></span>
+      </a>
+      <a class="tile t2 rv" href="#schedule" data-prog="Six-week">
+        <img src="https://images.unsplash.com/photo-1635625203639-b793c70ba6c9?auto=format&fit=crop&w=900&q=75" alt="A bright training room with long tables and windows onto autumn trees" loading="lazy">
+        <span class="lbl">Six-Week Course</span>
+        <span class="meta"><span>Studio + online</span><b>See times</b></span>
+      </a>
+      <a class="tile t3 rv" href="#learn">
+        <img src="https://images.unsplash.com/photo-1504608245011-62d9758c1bb9?auto=format&fit=crop&w=700&q=75" alt="A laptop open on a timber desk beside a sunny window" loading="lazy">
+        <span class="lbl">Online Library</span>
+        <span class="meta"><span>Self paced</span><b>Start now</b></span>
+      </a>
+      <a class="tile t4 rv" href="#schedule" data-prog="Private">
+        <img src="https://images.unsplash.com/photo-1597960194599-22929afc25b1?auto=format&fit=crop&w=900&q=75" alt="A workshop with benches, shelves of tools and tall windows" loading="lazy">
+        <span class="lbl">Private Session</span>
+        <span class="meta"><span>One on one</span><b>See times</b></span>
+      </a>
+      <a class="tile t5 rv" href="#contact">
+        <img src="https://images.unsplash.com/photo-1763098844157-d0fffcc966a1?auto=format&fit=crop&w=700&q=75" alt="Afternoon sun across a quiet classroom with a chalkboard" loading="lazy">
+        <span class="lbl">Team Training</span>
+        <span class="meta"><span>For workplaces</span><b>Enquire</b></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="quote center">
+  <div class="wrap">
+    <p class="eyebrow rv">Hands-on learning</p>
+    <p class="big rv">Every session is built so you learn it <span class="pill-img"><img src="https://images.unsplash.com/photo-1426927308491-6380b6a9936f?auto=format&fit=crop&w=300&q=70" alt=""></span> in the room, then keep practising <span class="pill-img"><img src="https://images.unsplash.com/photo-1587902673915-631e5ba4488f?auto=format&fit=crop&w=300&q=70" alt=""></span> at home with the course online.</p>
+  </div>
+</section>
+
+<section class="sec center" id="schedule">
+  <div class="wrap">
+    <h2 class="sec-title rv">Find a time that fits your week</h2>
+    <p class="sec-sub rv">Morning, evening and Saturday sessions. Pick one to book in under two minutes.</p>
+    <div class="days rv" id="days" role="tablist" aria-label="Choose a day"></div>
+    <div class="sessions" id="sessions" role="tabpanel" aria-live="polite"></div>
+    <div class="sched-foot"><a class="btn btn-dark" href="#pricing">See programs and pricing</a></div>
+  </div>
+</section>
+
+<section class="sec" id="learn" style="padding-top:40px">
+  <div class="wrap login-grid">
     <div>
-      <h1 class="rv">Learn it in the room. <em>Keep going online.</em></h1>
-      <p class="lede rv">Book a hands-on session at our Adelaide studio, then pick up the same course on our learning platform with one login.</p>
-      <div class="ctas rv">
-        <a class="btn btn-primary" href="#book">Book a session
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="btn btn-ghost" href="#learn">Continue learning</a>
-      </div>
-      <div class="facts rv">
-        <div><strong>Small groups</strong>Up to 8 people</div>
-        <div><strong>Weekday and Saturday</strong>Morning and evening times</div>
-        <div><strong>Online access included</strong>With every booking</div>
-      </div>
-    </div>
-    <div class="hero-media rv">
-      <img src="https://images.unsplash.com/photo-1635625203639-b793c70ba6c9?auto=format&fit=crop&w=1300&q=78" alt="A bright training room with long tables and large windows looking out onto trees" fetchpriority="high">
-      <div class="next-card">
-        <div class="when">
-          <small>Next Foundations workshop</small>
-          <strong id="nextWhen">Tuesday, 10:00 am</strong>
-        </div>
-        <span class="seats">3 seats left</span>
-        <a href="#book" aria-label="Book the next Foundations workshop">
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="journey">
-  <h2 class="sr-only">How it works</h2>
-  <div class="wrap">
-    <div class="step"><span class="n">1</span><h3>Book online</h3><p>Pick a program, a date and a time. Pay or hold your seat in under two minutes.</p></div>
-    <div class="step"><span class="n">2</span><h3>Come to the studio</h3><p>A small group, a real trainer and the equipment you need.</p></div>
-    <div class="step"><span class="n">3</span><h3>Keep going online</h3><p>Your course opens on the learning platform the same day, with the same login.</p></div>
-  </div>
-</div>
-
-<section class="block" id="programs">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 class="rv">Choose how you want to learn</h2>
-      <p class="rv">Every program has an online part, so nothing you learn in the room gets lost a week later.</p>
-    </div>
-    <div class="programs">
-      <article class="program rv">
-        <span class="tag">In person · 3 hours</span>
-        <h3>Foundations workshop</h3>
-        <p>The core skills in one morning, with practice time and a take-home guide.</p>
-        <div class="meta">
-          <div class="price">$180<small>per person</small></div>
-          <a class="stretch" href="#book" data-program="foundations">Book</a>
-        </div>
-      </article>
-      <article class="program feature rv">
-        <span class="tag">Blended · 6 weeks</span>
-        <h3>Six-week course</h3>
-        <p>Three studio sessions plus weekly online lessons, quizzes and trainer feedback between visits.</p>
-        <div class="meta">
-          <div class="price">$640<small>or 3 payments of $214</small></div>
-          <a class="stretch" href="#book" data-program="course">Book</a>
-        </div>
-      </article>
-      <article class="program rv">
-        <span class="tag">Online · self paced</span>
-        <h3>Online only</h3>
-        <p>The full course library on the learning platform. Start today, finish when it suits you.</p>
-        <div class="meta">
-          <div class="price">$95<small>12 months access</small></div>
-          <a class="stretch" href="#learn">Start online</a>
-        </div>
-      </article>
-    </div>
-    <p class="note">Example programs and prices. We'd use your client's real offer.</p>
-  </div>
-</section>
-
-<section class="block booking" id="book">
-  <div class="wrap book-grid">
-    <div class="book-copy">
-      <h2 class="rv">Book a session in under two minutes</h2>
-      <p class="rv">This booking panel is clickable. Try it: choose a program, a day and a time, and see what happens after you book.</p>
-      <ul class="rv">
-        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Live availability, full days greyed out</li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmation email and calendar invite</li>
-        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Online course access created at the same time</li>
+      <h2 class="sec-title rv">One login, from studio to course</h2>
+      <p class="sec-sub rv">The learning platform is white-labelled to match the site, on its own address like learn.yourdomain.com.au.</p>
+      <ul class="feat" role="tablist" aria-label="How booking connects to the learning platform">
+        <li><button type="button" role="tab" aria-selected="true" data-scr="0"><span class="ft">Book online</span><span class="fd" style="display:block">Payment and seat taken by the booking tool.</span></button></li>
+        <li><button type="button" role="tab" aria-selected="false" data-scr="1"><span class="ft">Enrolled automatically</span><span class="fd" style="display:block">The booking creates the course account.</span></button></li>
+        <li><button type="button" role="tab" aria-selected="false" data-scr="2"><span class="ft">One login</span><span class="fd" style="display:block">"Student Login" goes straight to their courses.</span></button></li>
+        <li><button type="button" role="tab" aria-selected="false" data-scr="3"><span class="ft">Keep going</span><span class="fd" style="display:block">Lessons, progress and the next session in one place.</span></button></li>
       </ul>
     </div>
-
-    <div class="panel rv" id="bookingPanel">
-      <div class="panel-head" aria-hidden="true">
-        <span class="crumb on" data-c="0">Program</span>
-        <span class="crumb" data-c="1">Date and time</span>
-        <span class="crumb" data-c="2">Your details</span>
-        <span class="crumb" data-c="3">Done</span>
-      </div>
-      <div class="panel-body" aria-live="polite">
-
-        <div class="stage on" data-s="0">
-          <h3>What would you like to book?</h3>
-          <div class="opts" role="group" aria-label="Program">
-            <button class="opt" type="button" aria-pressed="false" data-v="foundations" data-name="Foundations workshop" data-price="$180">
-              <span class="t"><strong>Foundations workshop</strong><small>In person, 3 hours</small></span><span class="p">$180</span>
-            </button>
-            <button class="opt" type="button" aria-pressed="false" data-v="course" data-name="Six-week course" data-price="$640">
-              <span class="t"><strong>Six-week course</strong><small>3 studio sessions + online lessons</small></span><span class="p">$640</span>
-            </button>
-            <button class="opt" type="button" aria-pressed="false" data-v="private" data-name="Private session" data-price="$150">
-              <span class="t"><strong>Private session</strong><small>One on one, 60 minutes</small></span><span class="p">$150</span>
-            </button>
-          </div>
+    <div class="screen-wrap rv">
+      <div class="screen" role="img" aria-label="Example screens of the white-labelled learning platform">
+        <div class="scr-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url" id="scrUrl">fieldhouse.com.au/book</span></div>
+        <div class="scr on">
+          <h3>You're booked</h3><p class="s">Confirmation email, sent the moment the booking is paid.</p>
+          <div class="mail"><b>Foundations Workshop</b><span id="mailWhen">Saturday, 10:00 am · Adelaide studio</span><span>Add to calendar · Reschedule</span><span class="tagl" style="justify-self:start">Your online course is ready</span></div>
         </div>
-
-        <div class="stage" data-s="1">
-          <h3>Pick a day</h3>
-          <div class="days" id="days" role="group" aria-label="Day"></div>
-          <p class="slot-label" id="slotLabel">Choose a day to see times.</p>
-          <div class="slots" id="slots" role="group" aria-label="Time"></div>
+        <div class="scr">
+          <h3>Account created</h3><p class="s">The booking tool tells the platform who booked, so nobody types anything twice.</p>
+          <div class="rows"><div class="row"><span>Student</span><span>sam@example.com</span></div><div class="row"><span>Enrolled in</span><span>Foundations, online part</span></div><div class="row"><span>Access</span><span class="tagl">Active</span></div></div>
         </div>
-
-        <div class="stage" data-s="2">
-          <h3>Your details</h3>
-          <form class="fields" id="details" novalidate>
-            <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name" required><span class="err">Add your first name so the trainer knows who's coming.</span></div>
-            <div class="field"><label for="ln">Last name</label><input id="ln" autocomplete="family-name"></div>
-            <div class="field wide"><label for="em">Email</label><input id="em" type="email" autocomplete="email" required><span class="err">Enter an email like name@example.com. Your confirmation and course login go here.</span></div>
-          </form>
-          <div class="summary" id="summary"></div>
+        <div class="scr">
+          <h3 style="text-align:center">Welcome back</h3><p class="s" style="text-align:center">Same email, same password, same look.</p>
+          <div class="loginbox"><span class="in">sam@example.com</span><span class="in">••••••••••</span><span class="btn btn-dark" style="pointer-events:none">Log in</span></div>
         </div>
-
-        <div class="stage confirm" data-s="3">
-          <div class="tick"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 11.5l4 4 8-9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3 id="confTitle">You're booked</h3>
-          <p id="confText">A confirmation and calendar invite are on the way.</p>
-          <div class="handoff">
-            <span class="t"><strong>Your online course is ready</strong>Same email, same password. No second account.</span>
-            <a class="btn btn-primary" href="#learn">Open course</a>
-          </div>
-          <p class="cal-note">In the real build this step runs on the client's booking tool, and the learning platform account is created automatically from the booking.</p>
+        <div class="scr">
+          <h3>Hi Sam</h3><p class="s" id="appNext">Next studio session: Saturday, 10:00 am</p>
+          <div class="mail"><b>Foundations, online part</b><span>Lesson 4 of 7 · Common mistakes and fixes</span><div class="bar"><i></i></div></div>
+          <div class="rows"><div class="row"><span>Practice set A</span><span>Done</span></div><div class="row"><span>Before your next session</span><span>10 min</span></div></div>
         </div>
-
-      </div>
-      <div class="panel-foot">
-        <button class="btn btn-ghost" type="button" id="back" hidden>Back</button>
-        <span></span>
-        <button class="btn btn-primary" type="button" id="next" disabled>Continue</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block learn" id="learn">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 class="rv">One login, from the website to the classroom app</h2>
-      <p class="rv">The learning platform is white-labelled to match the site: same name, colours and type, on its own address like learn.yourdomain.com.au. Students never feel like they left.</p>
-    </div>
-    <div class="learn-grid">
-      <div class="app rv" aria-label="Example of the white-labelled learning platform">
-        <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">learn.fieldhouse.com.au</span><span style="width:46px"></span></div>
-        <div class="app-body">
-          <div class="app-side">
-            <span class="brand" style="margin-bottom:14px"><svg width="22" height="22" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="#1E3A31"/><path d="M8 19V9h11M8 14h8" stroke="#F3E3CB" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg><span>Fieldhouse</span></span>
-            <a class="on" href="#learn">My courses</a><a href="#learn">Upcoming sessions</a><a href="#learn">Certificates</a><a href="#learn">Account</a>
-          </div>
-          <div class="app-main">
-            <h3>Welcome back, Sam</h3>
-            <p class="sub">Your next studio session is <span id="appNext">Tuesday at 10:00 am</span>.</p>
-            <div class="resume">
-              <div class="top"><strong style="font-weight:500">Six-week course</strong><span id="pct">0% complete</span></div>
-              <div class="bar"><i id="barFill"></i></div>
-              <a class="btn btn-primary" href="#learn" style="justify-self:start">Resume lesson 4</a>
-            </div>
-            <ul class="lessons">
-              <li class="done"><span class="s">✓</span>Welcome and setup<span class="d">8 min</span></li>
-              <li class="done"><span class="s">✓</span>Studio session 1 recap<span class="d">14 min</span></li>
-              <li class="done"><span class="s">✓</span>Practice set A<span class="d">20 min</span></li>
-              <li class="now"><span class="s">4</span>Common mistakes and fixes<span class="d">12 min</span></li>
-              <li><span class="s">5</span>Before studio session 2<span class="d">10 min</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="how rv">
-        <h3>How the connection works</h3>
-        <ol>
-          <li><span><strong>Book on the website</strong>The booking tool takes the payment and the seat.</span></li>
-          <li><span><strong>Account is created automatically</strong>The booking sends the student to the learning platform and enrols them in the right course.</span></li>
-          <li><span><strong>One login everywhere</strong>"Student login" in the site header goes straight to their courses. Single sign-on where the platform supports it.</span></li>
-        </ol>
-        <a class="btn btn-light" href="#book">Try the booking flow</a>
-      </div>
-    </div>
+<section class="sec" id="pricing" style="padding-top:40px">
+  <div class="wrap price-head">
+    <div><h2 class="sec-title rv">Programs and pricing</h2><p class="sec-sub rv">Every option includes access to the online course.</p></div>
   </div>
+  <div class="price-grid">
+    <a class="pp a rv" href="#schedule" data-prog="Foundations"><span><small>In person</small><span class="n">Foundations Workshop</span></span><span class="v">$180</span></a>
+    <a class="pp b rv" href="#schedule" data-prog="Six-week"><span><small>Studio + online</small><span class="n">Six-Week Course</span></span><span class="v">$640</span></a>
+    <div class="pimg i1 rv"><img src="https://images.unsplash.com/photo-1499744349893-0c6de53516e6?auto=format&fit=crop&w=900&q=70" alt=""></div>
+    <div class="pimg i2 rv"><img src="https://images.unsplash.com/photo-1555117391-6c0795768da8?auto=format&fit=crop&w=900&q=70" alt=""></div>
+    <a class="pp c rv" href="#learn"><span><small>Online only</small><span class="n">Course Library</span></span><span class="v">$95<span>/yr</span></span></a>
+    <div class="pimg i3 rv"><img src="https://images.unsplash.com/photo-1426927308491-6380b6a9936f?auto=format&fit=crop&w=500&q=70" alt=""></div>
+  </div>
+  <div class="wrap"><p class="note">Example programs and prices. We'd use the client's real offer.</p></div>
 </section>
 
-<section class="block" id="about">
-  <div class="wrap about-grid">
-    <div class="about-media">
-      <img class="rv" src="https://images.unsplash.com/photo-1597960194599-22929afc25b1?auto=format&fit=crop&w=800&q=75" alt="A hands-on workshop space with benches, tools and tall windows">
-      <img class="rv" src="https://images.unsplash.com/photo-1763098844157-d0fffcc966a1?auto=format&fit=crop&w=700&q=75" alt="Afternoon sun in a quiet training room with desks and a chalkboard">
-    </div>
-    <div class="about-copy">
-      <h2 class="rv">A real studio, with real trainers</h2>
-      <p class="rv">This is where the client's story goes: who runs it, why they started and what a session feels like. Two short paragraphs and a face do more for bookings than a long history page.</p>
-      <div class="visit rv">
-        <div><small>Studio</small>Example address, Adelaide SA</div>
-        <div><small>Hours</small>Tue to Sat, 9 am to 7 pm</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block" id="faq" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head"><h2 class="rv">Questions before you book</h2></div>
+<section class="sec" id="faq" style="padding-top:40px">
+  <div class="wrap faq-grid">
+    <div><h2 class="sec-title rv">Questions before you book</h2><p class="sec-sub rv">Still unsure? Call the studio and we'll help you pick.</p></div>
     <div class="faq">
-      <details><summary>Can I book and pay online?<span class="pm" aria-hidden="true">+</span></summary><p>Yes. Choose a program and a time, then pay by card. Group bookings and gift vouchers can be added if the client offers them.</p></details>
-      <details><summary>Do I get online access after a studio session?<span class="pm" aria-hidden="true">+</span></summary><p>Yes. Your learning platform account is created when you book, and the matching course opens on the same day as your session.</p></details>
-      <details><summary>Can I move my booking?<span class="pm" aria-hidden="true">+</span></summary><p>Use the link in your confirmation email to pick a new time. The reschedule window follows the client's own policy.</p></details>
-      <details><summary>Do I need two accounts?<span class="pm" aria-hidden="true">+</span></summary><p>No. Your booking email is your login for the learning platform, and "Student login" on the website takes you there.</p></details>
+      <details><summary>Can I book and pay online?<span class="pm" aria-hidden="true">+</span></summary><p>Yes. Pick a session, add your details and pay by card. Gift vouchers and group bookings can be added if the business offers them.</p></details>
+      <details><summary>Do I get the online course after a studio session?<span class="pm" aria-hidden="true">+</span></summary><p>Yes. Your learning platform account is created when you book, and the matching course opens the same day.</p></details>
+      <details><summary>Can I move my booking?<span class="pm" aria-hidden="true">+</span></summary><p>Use the link in your confirmation email to pick another time. The window follows the business's own policy.</p></details>
+      <details><summary>Do I need two accounts?<span class="pm" aria-hidden="true">+</span></summary><p>No. Your booking email is your login, and "Student Login" on the website takes you straight there.</p></details>
     </div>
   </div>
 </section>
 
-<section class="block notes" id="notes">
+<section class="cta" id="contact">
+  <img src="https://images.unsplash.com/photo-1426927308491-6380b6a9936f?auto=format&fit=crop&w=1800&q=70" alt="" loading="lazy">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="rv">What I'd confirm before building</h2>
-      <p class="rv">A short call answers most of this. Then the redesign, booking and platform link run as one project, with one person managing it.</p>
-    </div>
+    <h2 class="rv">Ready to book your first session?</h2>
+    <p class="rv">Small groups, real benches, and a course that keeps going after you leave the room.</p>
+    <div class="row-btns rv"><a class="btn btn-lime" href="#schedule">Book a Session</a><a class="btn btn-line" href="#pricing">Compare Programs</a></div>
+  </div>
+</section>
+
+<section class="sec notes" id="notes">
+  <div class="wrap">
+    <h2 class="sec-title rv">What I'd confirm before building</h2>
+    <p class="sec-sub rv" style="max-width:60ch">A short call covers most of it. Then the redesign, booking and platform link run as one project, with one person managing it.</p>
     <div class="notes-grid">
-      <div class="rv"><h3>The current site</h3><ul><li>Current URL and pages to keep</li><li>Old links that need redirects so Google rankings stay</li><li>Who edits content after launch</li></ul></div>
-      <div class="rv"><h3>Bookings</h3><ul><li>Booking tool in use, or the right one to pick</li><li>Payments, deposits and cancellations</li><li>Reminder emails and calendar sync</li></ul></div>
-      <div class="rv"><h3>The learning platform</h3><ul><li>Which white-label platform it is</li><li>Single sign-on or a shared login</li><li>Auto-enrolment from a booking, and the learn. subdomain</li></ul></div>
+      <div class="rv"><h3>The current site</h3><ul><li>Current URL and pages to keep</li><li>Redirects so Google rankings hold</li><li>Who edits content after launch</li></ul></div>
+      <div class="rv"><h3>Bookings</h3><ul><li>The booking tool in use, or the right one to pick</li><li>Payments, deposits and cancellations</li><li>Reminders and calendar sync</li></ul></div>
+      <div class="rv"><h3>The learning platform</h3><ul><li>Which white-label platform it is</li><li>Single sign-on or a shared login</li><li>Auto-enrolment and the learn. subdomain</li></ul></div>
     </div>
   </div>
 </section>
@@ -567,147 +482,204 @@ footer .bottom{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,25
 
 <footer>
   <div class="wrap">
-    <div class="top">
-      <div><span class="brand"><svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="#F3E3CB"/><path d="M8 19V9h11M8 14h8" stroke="#1E3A31" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg><span>Fieldhouse</span></span><p style="margin-top:14px;max-width:32ch">Example business used for this concept.</p></div>
-      <div><h4>Programs</h4><a href="#programs">Foundations workshop</a><a href="#programs">Six-week course</a><a href="#programs">Online only</a></div>
-      <div><h4>Students</h4><a href="#book">Book a session</a><a href="#learn">Student login</a><a href="#faq">FAQ</a></div>
-      <div><h4>Studio</h4><a href="#about">About</a><a href="#about">Visit us</a><a href="#notes">Build notes</a></div>
+    <div class="f-top">
+      <div><a class="logo" href="#top"><svg width="30" height="30" viewBox="0 0 34 34" aria-hidden="true"><path d="M4 30C4 14 14 4 30 4c0 16-10 26-26 26Z" fill="#253027"/><path d="M9 25 24 10" stroke="#C2CD7F" stroke-width="2" stroke-linecap="round"/></svg>fieldhouse</a><p style="margin-top:16px;color:var(--muted);max-width:30ch">Example business created for this concept.</p></div>
+      <div><h4>Programs</h4><a class="fl" href="#programs">Foundations Workshop</a><a class="fl" href="#programs">Six-Week Course</a><a class="fl" href="#learn">Online Library</a></div>
+      <div><h4>Students</h4><a class="fl" href="#schedule">Book a Session</a><a class="fl" href="#learn">Student Login</a><a class="fl" href="#faq">FAQ</a></div>
+      <div><h4>Studio</h4><a class="fl" href="#contact">Visit the studio</a><a class="fl" href="#pricing">Pricing</a><a class="fl" href="#notes">Build notes</a></div>
     </div>
-    <div class="bottom"><span>Concept by Abdelrahman Elgendy</span><span>Photos: Unsplash</span></div>
+    <div class="f-word" aria-hidden="true">fieldhouse</div>
+    <div class="f-bot"><span>Concept by Abdelrahman Elgendy</span><span>Photos: Unsplash</span></div>
   </div>
 </footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" hidden>
+  <div class="dr-head">
+    <div class="steps" aria-hidden="true"><span data-c="0">Details</span><span data-c="1">Confirm</span><span data-c="2">Done</span></div>
+    <button class="x" type="button" id="drClose" aria-label="Close booking">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="dr-body">
+    <div class="dr-sum"><span class="ph"><img id="drImg" src="https://images.unsplash.com/photo-1497218770144-3fea6dbc33fe?auto=format&fit=crop&w=200&q=70" alt=""></span><span><span class="t" id="drClass">Class</span><small id="drWhen">When</small></span></div>
+    <div data-st="0">
+      <h2 class="dr-title" id="drTitle">Your details</h2>
+      <form id="drForm" novalidate>
+        <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name"><span class="err">Add your first name so the trainer knows who's coming.</span></div>
+        <div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email"><span class="err">Enter an email like name@example.com. Your confirmation and course login go here.</span></div>
+      </form>
+    </div>
+    <div data-st="1" hidden>
+      <h2 class="dr-title">Check and confirm</h2>
+      <div class="total"><span>Session</span><span id="cfClass"></span></div>
+      <div class="total"><span>Booked for</span><span id="cfWho"></span></div>
+      <div class="total"><span>Total today</span><strong id="cfPrice" style="font-weight:500"></strong></div>
+      <p class="fine">In the real build, payment runs through the client's booking tool.</p>
+    </div>
+    <div data-st="2" class="done" hidden>
+      <div class="tick"><svg width="26" height="26" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 11.5l4 4 8-9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2 class="dr-title" id="doneTitle">You're booked</h2>
+      <p id="doneText"></p>
+      <div class="handoff">
+        <div class="t">Your online course is ready</div>
+        <p>Same email, same password. No second account to make.</p>
+        <a class="btn btn-lime" href="#learn" id="openCourse">Open the course</a>
+      </div>
+    </div>
+  </div>
+  <div class="dr-foot">
+    <button class="btn btn-ghost" type="button" id="drBack" hidden>Back</button><span></span>
+    <button class="btn btn-dark" type="button" id="drNext">Continue</button>
+  </div>
+</aside>
 
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const U = (id, w) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 
   // mobile menu
-  const mt = $('.menu-toggle'), mn = $('#mnav');
-  const setMenu = o => { mn.hidden = !o; mt.setAttribute('aria-expanded', String(o)); mt.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); };
-  mt.addEventListener('click', () => setMenu(mn.hidden));
+  const mb = $('.menu-btn'), mn = $('#mnav');
+  const setMenu = o => { mn.hidden = !o; mb.setAttribute('aria-expanded', String(o)); mb.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); };
+  mb.addEventListener('click', () => setMenu(mn.hidden));
   $$('a', mn).forEach(a => a.addEventListener('click', () => setMenu(false)));
-  addEventListener('keydown', e => { if (e.key === 'Escape' && !mn.hidden) { setMenu(false); mt.focus(); } });
 
   // reveals
   const rv = $$('.rv');
   if (reduce || !('IntersectionObserver' in window)) rv.forEach(e => e.classList.add('in'));
-  else {
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-    rv.forEach(e => io.observe(e));
-  }
+  else { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }); rv.forEach(e => io.observe(e)); }
 
-  // dates: next 14 bookable days (Tue to Sat), a few marked full, all relative to today
-  const fmtDay = d => d.toLocaleDateString('en-AU', { weekday: 'short' });
-  const fmtLong = d => d.toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' });
+  // schedule: next 7 days, closed Sunday and Monday
+  const fmt = (d, o) => d.toLocaleDateString('en-AU', o);
   const days = [];
   const d0 = new Date(); d0.setHours(0, 0, 0, 0);
-  for (let i = 1; days.length < 7 && i < 30; i++) {
-    const d = new Date(d0); d.setDate(d0.getDate() + i);
-    const wd = d.getDay();
-    if (wd === 0 || wd === 1) continue; // closed Sun and Mon
-    days.push(d);
-  }
-  const full = new Set([2, 5]);
-  const firstOpen = days.find((_, i) => !full.has(i));
-  $('#nextWhen').textContent = firstOpen.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }) + ', 10:00 am';
-  $('#appNext').textContent = fmtLong(firstOpen) + ' at 10:00 am';
-
-  const state = { step: 0, program: null, day: null, time: null };
-  const stages = $$('.stage'), crumbs = $$('.crumb');
-  const next = $('#next'), back = $('#back');
-
-  const canGo = () => (state.step === 0 && state.program) || (state.step === 1 && state.day !== null && state.time) || state.step === 2;
-  const render = () => {
-    stages.forEach((s, i) => s.classList.toggle('on', i === state.step));
-    crumbs.forEach((c, i) => { c.classList.toggle('on', i === state.step); c.classList.toggle('done', i < state.step); });
-    back.hidden = state.step === 0 || state.step === 3;
-    next.hidden = state.step === 3;
-    $('.panel-foot').hidden = state.step === 3;
-    next.textContent = state.step === 2 ? 'Confirm booking' : 'Continue';
-    next.disabled = !canGo();
-    if (state.step === 2) {
-      $('#summary').innerHTML = `<span>${state.program.name}</span><span>${fmtLong(days[state.day])}, ${state.time}</span><strong style="font-weight:500">${state.program.price}</strong>`;
-    }
-  };
-  const press = (group, btn) => { $$('[aria-pressed]', group).forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false')); };
-
-  // programs
-  const opts = $('.opts');
-  $$('.opt', opts).forEach(b => b.addEventListener('click', () => {
-    press(opts, b); state.program = { v: b.dataset.v, name: b.dataset.name, price: b.dataset.price }; render();
-  }));
-
-  // days and slots
-  const daysEl = $('#days'), slotsEl = $('#slots');
-  days.forEach((d, i) => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'day'; b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = `<small>${fmtDay(d)}</small><b>${d.getDate()}</b>`;
-    b.setAttribute('aria-label', fmtLong(d) + (full.has(i) ? ', fully booked' : ''));
-    if (full.has(i)) b.disabled = true;
-    b.addEventListener('click', () => { press(daysEl, b); state.day = i; state.time = null; drawSlots(); render(); });
-    daysEl.appendChild(b);
-  });
-  const slotSets = { foundations: ['10:00 am', '6:00 pm'], course: ['9:30 am', '1:00 pm', '5:30 pm'], private: ['9:00 am', '11:00 am', '2:00 pm', '4:00 pm', '6:00 pm'] };
-  const drawSlots = () => {
-    slotsEl.innerHTML = '';
-    const list = slotSets[state.program ? state.program.v : 'foundations'];
-    $('#slotLabel').textContent = `${fmtLong(days[state.day])}, choose a time`;
-    list.forEach(t => {
+  for (let i = 1; days.length < 6 && i < 20; i++) { const d = new Date(d0); d.setDate(d0.getDate() + i); if (d.getDay() === 0 || d.getDay() === 1) continue; days.push(d); }
+  const IMG = { a: 'photo-1497218770144-3fea6dbc33fe', b: 'photo-1635625203639-b793c70ba6c9', c: 'photo-1597960194599-22929afc25b1', d: 'photo-1504608245011-62d9758c1bb9' };
+  const TEMPL = [
+    [{ time: '9:30 am', cls: 'Foundations Workshop', prog: 'Foundations', who: ['JR', 'James Reid'], seats: 3, price: '$180', img: 'a' }, { time: '1:00 pm', cls: 'Six-Week Course', prog: 'Six-week', who: ['DM', 'Daniel Moss'], seats: 5, price: '$640', img: 'b' }, { time: '6:00 pm', cls: 'Private Session', prog: 'Private', who: ['JR', 'James Reid'], seats: 1, price: '$150', img: 'c' }],
+    [{ time: '10:00 am', cls: 'Foundations Workshop', prog: 'Foundations', who: ['DM', 'Daniel Moss'], seats: 2, price: '$180', img: 'a' }, { time: '5:30 pm', cls: 'Six-Week Course', prog: 'Six-week', who: ['JR', 'James Reid'], seats: 0, price: '$640', img: 'b' }, { time: '7:00 pm', cls: 'Private Session', prog: 'Private', who: ['DM', 'Daniel Moss'], seats: 1, price: '$150', img: 'c' }],
+    [{ time: '9:00 am', cls: 'Six-Week Course', prog: 'Six-week', who: ['DM', 'Daniel Moss'], seats: 4, price: '$640', img: 'b' }, { time: '11:30 am', cls: 'Foundations Workshop', prog: 'Foundations', who: ['JR', 'James Reid'], seats: 6, price: '$180', img: 'a' }, { time: '2:00 pm', cls: 'Private Session', prog: 'Private', who: ['JR', 'James Reid'], seats: 1, price: '$150', img: 'c' }]
+  ];
+  const daysEl = $('#days'), sesEl = $('#sessions');
+  let filter = null, curDay = 0;
+  const sessionsFor = i => TEMPL[i % 3];
+  const drawSessions = () => {
+    sesEl.innerHTML = '';
+    let list = sessionsFor(curDay);
+    if (filter) list = [...list].sort((a, b) => (b.prog === filter) - (a.prog === filter));
+    list.forEach((s, k) => {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'slot'; b.textContent = t; b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', () => { press(slotsEl, b); state.time = t; render(); });
-      slotsEl.appendChild(b);
+      b.type = 'button'; b.className = 'session' + (s.seats === 0 ? ' full' : '');
+      b.style.animationDelay = reduce ? '0s' : (k * 60) + 'ms';
+      b.setAttribute('aria-label', `${s.cls}, ${fmt(days[curDay], { weekday: 'long' })} ${s.time}, ${s.seats === 0 ? 'fully booked' : s.seats + ' places left'}`);
+      if (s.seats === 0) b.setAttribute('aria-disabled', 'true');
+      b.innerHTML = `<span class="ph"><img src="${U(IMG[s.img], 300)}" alt=""></span><span><span class="t">${s.time}<br>${s.cls}</span><span class="who"><span class="av">${s.who[0]}</span>${s.who[1]}</span><span class="seats">${s.seats === 0 ? 'Fully booked' : `<b>${s.seats} ${s.seats === 1 ? 'place' : 'places'} left</b>`}</span></span>`;
+      if (s.seats > 0) b.addEventListener('click', () => openDrawer(s, b));
+      sesEl.appendChild(b);
     });
   };
-
-  // details validation
-  const validate = () => {
-    let ok = true;
-    const fn = $('#fn'), em = $('#em');
-    const f1 = fn.closest('.field'), f2 = em.closest('.field');
-    const okFn = fn.value.trim().length > 0, okEm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim());
-    f1.classList.toggle('bad', !okFn); f2.classList.toggle('bad', !okEm);
-    fn.setAttribute('aria-invalid', String(!okFn)); em.setAttribute('aria-invalid', String(!okEm));
-    if (!okFn) { fn.focus(); ok = false; } else if (!okEm) { em.focus(); ok = false; }
-    return ok;
-  };
-
-  next.addEventListener('click', () => {
-    if (state.step === 2) {
-      if (!validate()) return;
-      const name = $('#fn').value.trim();
-      $('#confTitle').textContent = `You're booked, ${name}`;
-      $('#confText').textContent = `${state.program.name}, ${fmtLong(days[state.day])} at ${state.time}. A confirmation and calendar invite are on the way to ${$('#em').value.trim()}.`;
-    }
-    if (state.step === 0 && state.day !== null) drawSlots();
-    state.step = Math.min(3, state.step + 1); render();
-    $('#bookingPanel').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+  days.forEach((d, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'day'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.innerHTML = `${fmt(d, { weekday: 'short' })}<small>${d.getDate()}</small>`;
+    b.addEventListener('click', () => { curDay = i; $$('.day', daysEl).forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false')); drawSessions(); });
+    daysEl.appendChild(b);
   });
-  back.addEventListener('click', () => { state.step = Math.max(0, state.step - 1); render(); });
-  $('#details').addEventListener('submit', e => { e.preventDefault(); next.click(); });
+  drawSessions();
+  const firstLabel = `${fmt(days[0], { weekday: 'long' })}, ${TEMPL[0][0].time}`;
+  $('#nextWhen').textContent = firstLabel;
+  $('#mailWhen').textContent = `${fmt(days[0], { weekday: 'long', day: 'numeric', month: 'long' })}, ${TEMPL[0][0].time} · Adelaide studio`;
+  $('#appNext').textContent = `Next studio session: ${firstLabel}`;
 
-  // program cards preselect the booking program
-  $$('a[data-program]').forEach(a => a.addEventListener('click', () => {
-    const b = $(`.opt[data-v="${a.dataset.program}"]`);
-    if (b) { b.click(); }
-  }));
+  // program links bring matching sessions to the front
+  $$('[data-prog]').forEach(a => a.addEventListener('click', () => { filter = a.dataset.prog; drawSessions(); }));
 
-  // learning progress bar fills when visible
-  const bar = $('#barFill'), pct = $('#pct');
-  const fill = () => {
-    bar.style.width = '58%';
-    if (reduce) { pct.textContent = '58% complete'; return; }
-    let n = 0; const t = setInterval(() => { n += 2; pct.textContent = Math.min(n, 58) + '% complete'; if (n >= 58) clearInterval(t); }, 30);
+  // booking drawer
+  const scrim = $('#scrim'), dr = $('#drawer');
+  let step = 0, cur = null, opener = null;
+  const stages = $$('[data-st]', dr), crumbs = $$('.steps span', dr);
+  const next = $('#drNext'), back = $('#drBack');
+  const render = () => {
+    stages.forEach((s, i) => s.hidden = i !== step);
+    crumbs.forEach((c, i) => { c.classList.toggle('on', i === step); c.classList.toggle('done', i < step); });
+    back.hidden = step !== 1;
+    next.hidden = step === 2;
+    $('.dr-foot', dr).hidden = step === 2;
+    next.textContent = step === 1 ? 'Confirm booking' : 'Continue';
   };
-  if ('IntersectionObserver' in window) {
-    const io2 = new IntersectionObserver(es => { if (es[0].isIntersecting) { fill(); io2.disconnect(); } }, { threshold: .4 });
-    io2.observe($('.app'));
-  } else fill();
+  const openDrawer = (s, btn) => {
+    cur = s; opener = btn; step = 0;
+    $('#drImg').src = U(IMG[s.img], 200);
+    $('#drClass').textContent = s.cls;
+    $('#drWhen').textContent = `${fmt(days[curDay], { weekday: 'long', day: 'numeric', month: 'long' })}, ${s.time} · with ${s.who[1]}`;
+    $$('.field', dr).forEach(f => f.classList.remove('bad'));
+    scrim.hidden = false; dr.hidden = false;
+    requestAnimationFrame(() => { scrim.classList.add('on'); dr.classList.add('on'); });
+    document.body.style.overflow = 'hidden';
+    render(); setTimeout(() => $('#fn').focus(), 50);
+  };
+  const close = () => {
+    scrim.classList.remove('on'); dr.classList.remove('on'); document.body.style.overflow = '';
+    setTimeout(() => { scrim.hidden = true; dr.hidden = true; }, reduce ? 0 : 320);
+    opener && opener.focus();
+  };
+  const validate = () => {
+    const fn = $('#fn'), em = $('#em');
+    const okFn = fn.value.trim().length > 0, okEm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim());
+    fn.closest('.field').classList.toggle('bad', !okFn); em.closest('.field').classList.toggle('bad', !okEm);
+    fn.setAttribute('aria-invalid', String(!okFn)); em.setAttribute('aria-invalid', String(!okEm));
+    if (!okFn) fn.focus(); else if (!okEm) em.focus();
+    return okFn && okEm;
+  };
+  next.addEventListener('click', () => {
+    if (step === 0) {
+      if (!validate()) return;
+      $('#cfClass').textContent = `${cur.cls}, ${fmt(days[curDay], { weekday: 'short', day: 'numeric', month: 'short' })} ${cur.time}`;
+      $('#cfWho').textContent = `${$('#fn').value.trim()} (${$('#em').value.trim()})`;
+      $('#cfPrice').textContent = cur.price;
+    }
+    if (step === 1) {
+      $('#doneTitle').textContent = `You're booked, ${$('#fn').value.trim()}`;
+      $('#doneText').textContent = `${cur.cls} on ${fmt(days[curDay], { weekday: 'long', day: 'numeric', month: 'long' })} at ${cur.time}. A confirmation and calendar invite are on the way to ${$('#em').value.trim()}.`;
+    }
+    step++; render();
+  });
+  back.addEventListener('click', () => { step = Math.max(0, step - 1); render(); });
+  $('#drForm').addEventListener('submit', e => { e.preventDefault(); next.click(); });
+  $('#drClose').addEventListener('click', close);
+  scrim.addEventListener('click', close);
+  $('#openCourse').addEventListener('click', () => { close(); showScr(3); });
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape') { if (!dr.hidden) close(); else if (!mn.hidden) { setMenu(false); mb.focus(); } }
+    if (e.key === 'Tab' && !dr.hidden) {
+      const f = $$('button:not([hidden]), input, a[href]', dr).filter(x => x.offsetParent !== null);
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
 
-  render();
+  // one-login screens
+  const urls = ['fieldhouse.com.au/book', 'learn.fieldhouse.com.au/admin', 'learn.fieldhouse.com.au/login', 'learn.fieldhouse.com.au/courses'];
+  const tabs = $$('.feat button'), scrs = $$('.scr');
+  let auto = null, idx = 0;
+  const showScr = i => {
+    idx = i;
+    tabs.forEach((t, k) => t.setAttribute('aria-selected', k === i ? 'true' : 'false'));
+    scrs.forEach((s, k) => s.classList.toggle('on', k === i));
+    $('#scrUrl').textContent = urls[i];
+  };
+  tabs.forEach((t, i) => t.addEventListener('click', () => { clearInterval(auto); auto = null; showScr(i); }));
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io3 = new IntersectionObserver(es => {
+      if (es[0].isIntersecting && auto === null) auto = setInterval(() => showScr((idx + 1) % 4), 3200);
+      else if (!es[0].isIntersecting && auto) { clearInterval(auto); auto = null; }
+    }, { threshold: .5 });
+    io3.observe($('.screen-wrap'));
+  }
 })();
 </script>
 </body>
