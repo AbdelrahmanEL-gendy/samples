@@ -63,7 +63,34 @@ p{text-wrap:pretty}
 .menu-btn{display:none;width:48px;height:48px;border-radius:50%;border:1px solid rgba(236,239,213,.4);place-items:center;color:var(--pale)}
 .mnav{position:relative;z-index:5;background:var(--deep);padding:8px 32px 20px;display:grid}
 .mnav a{padding:14px 0;border-bottom:1px solid rgba(236,239,213,.14);text-decoration:none;font-size:17px}
-.hero-foot{position:relative;z-index:2;margin-top:auto;padding-bottom:36px}
+.hero-main{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:48px 0 88px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px;align-items:center}
+.hero-h1{font:300 clamp(40px,4.3vw,64px)/1.08 var(--exa);letter-spacing:-.005em;color:var(--pale)}
+.hero-lede{margin-top:28px;font-size:19px;line-height:1.6;color:rgba(236,239,213,.84);max-width:46ch}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+.btn-lg{min-height:56px;padding:0 28px;font-size:17px}
+.hero-facts{list-style:none;padding:28px 0 0;margin-top:48px;border-top:1px solid rgba(236,239,213,.18);display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:40px}
+.hero-facts strong{display:block;font-weight:400;font-size:17px;color:var(--pale)}
+.hero-facts span{font-size:14.5px;color:rgba(236,239,213,.66)}
+.week{background:rgba(251,249,244,.96);color:var(--ink);border-radius:40px 40px 40px 0;padding:32px;box-shadow:0 40px 80px -40px rgba(0,0,0,.65)}
+.week-head{display:flex;justify-content:space-between;align-items:end;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.week-kicker{font-size:14px;color:var(--muted)}
+.week-title{font:400 22px/1.2 var(--exa);letter-spacing:.03em;text-transform:uppercase;margin-top:6px}
+.week-range{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.week-list{list-style:none;padding:0;display:grid}
+.week-list li + li{border-top:1px solid var(--line)}
+.wk{display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;width:100%;text-align:left;padding:16px 0;border-radius:16px;transition:background-color .2s ease}
+.wk:hover{background:rgba(194,205,127,.16)}
+.wk .dt{width:56px;height:56px;border-radius:50%;background:var(--sand);display:grid;place-items:center;text-align:center;line-height:1.05}
+.wk .dt small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.wk .dt b{font-weight:500;font-size:18px;color:var(--forest)}
+.wk .nm{font-weight:400;font-size:17px;color:var(--ink);display:block}
+.wk .tm{font-size:14px;color:var(--muted)}
+.wk .tm b{font-weight:500;color:#6E5212}
+.wk .go{background:var(--forest);color:var(--paper);border-radius:999px;padding:11px 18px;font-size:14px;font-weight:500;transition:background-color .2s ease}
+.wk:hover .go{background:var(--forest-2)}
+.week-all{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:500;font-size:15px;color:var(--forest);text-decoration:none;min-height:44px}
+.week-all:hover{text-decoration:underline;text-underline-offset:4px}
 .hero-labels{display:flex;justify-content:space-between;gap:24px;font:400 14px/1.2 var(--exa);letter-spacing:.16em;text-transform:uppercase;color:var(--pale);opacity:.9;margin-bottom:8px}
 .wordmark{font:400 clamp(88px,16.4vw,236px)/.82 var(--exa);letter-spacing:.02em;text-transform:lowercase;color:var(--pale);white-space:nowrap;margin-left:-.06em}
 .hero-strap{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-top:28px;flex-wrap:wrap}
@@ -75,14 +102,15 @@ p{text-wrap:pretty}
 .next-chip i{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--forest);display:grid;place-items:center;font-style:normal}
 
 /* section shells */
-.sec{padding:128px 0}
+.sec{padding:112px 0}
 .sec-title{font:300 clamp(30px,3.1vw,44px)/1.1 var(--exa);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
-.sec-sub{color:var(--muted);margin-top:14px}
+.sec-sub{color:var(--muted);margin-top:16px;font-size:18px}
 .center{text-align:center}
+.sec-tight{padding-top:0}
 .center .sec-sub{margin-inline:auto;max-width:60ch}
 
 /* program bento */
-.bento{display:grid;grid-template-columns:1.25fr 1fr .8fr;grid-template-rows:300px 300px;gap:14px;margin-top:64px}
+.bento{display:grid;grid-template-columns:1.25fr 1fr .8fr;grid-template-rows:300px 300px;gap:14px;margin-top:56px}
 .tile{position:relative;overflow:hidden;text-decoration:none;color:var(--paper);display:block;background:var(--forest)}
 .tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(18,24,19,.55) 0%,rgba(18,24,19,0) 45%,rgba(18,24,19,.55) 100%);transition:opacity .3s ease}
@@ -105,24 +133,40 @@ p{text-wrap:pretty}
 .pill-img img{width:100%;height:100%;object-fit:cover}
 
 /* schedule + booking */
-.days{display:inline-flex;gap:4px;background:var(--paper);border-radius:999px;padding:5px;margin-top:30px;flex-wrap:wrap;justify-content:center}
-.day{min-height:44px;padding:0 20px;border-radius:999px;font-size:15px;font-weight:400;color:var(--muted);transition:background-color .2s ease,color .2s ease}
-.day small{display:block;font-size:11px;opacity:.75;line-height:1}
-.day[aria-selected="true"]{background:var(--sand);color:var(--forest)}
-.day:hover{color:var(--forest)}
-.sessions{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.session{display:flex;align-items:center;gap:22px;background:var(--paper);border-radius:999px;padding:0 30px 0 0;text-align:left;width:100%;min-height:136px;transition:transform .25s var(--ease),box-shadow .25s var(--ease);animation:rise .4s var(--ease) both}
+.sched{background:var(--sand)}
+.sched-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.sched-head .sec-sub{max-width:54ch}
+.legend{list-style:none;padding:0;display:flex;gap:22px;font-size:14px;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dot.open{background:#7E9A4E}.dot.low{background:#C08A2B}.dot.full{background:#B8B1A2}
+.sched-panel{margin-top:48px;background:var(--cream);border-radius:48px;padding:28px}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.day{min-height:76px;border-radius:24px;background:var(--paper);display:grid;place-items:center;align-content:center;gap:2px;border:1px solid transparent;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
+.day .dn{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.day .dd{font-size:24px;font-weight:400;color:var(--ink);line-height:1.1}
+.day .dc{font-size:12px;color:var(--muted)}
+.day:hover{border-color:var(--forest)}
+.day[aria-selected="true"]{background:var(--forest);border-color:var(--forest)}
+.day[aria-selected="true"] .dn,.day[aria-selected="true"] .dc{color:rgba(236,239,213,.75)}
+.day[aria-selected="true"] .dd{color:var(--pale)}
+.sched-day{margin:28px 4px 16px;font-size:15px;color:var(--muted)}
+.sessions{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.session{display:grid;grid-template-columns:104px 1fr;gap:20px;align-items:center;background:var(--paper);border-radius:80px 40px 40px 80px;padding:12px 24px 12px 12px;text-align:left;width:100%;transition:transform .25s var(--ease),box-shadow .25s var(--ease);animation:rise .4s var(--ease) both}
 .session:hover{transform:translateY(-3px);box-shadow:0 22px 40px -28px rgba(37,48,39,.5)}
-.session .ph{width:136px;height:136px;border-radius:50%;overflow:hidden;flex:none}
+.session .ph{width:104px;height:104px;border-radius:50%;overflow:hidden}
 .session .ph img{width:100%;height:100%;object-fit:cover}
-.session .t{font:400 19px/1.25 var(--exa);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
-.session .who{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;color:var(--muted);line-height:1.2}
-.session .av{width:32px;height:32px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;font-weight:500;color:var(--forest);flex:none}
-.session .seats{font-size:12.5px;color:var(--muted);margin-top:8px}
-.session .seats b{font-weight:500;color:#7A5A16}
-.session.full{opacity:.5;pointer-events:none}
+.session .time{font:400 14px/1 var(--exa);letter-spacing:.08em;text-transform:uppercase;color:var(--forest)}
+.session .t{display:block;font-size:18px;font-weight:400;color:var(--ink);margin-top:8px;line-height:1.3}
+.session .row2{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+.session .who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.session .av{width:28px;height:28px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:11px;font-weight:500;color:var(--forest)}
+.session .go{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--forest);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:500}
+.session .seats{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);margin-top:6px}
+.session.full{opacity:.55;pointer-events:none}
+.session.full .go{background:var(--sand);color:var(--muted)}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.sched-foot{display:flex;justify-content:center;margin-top:36px}
+.sched-foot{display:flex;justify-content:center;margin-top:40px}
 
 /* booking drawer */
 .scrim{position:fixed;inset:0;background:rgba(18,24,19,.5);z-index:60;opacity:0;transition:opacity .25s ease}
@@ -160,7 +204,7 @@ p{text-wrap:pretty}
 
 /* one login */
 .login-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
-.feat{list-style:none;padding:0;margin-top:48px;display:grid;gap:6px}
+.feat{list-style:none;padding:0;margin-top:40px;display:grid;gap:4px}
 .feat li button{display:block;width:100%;text-align:left;padding:16px 0 16px 28px;border-left:2px solid rgba(194,205,127,.35);transition:border-color .3s ease}
 .feat li button[aria-selected="true"]{border-left-color:var(--lime)}
 .feat .ft{font:400 clamp(19px,1.7vw,24px)/1.2 var(--exa);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .3s ease}
@@ -188,7 +232,7 @@ p{text-wrap:pretty}
 
 /* pricing pills */
 #pricing{overflow-x:clip}
-.price-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:128px;gap:14px;margin-top:20px}
+.price-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:128px;gap:14px;margin-top:48px}
 .pp{height:128px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 44px;text-decoration:none;transition:transform .25s var(--ease)}
 .pp:hover{transform:translateY(-3px)}
 .pp small{display:block;font:400 12.5px/1 var(--exa);letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:10px}
@@ -258,6 +302,8 @@ footer a.fl:hover{color:var(--forest)}
   .bento{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,260px)}
   .t1{grid-row:auto}
   .sessions{grid-template-columns:1fr 1fr}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .week{max-width:620px}
   .login-grid,.faq-grid{grid-template-columns:1fr}
   .notes-grid{grid-template-columns:1fr}
   .f-top{grid-template-columns:1fr 1fr}
@@ -269,17 +315,21 @@ footer a.fl:hover{color:var(--forest)}
   .head-cta .btn{min-height:44px;padding:0 16px;font-size:15px;white-space:nowrap}
   .logo{font-size:18px}
   .hero{min-height:auto}
-  .hero-foot{padding-top:120px}
-  .hero-labels{flex-direction:column;gap:8px;font-size:12px}
-  .wordmark{font-size:15.2vw}
   .sec{padding:88px 0}
   .bento{grid-template-columns:1fr;grid-template-rows:none}
   .bento .tile{height:240px}
   .tile .meta{opacity:1;transform:none}
   .sessions{grid-template-columns:1fr}
-  .session{min-height:112px}
-  .session .ph{width:112px;height:112px}
-  .days{display:grid;grid-template-columns:repeat(4,1fr);border-radius:28px}
+  .session{grid-template-columns:84px 1fr;gap:16px}
+  .session .ph{width:84px;height:84px}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .sched-panel{padding:16px;border-radius:32px}
+  .hero-main{padding:24px 0 64px}
+  .hero-lede{font-size:17px}
+  .hero-facts{grid-template-columns:1fr 1fr;gap:20px}
+  .week{padding:22px;border-radius:32px 32px 32px 0}
+  .wk{grid-template-columns:48px 1fr auto;gap:12px}
+  .wk .dt{width:48px;height:48px}
   .screen-wrap{padding:18px;border-radius:44px 44px 44px 0;aspect-ratio:auto;min-height:440px}
   .price-head > div{grid-column:1/-1}
   .price-grid{grid-template-columns:1fr}
@@ -328,13 +378,28 @@ footer a.fl:hover{color:var(--forest)}
   <nav class="mnav" id="mnav" aria-label="Mobile" hidden>
     <a href="#schedule">Book a Session</a><a href="#programs">Programs</a><a href="#schedule">Schedule</a><a href="#learn">Learn online</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#learn">Student Login</a>
   </nav>
-  <div class="hero-foot">
-    <div class="wrap">
-      <div class="hero-labels" aria-hidden="true"><span>Hands-on workshops</span><span>Small groups</span><span>Online courses</span></div>
-      <h1 class="wordmark"><span aria-hidden="true">fieldhouse</span><span class="sr-only">Fieldhouse: hands-on workshops in Adelaide, with online courses that pick up where the room left off</span></h1>
-      <div class="hero-strap">
-        <p>Learn it at the bench in Adelaide, then keep going on our learning platform with the same login.</p>
-        <a class="next-chip" href="#schedule"><span><small>Next open session</small><strong id="nextWhen">Saturday, 10:00 am</strong></span><i aria-hidden="true">→</i></a>
+  <div class="hero-main">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-h1 rv">Learn at the bench.<br>Keep going online.</h1>
+        <p class="hero-lede rv">Small-group workshops at our Adelaide studio, with an online course that picks up where the room left off. One booking, one login.</p>
+        <div class="hero-ctas rv">
+          <a class="btn btn-lime btn-lg" href="#schedule">Book a Session</a>
+          <a class="btn btn-line btn-lg" href="#schedule">See this week's times</a>
+        </div>
+        <ul class="hero-facts rv" aria-label="At a glance">
+          <li><strong>Up to 8</strong><span>people per session</span></li>
+          <li><strong>Tue to Sat</strong><span>morning and evening</span></li>
+          <li><strong>Online course</strong><span>with every booking</span></li>
+        </ul>
+      </div>
+      <div class="week rv" aria-labelledby="weekTitle">
+        <div class="week-head">
+          <div><p class="week-kicker">This week at the studio</p><h2 class="week-title" id="weekTitle">Next open sessions</h2></div>
+          <span class="week-range" id="weekRange"></span>
+        </div>
+        <ul class="week-list" id="weekList"></ul>
+        <a class="week-all" href="#schedule">See the full schedule <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -383,17 +448,29 @@ footer a.fl:hover{color:var(--forest)}
   </div>
 </section>
 
-<section class="sec center" id="schedule">
+<section class="sec sched" id="schedule">
   <div class="wrap">
-    <h2 class="sec-title rv">Find a time that fits your week</h2>
-    <p class="sec-sub rv">Morning, evening and Saturday sessions. Pick one to book in under two minutes.</p>
-    <div class="days rv" id="days" role="tablist" aria-label="Choose a day"></div>
-    <div class="sessions" id="sessions" role="tabpanel" aria-live="polite"></div>
-    <div class="sched-foot"><a class="btn btn-dark" href="#pricing">See programs and pricing</a></div>
+    <div class="sched-head">
+      <div>
+        <h2 class="sec-title rv">Find a time that fits your week</h2>
+        <p class="sec-sub rv">Pick a day, then a session. Booking takes under two minutes and your online course opens the same day.</p>
+      </div>
+      <ul class="legend rv" aria-label="Key">
+        <li><i class="dot open"></i>Places left</li>
+        <li><i class="dot low"></i>Last places</li>
+        <li><i class="dot full"></i>Fully booked</li>
+      </ul>
+    </div>
+    <div class="sched-panel rv">
+      <div class="days" id="days" role="tablist" aria-label="Choose a day"></div>
+      <p class="sched-day" id="schedDay" aria-live="polite"></p>
+      <div class="sessions" id="sessions" role="tabpanel"></div>
+    </div>
+    <div class="sched-foot"><a class="btn btn-ghost" href="#pricing">Compare programs and pricing</a></div>
   </div>
 </section>
 
-<section class="sec" id="learn" style="padding-top:40px">
+<section class="sec" id="learn">
   <div class="wrap login-grid">
     <div>
       <h2 class="sec-title rv">One login, from studio to course</h2>
@@ -430,7 +507,7 @@ footer a.fl:hover{color:var(--forest)}
   </div>
 </section>
 
-<section class="sec" id="pricing" style="padding-top:40px">
+<section class="sec sec-tight" id="pricing">
   <div class="wrap price-head">
     <div><h2 class="sec-title rv">Programs and pricing</h2><p class="sec-sub rv">Every option includes access to the online course.</p></div>
   </div>
@@ -445,7 +522,7 @@ footer a.fl:hover{color:var(--forest)}
   <div class="wrap"><p class="note">Example programs and prices. We'd use the client's real offer.</p></div>
 </section>
 
-<section class="sec" id="faq" style="padding-top:40px">
+<section class="sec sec-tight" id="faq">
   <div class="wrap faq-grid">
     <div><h2 class="sec-title rv">Questions before you book</h2><p class="sec-sub rv">Still unsure? Call the studio and we'll help you pick.</p></div>
     <div class="faq">
@@ -559,38 +636,54 @@ footer a.fl:hover{color:var(--forest)}
   for (let i = 1; days.length < 6 && i < 20; i++) { const d = new Date(d0); d.setDate(d0.getDate() + i); if (d.getDay() === 0 || d.getDay() === 1) continue; days.push(d); }
   const IMG = { a: 'photo-1497218770144-3fea6dbc33fe', b: 'photo-1635625203639-b793c70ba6c9', c: 'photo-1597960194599-22929afc25b1', d: 'photo-1504608245011-62d9758c1bb9' };
   const TEMPL = [
-    [{ time: '9:30 am', cls: 'Foundations Workshop', prog: 'Foundations', who: ['JR', 'James Reid'], seats: 3, price: '$180', img: 'a' }, { time: '1:00 pm', cls: 'Six-Week Course', prog: 'Six-week', who: ['DM', 'Daniel Moss'], seats: 5, price: '$640', img: 'b' }, { time: '6:00 pm', cls: 'Private Session', prog: 'Private', who: ['JR', 'James Reid'], seats: 1, price: '$150', img: 'c' }],
-    [{ time: '10:00 am', cls: 'Foundations Workshop', prog: 'Foundations', who: ['DM', 'Daniel Moss'], seats: 2, price: '$180', img: 'a' }, { time: '5:30 pm', cls: 'Six-Week Course', prog: 'Six-week', who: ['JR', 'James Reid'], seats: 0, price: '$640', img: 'b' }, { time: '7:00 pm', cls: 'Private Session', prog: 'Private', who: ['DM', 'Daniel Moss'], seats: 1, price: '$150', img: 'c' }],
-    [{ time: '9:00 am', cls: 'Six-Week Course', prog: 'Six-week', who: ['DM', 'Daniel Moss'], seats: 4, price: '$640', img: 'b' }, { time: '11:30 am', cls: 'Foundations Workshop', prog: 'Foundations', who: ['JR', 'James Reid'], seats: 6, price: '$180', img: 'a' }, { time: '2:00 pm', cls: 'Private Session', prog: 'Private', who: ['JR', 'James Reid'], seats: 1, price: '$150', img: 'c' }]
+    [{ time: '9:30 am', cls: 'Foundations Workshop', len: '3 hrs', prog: 'Foundations', who: ['JR', 'James Reid'], seats: 3, price: '$180', img: 'a' }, { time: '1:00 pm', cls: 'Six-Week Course', len: '2.5 hrs', prog: 'Six-week', who: ['DM', 'Daniel Moss'], seats: 5, price: '$640', img: 'b' }, { time: '6:00 pm', cls: 'Private Session', len: '60 min', prog: 'Private', who: ['JR', 'James Reid'], seats: 1, price: '$150', img: 'c' }],
+    [{ time: '10:00 am', cls: 'Foundations Workshop', len: '3 hrs', prog: 'Foundations', who: ['DM', 'Daniel Moss'], seats: 2, price: '$180', img: 'a' }, { time: '5:30 pm', cls: 'Six-Week Course', len: '2.5 hrs', prog: 'Six-week', who: ['JR', 'James Reid'], seats: 0, price: '$640', img: 'b' }, { time: '7:00 pm', cls: 'Private Session', len: '60 min', prog: 'Private', who: ['DM', 'Daniel Moss'], seats: 1, price: '$150', img: 'c' }],
+    [{ time: '9:00 am', cls: 'Six-Week Course', len: '2.5 hrs', prog: 'Six-week', who: ['DM', 'Daniel Moss'], seats: 4, price: '$640', img: 'b' }, { time: '11:30 am', cls: 'Foundations Workshop', len: '3 hrs', prog: 'Foundations', who: ['JR', 'James Reid'], seats: 6, price: '$180', img: 'a' }, { time: '2:00 pm', cls: 'Private Session', len: '60 min', prog: 'Private', who: ['JR', 'James Reid'], seats: 1, price: '$150', img: 'c' }]
   ];
   const daysEl = $('#days'), sesEl = $('#sessions');
   let filter = null, curDay = 0;
   const sessionsFor = i => TEMPL[i % 3];
+  const dot = n => n === 0 ? 'full' : n <= 2 ? 'low' : 'open';
   const drawSessions = () => {
     sesEl.innerHTML = '';
     let list = sessionsFor(curDay);
     if (filter) list = [...list].sort((a, b) => (b.prog === filter) - (a.prog === filter));
+    $('#schedDay').textContent = `${fmt(days[curDay], { weekday: 'long', day: 'numeric', month: 'long' })} · ${list.filter(x => x.seats > 0).length} sessions with places`;
     list.forEach((s, k) => {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'session' + (s.seats === 0 ? ' full' : '');
       b.style.animationDelay = reduce ? '0s' : (k * 60) + 'ms';
-      b.setAttribute('aria-label', `${s.cls}, ${fmt(days[curDay], { weekday: 'long' })} ${s.time}, ${s.seats === 0 ? 'fully booked' : s.seats + ' places left'}`);
+      b.setAttribute('aria-label', `${s.cls}, ${fmt(days[curDay], { weekday: 'long' })} ${s.time}, ${s.seats === 0 ? 'fully booked' : s.seats + ' places left'}. Book.`);
       if (s.seats === 0) b.setAttribute('aria-disabled', 'true');
-      b.innerHTML = `<span class="ph"><img src="${U(IMG[s.img], 300)}" alt=""></span><span><span class="t">${s.time}<br>${s.cls}</span><span class="who"><span class="av">${s.who[0]}</span>${s.who[1]}</span><span class="seats">${s.seats === 0 ? 'Fully booked' : `<b>${s.seats} ${s.seats === 1 ? 'place' : 'places'} left</b>`}</span></span>`;
-      if (s.seats > 0) b.addEventListener('click', () => openDrawer(s, b));
+      b.innerHTML = `<span class="ph"><img src="${U(IMG[s.img], 240)}" alt=""></span><span><span class="time">${s.time} · ${s.len}</span><span class="t">${s.cls}</span><span class="seats"><i class="dot ${dot(s.seats)}"></i>${s.seats === 0 ? 'Fully booked' : `${s.seats} ${s.seats === 1 ? 'place' : 'places'} left`}</span><span class="row2"><span class="who"><span class="av">${s.who[0]}</span>${s.who[1]}</span><span class="go">${s.seats === 0 ? 'Full' : 'Book'}</span></span></span>`;
+      if (s.seats > 0) b.addEventListener('click', () => openDrawer(s, b, curDay));
       sesEl.appendChild(b);
     });
   };
   days.forEach((d, i) => {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'day'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    b.innerHTML = `${fmt(d, { weekday: 'short' })}<small>${d.getDate()}</small>`;
+    const open = sessionsFor(i).reduce((n, x) => n + (x.seats > 0 ? 1 : 0), 0);
+    b.innerHTML = `<span class="dn">${fmt(d, { weekday: 'short' })}</span><span class="dd">${d.getDate()}</span><span class="dc">${open} open</span>`;
+    b.setAttribute('aria-label', `${fmt(d, { weekday: 'long', day: 'numeric', month: 'long' })}, ${open} sessions with places`);
     b.addEventListener('click', () => { curDay = i; $$('.day', daysEl).forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false')); drawSessions(); });
     daysEl.appendChild(b);
   });
   drawSessions();
   const firstLabel = `${fmt(days[0], { weekday: 'long' })}, ${TEMPL[0][0].time}`;
-  $('#nextWhen').textContent = firstLabel;
+  const wl = $('#weekList');
+  const picks = [];
+  for (let i = 0; i < days.length && picks.length < 3; i++) sessionsFor(i).forEach(x => { if (x.seats > 0 && picks.length < 3 && !picks.some(p => p.i === i)) picks.push({ i, s: x }); });
+  picks.forEach(({ i, s }) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'wk';
+    b.setAttribute('aria-label', `Book ${s.cls}, ${fmt(days[i], { weekday: 'long', day: 'numeric', month: 'long' })} at ${s.time}`);
+    b.innerHTML = `<span class="dt"><span><small>${fmt(days[i], { weekday: 'short' })}</small><b>${days[i].getDate()}</b></span></span><span><span class="nm">${s.cls}</span><span class="tm">${s.time} · <b>${s.seats} ${s.seats === 1 ? 'place' : 'places'} left</b></span></span><span class="go">Book</span>`;
+    b.addEventListener('click', () => openDrawer(s, b, i));
+    li.appendChild(b); wl.appendChild(li);
+  });
+  $('#weekRange').textContent = `${fmt(days[0], { day: 'numeric', month: 'short' })} to ${fmt(days[days.length - 1], { day: 'numeric', month: 'short' })}`;
   $('#mailWhen').textContent = `${fmt(days[0], { weekday: 'long', day: 'numeric', month: 'long' })}, ${TEMPL[0][0].time} · Adelaide studio`;
   $('#appNext').textContent = `Next studio session: ${firstLabel}`;
 
@@ -610,11 +703,12 @@ footer a.fl:hover{color:var(--forest)}
     $('.dr-foot', dr).hidden = step === 2;
     next.textContent = step === 1 ? 'Confirm booking' : 'Continue';
   };
-  const openDrawer = (s, btn) => {
-    cur = s; opener = btn; step = 0;
+  let bookDay = 0;
+  const openDrawer = (s, btn, dayIdx) => {
+    cur = s; opener = btn; step = 0; bookDay = dayIdx;
     $('#drImg').src = U(IMG[s.img], 200);
     $('#drClass').textContent = s.cls;
-    $('#drWhen').textContent = `${fmt(days[curDay], { weekday: 'long', day: 'numeric', month: 'long' })}, ${s.time} · with ${s.who[1]}`;
+    $('#drWhen').textContent = `${fmt(days[bookDay], { weekday: 'long', day: 'numeric', month: 'long' })}, ${s.time} · with ${s.who[1]}`;
     $$('.field', dr).forEach(f => f.classList.remove('bad'));
     scrim.hidden = false; dr.hidden = false;
     requestAnimationFrame(() => { scrim.classList.add('on'); dr.classList.add('on'); });
@@ -637,13 +731,13 @@ footer a.fl:hover{color:var(--forest)}
   next.addEventListener('click', () => {
     if (step === 0) {
       if (!validate()) return;
-      $('#cfClass').textContent = `${cur.cls}, ${fmt(days[curDay], { weekday: 'short', day: 'numeric', month: 'short' })} ${cur.time}`;
+      $('#cfClass').textContent = `${cur.cls}, ${fmt(days[bookDay], { weekday: 'short', day: 'numeric', month: 'short' })} ${cur.time}`;
       $('#cfWho').textContent = `${$('#fn').value.trim()} (${$('#em').value.trim()})`;
       $('#cfPrice').textContent = cur.price;
     }
     if (step === 1) {
       $('#doneTitle').textContent = `You're booked, ${$('#fn').value.trim()}`;
-      $('#doneText').textContent = `${cur.cls} on ${fmt(days[curDay], { weekday: 'long', day: 'numeric', month: 'long' })} at ${cur.time}. A confirmation and calendar invite are on the way to ${$('#em').value.trim()}.`;
+      $('#doneText').textContent = `${cur.cls} on ${fmt(days[bookDay], { weekday: 'long', day: 'numeric', month: 'long' })} at ${cur.time}. A confirmation and calendar invite are on the way to ${$('#em').value.trim()}.`;
     }
     step++; render();
   });
